@@ -14,6 +14,18 @@ export default {
         backgroundImage: {
           'hero-pattern': "url('/public/hero.jpg')",
         },
+        animation: {
+          'bounce-custom': 'bounce-custom 2s infinite',
+        },
+        keyframes: {
+          'bounce-custom': {
+            '0%, 100%': { transform: 'translateY(0)' },
+            '20%': { transform: 'translateY(-10px)' },
+            '40%': { transform: 'translateY(0)' },
+            '60%': { transform: 'translateY(-5px)' },
+            '80%': { transform: 'translateY(0)' },
+          },
+        },
       },
     },
   },

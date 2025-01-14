@@ -22,10 +22,107 @@ body {
 
 
 .hero-wrapper{
-  background-image:url("/images/hero.jpg");
+  background-image:url("/images/hero-desktop.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
-  
+}
+
+@media screen and (max-width:780px) {
+  .hero-wrapper {
+    background-image:url("/images/hero-mobile.png");
+  background-position: top;
+
+  }
+}
+
+.gradientButton{
+ background:  linear-gradient(180deg, #15A5E3 0%, rgba(21, 165, 227, 0) 100%), linear-gradient(115.5deg, #015DB3 32.3%, #01868F 100%);
+ box-shadow: 0px 2px 4px rgba(58, 49, 72, 0.15), 0px 4px 8px rgba(58, 49, 72, 0.15), 0px 8px 16px rgba(58, 49, 72, 0.15), inset 0px 1px 0px rgba(255, 255, 255, 0.25), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes bounce-custom {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-10px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+}
+
+.animate-bounce-custom {
+  animation: bounce-custom 2s infinite;
+}
+
+.bg-green-500 {
+  background-color: #28a745;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.relative {
+  position: relative;
+}
+
+.w-0 {
+  width: 0;
+}
+
+.h-0 {
+  height: 0;
+}
+
+.border-x-8 {
+  border-left-width: 8px;
+  border-right-width: 8px;
+}
+
+.border-x-transparent {
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.border-t-8 {
+  border-top-width: 8px;
+}
+
+.border-t-green-500 {
+  border-top-color: #28a745;
 }
