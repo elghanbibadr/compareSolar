@@ -44,6 +44,9 @@ body {
   background:  linear-gradient(180deg, #91D15E 0%, rgba(145, 209, 94, 0) 100%), linear-gradient(115.5deg, #3F800C 32.3%, #4C990F 100%)  ;
   box-shadow: 0px 2px 4px rgba(58, 49, 72, 0.15), 0px 4px 8px rgba(58, 49, 72, 0.15), 0px 8px 16px rgba(58, 49, 72, 0.15), inset 0px 1px 0px rgba(255, 255, 255, 0.25), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
  }
+ .gradient3{
+ background: linear-gradient(135deg, #016ACB 0%, #019EA9 100%);
+ }
 
 @keyframes bounce-custom {
   0%, 100% {
