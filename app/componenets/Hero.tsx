@@ -1,8 +1,9 @@
-import logo from "@/public/images/SolarLocal Logo Files/SolarLocal Logo_coloured.svg";
 import Image from "next/image";
 import solarPowerSystemLogo from "@/public/images/icons/solarPowerSystem.svg";
 import solarandbattery from "@/public/images/icons/solarandbattery.svg";
 import sun from "@/public/images/sun.png";
+import logo from "@/public/images/SolarLocal Logo Files/SolarLocal Logo_coloured.svg";
+
 
 
 
