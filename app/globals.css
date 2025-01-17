@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -17,15 +18,38 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+
 }
 
 
-.hero-wrapper{
-  background-image:url("/images/hero-desktop.jpg");
+
+
+.hero-wrapper {
+  position: relative;
+  background-image: url("/images/hero-desktop.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    82.36deg,
+    rgba(32, 52, 81, 0.6) 9.85%,
+    rgba(42, 60, 88, 0.6) 47.74%,
+    rgba(42, 60, 88, 0) 59.76%
+  );
+  z-index: 1; /* Ensures the overlay is above the background */
+}
+
+.content {
+  position: relative;
+  z-index: 10; /* Ensures the content is above the overlay */
 }
 
 @media screen and (max-width:780px) {
