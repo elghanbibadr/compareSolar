@@ -1,8 +1,8 @@
 import Image from "next/image";
 import solarPowerSystemLogo from "@/public/images/icons/solarPowerSystem.svg";
 import solarandbattery from "@/public/images/icons/solarandbattery.svg";
-import sun from "@/public/images/sun.png";
-import logo from "@/public/images/SolarLocal Logo Files/SolarLocal Logo_coloured.svg";
+import logo from "@/public/images/SolarLocal Logo Files/SolarLocal Logo_white.svg";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -14,15 +14,9 @@ export default function Hero() {
       <div className="relative z-10 md:p-4">
         <div className="flex justify-between p-3 mb-8 items-center">
           <span className="inline-flex w-fit items-center">
+          
             <Image
-              className="w-auto h-[42px] md:h-[69px]"
-              src={sun}
-              alt="solar logo"
-              width={243}
-              height={79}
-            />
-            <Image
-              className="w-auto h-[42px] md:h-[69px]"
+              className="w-auto h-[42px] md:h-[80px]"
               src={logo}
               alt="solar logo"
               width={200}
@@ -30,12 +24,14 @@ export default function Hero() {
             />
           </span>
           <div>
-            <button className="gradientButton p-2 px-3 text-xs font-medium tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:p-4 rounded-[4px]">
-              Compare Solar Now
-            </button>
+            <Link href='/questions'>
+              <button className="gradientButton p-2 px-3 text-xs font-medium tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:p-4 rounded-[4px]">
+                Compare Solar Now
+              </button>
+            </Link>
           </div>
         </div>
-        <div className="md:my-14 z-20 content max-w-[1200px] mx-auto text-white">
+        <div className="md:my-14 z-20 content md:p-4 max-w-[1200px] mx-auto text-white">
   <div className="p-3 z-20">
     <h1 className="text-[1.38rem] tracking-[-0.04em] leading-[1.1] text-center md:text-left font-bold md:text-[2.6rem] md:leading-[1] md:tracking-[-0.02em]">
       Find the Best Solar Energy <br className="hidden md:block" />
@@ -48,7 +44,7 @@ export default function Hero() {
     </h4>
   </div>
   {/* "Start Here" Button */}
-  <div className="gradientButton relative md:w-[400px]  mt-16 md:p-8 md:rounded-md">
+  <div className="gradientButton relative md:w-[400px] p-6  mt-16 md:p-8 md:rounded-md">
     <div className="absolute -top-6 left-[100px] md:left-[134px] transform -translate-x-1/2 flex items-center justify-center animate-bounce-custom">
       <div className="relative bg-[#4AA800] text-white text-sm md:text-lg font-bold px-6 py-3 rounded-md shadow-md">
         Start Here

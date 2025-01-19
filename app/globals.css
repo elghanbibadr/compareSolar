@@ -71,6 +71,13 @@ body {
  .gradient3{
  background: linear-gradient(135deg, #016ACB 0%, #019EA9 100%);
  }
+.gradient4{
+ background:  linear-gradient(180deg, rgba(1, 94, 179, 0) 81.25%, rgba(1, 94, 179, 0.08) 100%), #DCE9F5!important ;
+}
+
+.gradient5{
+  background: url("https://cvly.app/assets/local-solar-quotes/icons/House-bg.svg") right 96% no-repeat, linear-gradient(135deg, #016ACB 0%, #019EA9 100%) !important;
+}
 
 @keyframes bounce-custom {
   0%, 100% {

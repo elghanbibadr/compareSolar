@@ -31,7 +31,7 @@ const steps = [
 
 const WhyChoseUs = () => {
   return (
-    <div className="mt-24 p-4">
+    <div className="mt-24 p-4 max-w-[1300px] mx-auto">
       <h2 className="font-bold mb-10 text-[1.3rem] md:text-[32px] leading-[120%] text-center tracking-[-0.01em] text-[#333333]">
         Why people use our service
       </h2>
@@ -40,7 +40,7 @@ const WhyChoseUs = () => {
         {steps.map((step, index) => (
           <div
             key={index}
-            className="bg-[#015EB3] text-white p-6 rounded-sm text-center shadow-lg"
+            className="bg-[#015EB3] text-white p-6 rounded-md text-center shadow-lg"
           >
             {/* <div className="text-3xl mb-4">{step.icon}</div> */}
             <Image  className="mx-auto mb-6" src={step.icon} height={40} width={40} alt="step icon" />
