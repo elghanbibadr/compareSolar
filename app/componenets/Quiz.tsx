@@ -1,22 +1,75 @@
 "use client";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import arrow from "@/public/images/icons/arrow.svg";
+import close from "@/public/images/icons/close.svg";
+import question1Icon from "@/public/images/icons/question1Icon.svg";
+import question2 from "@/public/images/icons/question2.svg";
+import question3 from "@/public/images/icons/question3.svg";
+import question4 from "@/public/images/icons/question4.svg";
+import question5 from "@/public/images/icons/question5.svg";
+import question6 from "@/public/images/icons/question6.svg";
+import question7 from "@/public/images/icons/question7.svg";
+import stars from "@/public/images/icons/stars.svg";
 
 const questions = [
-  { id: 1, text: "What are you interested in?", option1: "solar power system", option2: "solar and battery storage" },
-  { id: 2, text: "Do you own or rent the property?", option1: "Own", option2: "Rent" },
-  { id: 3, text: "What material is the roof?", option1: "Tin", option2: "Tile", option3: "Other" },
-  { id: 4, text: "How many storeys are there?", option1: "Single-storey", option2: "Multi-storey" },
-  { id: 5, text: "Roughly how much is your power bill per quarter?", option1: "Less than $500", option2: "$500 - $1000", option3: "$1000 - $2000", option4: "$2000 or more", option5: "Not sure" },
-  { id: 6, text: "Question 6?", option1: "Option 1", option2: "Option 2" },
-  { id: 7, text: "Where do you live?", isAddress: true },
+  {
+    id: 1,
+    text: "What are you interested in?",
+    option1: "Solar Power System",
+    option2: "Solar and Battery Storage",
+    icon: question1Icon,
+  },
+  {
+    id: 2,
+    text: "Do you own or rent the property?",
+    option1: "Own",
+    option2: "Rent",
+    icon: question2,
+  },
+  {
+    id: 3,
+    text: "What material is the roof?",
+    option1: "Tin",
+    option2: "Tile",
+    option3: "Other",
+    icon: question3,
+  },
+  {
+    id: 4,
+    text: "How many storeys are there?",
+    option1: "Single-storey",
+    option2: "Multi-storey",
+    icon: question4,
+  },
+  {
+    id: 5,
+    text: "Roughly how much is your power bill per quarter?",
+    option1: "Less than $500",
+    option2: "$500 - $1000",
+    option3: "$1000 - $2000",
+    option4: "$2000 or more",
+    option5: "Not sure",
+    icon: question5,
+  },
+  {
+    id: 6,
+    text: "Would you also like a quote for Solar Hot Water?",
+    option1: "Yes",
+    option2: "No Thanks",
+    icon: question6,
+  },
+  { id: 7, text: "Where do you live?", isAddress: true, icon: question7 },
 ];
 
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
+  const [selectedAnswers, setSelectedAnswers] = useState<
+    Record<number, string>
+  >({});
   const [address, setAddress] = useState("");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar state
   const router = useRouter();
 
   const handleOptionSelect = (option: string) => {
@@ -28,7 +81,7 @@ export default function Quiz() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      router.push("/completed"); // Redirect after the last question
+      router.push("/completed");
     }
   };
 
@@ -50,87 +103,177 @@ export default function Quiz() {
     }
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gradient5">
-      {/* Progress Circle */}
-      <div className="relative mb-6">
-        <div className="w-20 h-20">
-          <svg className="transform -rotate-90">
-            <circle cx="40" cy="40" r="36" strokeWidth="4" stroke="#e5e7eb" fill="none" />
-            <circle
-              cx="40"
-              cy="40"
-              r="36"
-              strokeWidth="4"
-              stroke="#3b82f6"
-              fill="none"
-              strokeDasharray={226} // 2πr (2 * Math.PI * 36)
-              strokeDashoffset={226 - (progress / 100) * 226}
-            />
-          </svg>
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center text-blue-500 font-semibold">
-          {Math.round(progress)}%
-        </div>
+    <div className="relative flex flex-col items-center h-screen gradient5 bg-gradient-to-b from-blue-600 to-blue-400">
+      {/* Header */}
+      <div className="w-full flex items-center justify-between px-4 py-2">
+        {currentQuestion > 0 && (
+          <Image
+            onClick={handleBack}
+            height={10}
+            width={10}
+            src={arrow}
+            alt="arrow"
+          />
+        )}
+        <span className="text-[13px] text-white">
+          {currentQuestion + 1} of {questions.length}
+        </span>
       </div>
 
-      {/* Question */}
-      <h2 className="text-lg font-bold text-gray-800 mb-4">
-        {questions[currentQuestion].text}
-      </h2>
+      {/* Question Text */}
+      <div className=" md:mt-20">
+        <h2 className="text-lg font-bold text-white text-center mt-8 mx-4 mb-6">
+          {questions[currentQuestion].text}
+        </h2>
+        {/* Render Input for Address or Options */}
+        {questions[currentQuestion].isAddress ? (
+          <div className="flex flex-col items-center w-full">
+            <p className="text-white w-[80%] mx-auto mb-4 text-center">
+              We ask this so we can give you the most accurate quote possible, we
+              won’t share your address with anyone else.
+            </p>
+            <input
+              type="text"
+              placeholder="Enter your full address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="p-3 w-3/4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 mb-4"
+            />
+            <button
+              onClick={handleAddressSubmit}
+              className="p-3 w-3/4 bg-green-500 text-white rounded-lg shadow hover:bg-green-600"
+            >
+              Continue
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 w-fit mx-auto gap-4 ">
+            {Object.keys(questions[currentQuestion])
+              .filter((key) => key.startsWith("option"))
+              .map((optionKey) => {
+                const optionText =
+                  questions[currentQuestion][
+                    optionKey as keyof (typeof questions)[number]
+                  ];
+                const isSelected =
+                  selectedAnswers[currentQuestion] === optionText;
+                return (
+                  <button
+                    key={optionKey}
+                    onClick={() => handleOptionSelect(optionText)}
+                    className={`p-4 w-[200px] h-[56px] rounded-lg shadow text-center ${
+                      isSelected
+                        ? "bg-green-500 text-white"
+                        : "bg-white text-gray-800 border border-gray-300"
+                    }`}
+                  >
+                    {optionText}
+                  </button>
+                );
+              })}
+          </div>
+        )}
+      </div>
 
-      {/* Render Input for Address or Options */}
-      {questions[currentQuestion].isAddress ? (
-        <div className="flex flex-col items-center w-full">
-          <input
-            type="text"
-            placeholder="Enter your full address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="p-3 w-3/4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 mb-4"
-          />
-          <button
-            onClick={handleAddressSubmit}
-            className="p-3 w-3/4 bg-green-500 text-white rounded-lg shadow hover:bg-green-600"
-          >
-            Continue
-          </button>
+      {/* Bottom Progress and Summary */}
+      <div className="w-full absolute md:hidden bottom-0 flex items-center justify-between px-6 py-2 bg-white shadow-lg">
+        {/* Progress Circle */}
+        <div className="flex items-center">
+          <div className="relative">
+            <svg className="w-16 h-16 transform -rotate-90">
+              <circle
+                cx="32"
+                cy="32"
+                r="28"
+                strokeWidth="4"
+                stroke="#e5e7eb"
+                fill="none"
+              />
+              <circle
+                cx="32"
+                cy="32"
+                r="28"
+                strokeWidth="4"
+                stroke="#3b82f6"
+                fill="none"
+                strokeDasharray="176"
+                strokeDashoffset={176 - (progress / 100) * 176}
+              />
+            </svg>
+            <span className="absolute inset-0 flex items-center justify-center text-sm text-blue-500 font-semibold">
+              {Math.round(progress)}%
+            </span>
+          </div>
+          <span className="text-sm font-medium text-gray-600 ml-4">
+            Complete
+          </span>
         </div>
-      ) : (
-        <div className="grid grid-cols-2 gap-4">
-          {Object.keys(questions[currentQuestion])
-            .filter((key) => key.startsWith("option"))
-            .map((optionKey) => {
-              const optionText = questions[currentQuestion][optionKey as keyof typeof questions[number]];
-              const isSelected = selectedAnswers[currentQuestion] === optionText;
 
-              return (
-                <button
-                  key={optionKey}
-                  onClick={() => handleOptionSelect(optionText)}
-                  className={`p-4 rounded-lg shadow ${
-                    isSelected
-                      ? "bg-green-500 text-white"
-                      : "bg-blue-500 text-white hover:bg-blue-600"
+        {/* Summary Button */}
+        <button
+          onClick={toggleSidebar}
+          className="text-sm font-medium text-blue-600"
+        >
+          My Summary
+        </button>
+      </div>
+
+      {/* Sidebar */}
+      {isSidebarOpen && (
+        <div
+          className={`fixed md:absolute top-0 right-0 p-3 h-full w-64 bg-white shadow-lg transform ${
+            isSidebarOpen ? "translate-x-0" : "translate-x-full"
+          } transition-transform duration-300 ease-in-out`}
+        >
+          <span className="inline-flex justify-between items-center  w-full">
+            <h2 className="text-lg font-bold ">Your Summary</h2>
+            <Image
+              className="cursor-pointer md:hidden"
+              onClick={() => setIsSidebarOpen(false)}
+              src={close}
+              height={15}
+              width={15}
+              alt=""
+            />
+          </span>
+          <ul className="mt-6">
+            {questions.map((q, index) => (
+              <li
+                key={q.id}
+                className={`mb-2 flex items-center gap-x-1 p-2  ${
+                  index === currentQuestion ? ": text-[#015eb3]" : ""
+                }`}
+              >
+                <Image src={q.icon} alt="icon" height={16} width={16} />
+                <p
+                  className={`  text-xs  ${
+                    index === currentQuestion
+                      ? ": text-[#015eb3]"
+                      : "text-[#333333]"
                   }`}
                 >
-                  {optionText}
-                </button>
-              );
-            })}
+                  {q.text}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <div className="hidden md:block">
+            <h2>What our customers say</h2>
+            <h3>Emma </h3>
+            <Image src={stars} alt="starts" />
+            <p>
+              All help arrived quickly and am very satisfied with the overall
+              service. Thank you!
+            </p>
+          </div>
         </div>
-      )}
-
-      {/* Back Button */}
-      {currentQuestion > 0 && (
-        <button
-          onClick={handleBack}
-          className="mt-4 px-4 py-2 bg-gray-300 text-gray-700 rounded-lg shadow hover:bg-gray-400"
-        >
-          Back
-        </button>
       )}
     </div>
   );

@@ -79,6 +79,11 @@ body {
   background: url("https://cvly.app/assets/local-solar-quotes/icons/House-bg.svg") right 96% no-repeat, linear-gradient(135deg, #016ACB 0%, #019EA9 100%) !important;
 }
 
+.answerBox{
+ background:  linear-gradient(202deg, rgba(21, 165, 227, 0) 6.49%, rgba(21, 165, 227, 0.12) 91.34%), #FFFFFF!important ;
+ box-shadow: 0px 2px 4px rgba(58, 49, 72, 0.15), 0px 4px 8px rgba(58, 49, 72, 0.15), 0px 8px 16px rgba(58, 49, 72, 0.15), inset 0px 1px 0px rgba(255, 255, 255, 0.25), inset 0px -1px 0px rgba(0, 0, 0, 0.2)!important;
+}
+
 @keyframes bounce-custom {
   0%, 100% {
     transform: translateY(0);
