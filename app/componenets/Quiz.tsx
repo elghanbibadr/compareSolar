@@ -206,13 +206,13 @@ export default function Quiz() {
             <p className="text-white w-[80%] mx-auto mb-4 text-center">
               We ask this so we can give you the most accurate quote possible,
               we won’t share your address with anyone else.
-            </p>
+            </p> 
             <input
               type="text"
               placeholder="Enter your full address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="p-3 w-3/4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 mb-4"
+              className="p-3 w-3/4 border border-gray-300 text-[#3333] rounded-lg shadow-sm focus:outline-none focus:border-blue-500 mb-4"
             />
             <button
               onClick={handleAddressSubmit}
@@ -236,7 +236,7 @@ export default function Quiz() {
                   <button
                     key={optionKey}
                     onClick={() => handleOptionSelect(optionText)}
-                    className={`p-4 w-[200px] font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
+                    className={`p-4 max-w-[200px] md:w-[200px] font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
                       isSelected
                         ? "bg-[#DBEACF] text-[14px] text-[#333333]"
                         : "bg-white text-[#333333] text-[14px] text-nowrap border border-gray-300"
