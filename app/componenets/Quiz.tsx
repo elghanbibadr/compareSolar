@@ -321,7 +321,7 @@ export default function Quiz() {
           </h2> */}
           <div className="mx-auto w-[70%] text-center">
             <p className="  text-[#FCB852] font-bold text-xl  ">
-            We're sorry, but the government solar rebate is only available to homeowners and cannot be applied to rental properties.
+            We are sorry, but the government solar rebate is only available to homeowners and cannot be applied to rental properties.
             </p>
             <span
                 onClick={handleBack}
