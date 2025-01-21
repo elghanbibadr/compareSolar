@@ -4,6 +4,7 @@ import logo from "@/public/images/SolarLocal Logo Files/SolarLocal Logo_coloured
 import Quide2 from "@/public/images/guide-2.png";
 
 import Quiz from '../componenets/Quiz';
+import Link from 'next/link';
 
 
 const QuestionsPage = () => {
@@ -12,13 +13,15 @@ const QuestionsPage = () => {
         <div className="flex justify-between gradient4 p-3 md:p-1  items-center">
           <span className="inline-flex w-fit items-center">
           
-            <Image
-              className="w-[120px] h-[42px] md:h-[60px] md:w-[200px]"
-              src={logo}
-              alt="solar logo"
-              width={200}
-              height={100}
-            />
+            <Link href='/'>
+              <Image
+                className="w-[120px] h-[42px] ml-4 md:h-[40px] md:w-[140px]"
+                src={logo}
+                alt="solar logo"
+                width={200}
+                height={100}
+              />
+            </Link>
           </span>
           <div className='flex  items-center '>
             <span className=' w-[330px] gradient6 hidden md:inline-flex  rounded-md px-2  gap-x-3'>
