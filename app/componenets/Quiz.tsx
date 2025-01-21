@@ -7,6 +7,11 @@ import close from "@/public/images/icons/close.svg";
 import question1Icon from "@/public/images/icons/question1Icon.svg";
 import question2 from "@/public/images/icons/question2.svg";
 import question3 from "@/public/images/icons/question3.svg";
+import noIcon from "@/public/images/icons/no.svg";
+import yesIcon from "@/public/images/icons/yes.svg";
+
+import solarPowerSystemLogo from "@/public/images/icons/solarPowerSystem.svg";
+import solarandbattery from "@/public/images/icons/solarandbattery.svg";
 import question4 from "@/public/images/icons/question4.svg";
 import question5 from "@/public/images/icons/question5.svg";
 import question6 from "@/public/images/icons/question6.svg";
@@ -144,16 +149,21 @@ export default function Quiz() {
       </div>
 
       {/* Question Text */}
-      <div className=" md:mt-20">
-        <h2 className="text-lg font-bold text-white text-center mt-8 mx-4 mb-6">
+      <div className=" md:relative md:right-20 md:mt-20">
+        <h2 className="text-lg md:text-2xl font-bold text-white text-center mt-8 mx-4 mb-6">
           {questions[currentQuestion].text}
         </h2>
         {/* Render Input for Address or Options */}
+        {questions[currentQuestion].id === 6 && (
+          <p className="text-white w-[80%] mx-auto mb-4 text-center">
+            Your could reduce your power bill by as much as 30%
+          </p>
+        )}
         {questions[currentQuestion].isAddress ? (
           <div className="flex flex-col items-center w-full">
             <p className="text-white w-[80%] mx-auto mb-4 text-center">
-              We ask this so we can give you the most accurate quote possible, we
-              won’t share your address with anyone else.
+              We ask this so we can give you the most accurate quote possible,
+              we won’t share your address with anyone else.
             </p>
             <input
               type="text"
@@ -184,12 +194,77 @@ export default function Quiz() {
                   <button
                     key={optionKey}
                     onClick={() => handleOptionSelect(optionText)}
-                    className={`p-4 w-[200px] h-[56px] rounded-lg shadow text-center ${
+                    className={`p-4 w-[200px] font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
                       isSelected
                         ? "bg-[#DBEACF] text-[14px] text-[#333333]"
                         : "bg-white text-[#333333] text-[14px] text-nowrap border border-gray-300"
                     }`}
                   >
+                    {optionText.includes("Power System") && (
+                      <Image
+                        className="mx-auto mb-3"
+                        src={solarPowerSystemLogo}
+                        height={40}
+                        width={40}
+                        alt="question icon"
+                      />
+                    )}
+                    {optionText.includes("Solar and Battery") && (
+                      <Image
+                        className="mx-auto mb-3"
+                        src={solarandbattery}
+                        height={40}
+                        width={40}
+                        alt="question icon"
+                      />
+                    )}
+                    {optionText.includes("Own") && (
+                      <Image
+                        className="mx-auto mb-3"
+                        src={question4}
+                        height={40}
+                        width={40}
+                        alt="question icon"
+                      />
+                    )}
+                    {optionText.includes("Rent") && (
+                      <Image
+                        className="mx-auto mb-3"
+                        src={question2}
+                        height={40}
+                        width={40}
+                        alt="question icon"
+                      />
+                    )}
+                    {optionText.includes("storey") && (
+                      <Image
+                        className="mx-auto mb-3"
+                        src={question4}
+                        height={40}
+                        width={40}
+                        alt="question icon"
+                      />
+                    )}
+                    {optionText.includes("Yes") && (
+                      <Image
+                        className="mx-auto mb-3"
+                        src={yesIcon}
+                        height={40}
+                        width={40}
+                        alt="question icon"
+                      />
+                    )}
+
+                    {optionText.includes("No") && (
+                      <Image
+                        className="mx-auto mb-3"
+                        src={noIcon}
+                        height={40}
+                        width={40}
+                        alt="question icon"
+                      />
+                    )}
+
                     {optionText}
                   </button>
                 );
@@ -240,7 +315,6 @@ export default function Quiz() {
           My Summary
         </button>
       </div>
-      
 
       {/* Sidebar */}
       {isSidebarOpen && (
@@ -259,8 +333,10 @@ export default function Quiz() {
               width={15}
               alt=""
             />
-            <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest">By answering a few questions we can recommend solar installers to compare and start saving</p>
-
+            <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest">
+              By answering a few questions we can recommend solar installers to
+              compare and start saving
+            </p>
           </span>
           <ul className="mt-6">
             {questions.map((q, index) => (
@@ -284,20 +360,24 @@ export default function Quiz() {
             ))}
           </ul>
           <div className="w-[80%] hidden md:block mx-auto">
-  <h3 className="font-bold text-base text-[#333333]">Savings Calculator</h3>
-  <div className="relative my-2 w-full h-2 rounded-full bg-gray-200">
-    <div
-      className="absolute  h-2 rounded-full bg-green-600"
-      style={{ width: `${progress}%` }}
-    ></div>
-  </div>
-  <span className="text-sm font-medium text-gray-700 mt-1 block">
-    Calculation accuracy {Math.round(progress)}%
-  </span>
-</div>
+            <h3 className="font-bold text-base text-[#333333]">
+              Savings Calculator
+            </h3>
+            <div className="relative my-2 w-full h-2 rounded-full bg-gray-200">
+              <div
+                className="absolute  h-2 rounded-full bg-green-600"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+            <span className="text-sm font-medium text-gray-700 mt-1 block">
+              Calculation accuracy {Math.round(progress)}%
+            </span>
+          </div>
 
           <div className="hidden mt-8 md:block md:gradient7">
-            <h2 className="font-bold text-base text-[#333333]">What our customers say</h2>
+            <h2 className="font-bold text-base text-[#333333]">
+              What our customers say
+            </h2>
             <h3 className="font-bold text-sm my-2 text-[#333333]">Emma </h3>
             <Image src={stars} alt="starts" />
             <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest mt-3">

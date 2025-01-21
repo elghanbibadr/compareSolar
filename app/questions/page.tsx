@@ -13,7 +13,7 @@ const QuestionsPage = () => {
           <span className="inline-flex w-fit items-center">
           
             <Image
-              className="w-auto h-[42px] md:h-[80px]"
+              className="w-[120px] h-[42px] md:h-[60px] md:w-[200px]"
               src={logo}
               alt="solar logo"
               width={200}
