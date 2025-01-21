@@ -39,7 +39,6 @@ const BrandsWeWorkWith = () => {
         <Image className="mx-auto" height={90} width={90} src={brand13} alt="Brand logo 13" />
         <Image className="mx-auto" height={90} width={90} src={brand14} alt="Brand logo 14" />
       </div>
-      <button className='gradientButton text-white mt-10 font-medium p-2 px-6 rounded-sm text-sm'>And more</button>
     </div>
   );
 };
