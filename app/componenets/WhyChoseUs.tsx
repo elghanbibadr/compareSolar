@@ -31,7 +31,7 @@ const steps = [
 
 const WhyChoseUs = () => {
   return (
-    <div className="mt-24 p-4 max-w-[1300px] mx-auto">
+    <div className="pt-24 bg-white p-4 max-w-[1300px] mx-auto">
       <h2 className="font-bold mb-10 text-[1.3rem] md:text-[32px] leading-[120%] text-center tracking-[-0.01em] text-[#333333]">
         Why people use our service
       </h2>

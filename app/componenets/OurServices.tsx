@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const OurServices = () => {
   return (
-    <div className="bg-[#15a5e314] p-4 mt-16 py-12 md:py-20">
+    <div className="bg-[#F0F0F0] p-4 pt-16 py-12 md:py-20">
       <div className="max-w-[1300px] mx-auto">
         <h2 className="font-bold mb-10 text-[1.3rem] md:text-[32px] leading-[120%] text-center tracking-[-0.01em] text-[#333333]">
           How our service works

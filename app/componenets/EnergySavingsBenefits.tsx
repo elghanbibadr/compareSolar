@@ -6,9 +6,9 @@ import icon3 from "@/public/images/icons/Happy.svg";
 
 const EnergySavingsBenefits = () => {
   return (
-    <section className="py-10 mt-28 px-6 text-center">
+    <section className="py-10 bg-white pt-28 px-6 text-center">
       {/* Section Heading */}
-      <h2 className="text-2xl md:text-3xl font-bold mb-8">
+      <h2 className="text-2xl text-[#333333] md:text-3xl font-bold mb-8">
         We love showing people how to save money on their energy bills
       </h2>
 

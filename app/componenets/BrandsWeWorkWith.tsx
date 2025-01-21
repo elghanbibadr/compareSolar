@@ -19,7 +19,7 @@ import Image from 'next/image';
 
 const BrandsWeWorkWith = () => {
   return (
-    <div className="text-center mt-16">
+    <div className="text-center bg-white pt-16">
       <h2 className="font-bold text-xl md:text-[32px] leading-[120%] text-center tracking-[-0.01em] text-[#333333]">
         Brands we work with
       </h2>

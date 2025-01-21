@@ -49,8 +49,8 @@ export default function Solar101() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <div className="p-6  mt-20 bg-[#15a5e314] py-12">
-      <h2 className="text-xl md:text-2xl font-bold text-center text-[#333333] mb-10">
+    <div className="p-6  pt-20 bg-[#F0F0F0] py-12">
+      <h2 className="text-xl md:text-3xl font-bold text-center text-[#333333] mb-10">
         Solar 101
       </h2>
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8  ">

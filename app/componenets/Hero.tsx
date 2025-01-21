@@ -1,7 +1,7 @@
 import Image from "next/image";
 import solarPowerSystemLogo from "@/public/images/icons/solarPowerSystem.svg";
 import solarandbattery from "@/public/images/icons/solarandbattery.svg";
-import logo from "@/public/images/SolarLocal Logo Files/SolarLocal Logo_white.svg";
+import logo from "@/public/images/SolarLocal Logo Files/SolarLocal Logo_coloured.svg";
 import Link from "next/link";
 
 export default function Hero() {
@@ -25,7 +25,7 @@ export default function Hero() {
           </span>
           <div>
             <Link href='/questions'>
-              <button className="gradientButton p-2 px-3 text-xs font-medium tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:p-4 rounded-[4px]">
+              <button className="gradientButton  p-2 px-3 text-xs font-medium tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:p-4 rounded-[4px]">
                 Compare Solar Now
               </button>
             </Link>

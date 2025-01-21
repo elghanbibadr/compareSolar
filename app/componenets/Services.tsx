@@ -3,7 +3,7 @@ import billDrop from "@/public/images/Bill-Drop.png"
 import Image from 'next/image'
 const Services = () => {
   return (
-    <section className="gradient3 mt-20 grid grid-cols-1 justify-center md:gap-x-6 items-center md:h-fit md:grid-cols-2  text-white py-10 md:py-2 px-6 md:px-16">
+    <section className="gradient3 b pt-20 grid grid-cols-1 justify-center md:gap-x-6 items-center md:h-fit md:grid-cols-2  text-white py-10 md:py-2 px-6 md:px-16">
     <div className='md:order-2'>
         <div className="text-center md:text-left mb-8">
           <h2 className="text-2xl md:text-4xl font-bold">A Service Like No Other</h2>

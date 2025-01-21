@@ -63,6 +63,10 @@ body {
 .gradientButton{
  background:  linear-gradient(180deg, #15A5E3 0%, rgba(21, 165, 227, 0) 100%), linear-gradient(115.5deg, #015DB3 32.3%, #01868F 100%);
  box-shadow: 0px 2px 4px rgba(58, 49, 72, 0.15), 0px 4px 8px rgba(58, 49, 72, 0.15), 0px 8px 16px rgba(58, 49, 72, 0.15), inset 0px 1px 0px rgba(255, 255, 255, 0.25), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+ transition: all 1s ease;
+}
+.gradientButton:hover{
+  background: #df5745;
 }
 .gradientButton2{
   background:  linear-gradient(180deg, #91D15E 0%, rgba(145, 209, 94, 0) 100%), linear-gradient(115.5deg, #3F800C 32.3%, #4C990F 100%)  ;
