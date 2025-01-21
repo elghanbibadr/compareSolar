@@ -25,6 +25,8 @@ const questions = [
     option1: "Solar Power System",
     option2: "Solar and Battery Storage",
     icon: question1Icon,
+    clientName:"Pat",
+    review: "Quotes received, no hard sell, plenty of information provided, solar installed and operating with minimal fuss.",
   },
   {
     id: 2,
@@ -32,6 +34,9 @@ const questions = [
     option1: "Own",
     option2: "Rent",
     icon: question2,
+    clientName:"Leigh",
+
+    review: "I received three quotes, two were close and I settled on one. It all worked out fine.",
   },
   {
     id: 3,
@@ -40,6 +45,8 @@ const questions = [
     option2: "Tile",
     option3: "Other",
     icon: question3,
+    clientName:"Emma",
+    review: "All help arrived quickly and am very satisfied with the overall service. Thank you!",
   },
   {
     id: 4,
@@ -47,6 +54,8 @@ const questions = [
     option1: "Single-storey",
     option2: "Multi-storey",
     icon: question4,
+    clientName:"Pat",
+    review: "Quotes received, no hard sell, plenty of information provided, solar installed and operating with minimal fuss.",
   },
   {
     id: 5,
@@ -57,6 +66,9 @@ const questions = [
     option4: "$2000 or more",
     option5: "Not sure",
     icon: question5,
+    clientName:"Leigh",
+
+    review: "I received three quotes, two were close and I settled on one. It all worked out fine.",
   },
   {
     id: 6,
@@ -64,8 +76,17 @@ const questions = [
     option1: "Yes",
     option2: "No Thanks",
     icon: question6,
+    clientName:"Emma",
+    review: "All help arrived quickly and am very satisfied with the overall service. Thank you!",
   },
-  { id: 7, text: "Where do you live?", isAddress: true, icon: question7 },
+  {
+    id: 7,
+    text: "Where do you live?",
+    isAddress: true,
+    icon: question7,
+    clientName:"Pat",
+    review: "Quotes received, no hard sell, plenty of information provided, solar installed and operating with minimal fuss.",
+  },
 ];
 
 export default function Quiz() {
@@ -129,23 +150,26 @@ export default function Quiz() {
     };
   }, []);
   const progress = ((currentQuestion + 1) / questions.length) * 100;
+  console.log(questions[currentQuestion].review);
 
   return (
-    <div className="relative flex flex-col items-center h-screen gradient5 bg-gradient-to-b from-blue-600 to-blue-400">
+    <div className="relative overflow-y-hidden flex flex-col items-center min-h-screen gradient5 bg-gradient-to-b from-blue-600 to-blue-400">
       {/* Header */}
       <div className="w-full flex items-center justify-between px-4 py-2">
         {currentQuestion > 0 && (
-          <Image
-            onClick={handleBack}
-            height={10}
-            width={10}
-            src={arrow}
-            alt="arrow"
-          />
+          <>
+            <span
+              onClick={handleBack}
+              className="inline-flex cursor-pointer gap-x-2"
+            >
+              <Image height={10} width={10} src={arrow} alt="arrow" />
+              <span className="text-[13px] text-white">Previous question</span>
+            </span>
+            <span className="text-[13px] text-white">
+              {currentQuestion + 1} of {questions.length}
+            </span>
+          </>
         )}
-        <span className="text-[13px] text-white">
-          {currentQuestion + 1} of {questions.length}
-        </span>
       </div>
 
       {/* Question Text */}
@@ -255,7 +279,7 @@ export default function Quiz() {
                       />
                     )}
 
-                    {optionText.includes("No") && (
+                    {optionText.includes("No Thanks") && (
                       <Image
                         className="mx-auto mb-3"
                         src={noIcon}
@@ -319,7 +343,7 @@ export default function Quiz() {
       {/* Sidebar */}
       {isSidebarOpen && (
         <div
-          className={`fixed md:absolute top-0 right-0 p-3 h-full w-64 md:w-72 bg-white shadow-lg transform ${
+          className={`fixed md:absolute top-0  overflow-scroll right-0 p-3 h-full w-64 md:w-72 bg-white shadow-lg transform ${
             isSidebarOpen ? "translate-x-0" : "translate-x-full"
           } transition-transform duration-300 ease-in-out`}
         >
@@ -378,12 +402,13 @@ export default function Quiz() {
             <h2 className="font-bold text-base text-[#333333]">
               What our customers say
             </h2>
-            <h3 className="font-bold text-sm my-2 text-[#333333]">Emma </h3>
+            <h3 className="font-bold text-sm my-2 text-[#333333]">{questions[currentQuestion].clientName}</h3>
             <Image src={stars} alt="starts" />
-            <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest mt-3">
-              All help arrived quickly and am very satisfied with the overall
-              service. Thank you!
-            </p>
+            {questions[currentQuestion].review && (
+              <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest mt-3">
+                {questions[currentQuestion].review}
+              </p>
+            )}
           </div>
         </div>
       )}
