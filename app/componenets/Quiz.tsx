@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import arrow from "@/public/images/icons/arrow.svg";
@@ -69,7 +69,7 @@ export default function Quiz() {
     Record<number, string>
   >({});
   const [address, setAddress] = useState("");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar state
   const router = useRouter();
 
   const handleOptionSelect = (option: string) => {
@@ -106,7 +106,23 @@ export default function Quiz() {
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
+  // Detect screen size and update sidebar state
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 986) {
+        setIsSidebarOpen(true);
+      } else {
+        setIsSidebarOpen(false);
+      }
+    };
 
+    handleResize(); // Check on component mount
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   return (
@@ -170,8 +186,8 @@ export default function Quiz() {
                     onClick={() => handleOptionSelect(optionText)}
                     className={`p-4 w-[200px] h-[56px] rounded-lg shadow text-center ${
                       isSelected
-                        ? "bg-green-500 text-white"
-                        : "bg-white text-gray-800 border border-gray-300"
+                        ? "bg-[#DBEACF] text-[14px] text-[#333333]"
+                        : "bg-white text-[#333333] text-[14px] text-nowrap border border-gray-300"
                     }`}
                   >
                     {optionText}
@@ -224,16 +240,17 @@ export default function Quiz() {
           My Summary
         </button>
       </div>
+      
 
       {/* Sidebar */}
       {isSidebarOpen && (
         <div
-          className={`fixed md:absolute top-0 right-0 p-3 h-full w-64 bg-white shadow-lg transform ${
+          className={`fixed md:absolute top-0 right-0 p-3 h-full w-64 md:w-72 bg-white shadow-lg transform ${
             isSidebarOpen ? "translate-x-0" : "translate-x-full"
           } transition-transform duration-300 ease-in-out`}
         >
-          <span className="inline-flex justify-between items-center  w-full">
-            <h2 className="text-lg font-bold ">Your Summary</h2>
+          <span className="inline-flex md:inline-block md:bg-white shadow-none justify-between items-center  w-full">
+            <h2 className="text-lg  font-bold ">Your Summary</h2>
             <Image
               className="cursor-pointer md:hidden"
               onClick={() => setIsSidebarOpen(false)}
@@ -242,6 +259,8 @@ export default function Quiz() {
               width={15}
               alt=""
             />
+            <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest">By answering a few questions we can recommend solar installers to compare and start saving</p>
+
           </span>
           <ul className="mt-6">
             {questions.map((q, index) => (
@@ -264,11 +283,24 @@ export default function Quiz() {
               </li>
             ))}
           </ul>
-          <div className="hidden md:block">
-            <h2>What our customers say</h2>
-            <h3>Emma </h3>
+          <div className="w-[80%] hidden md:block mx-auto">
+  <h3 className="font-bold text-base text-[#333333]">Savings Calculator</h3>
+  <div className="relative my-2 w-full h-2 rounded-full bg-gray-200">
+    <div
+      className="absolute  h-2 rounded-full bg-green-600"
+      style={{ width: `${progress}%` }}
+    ></div>
+  </div>
+  <span className="text-sm font-medium text-gray-700 mt-1 block">
+    Calculation accuracy {Math.round(progress)}%
+  </span>
+</div>
+
+          <div className="hidden mt-8 md:block md:gradient7">
+            <h2 className="font-bold text-base text-[#333333]">What our customers say</h2>
+            <h3 className="font-bold text-sm my-2 text-[#333333]">Emma </h3>
             <Image src={stars} alt="starts" />
-            <p>
+            <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest mt-3">
               All help arrived quickly and am very satisfied with the overall
               service. Thank you!
             </p>
