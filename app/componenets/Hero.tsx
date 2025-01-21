@@ -58,6 +58,7 @@ export default function Hero() {
     </h5>
     <div className="flex gap-2 mb-6 w-fit mx-auto">
       {/* Option 1 */}
+      <Link href='/questions'>
       <div className="bg-[#abb8c3] p-2 rounded-md">
         <Image
           className="mx-auto"
@@ -70,7 +71,9 @@ export default function Hero() {
           Solar Power <br /> System
         </p>
       </div>
+      </Link>
       {/* Option 2 */}
+      <Link href='/questions'>
       <div className="bg-[#abb8c3] p-2 rounded-md">
         <Image
           className="mx-auto"
@@ -84,7 +87,10 @@ export default function Hero() {
           Battery Storage
         </p>
       </div>
+      </Link >
+
     </div>
+
     <span className="text-[#fffc] text-center font-normal leading-[1.2] tracking-[-0.01em] block text-xs md:text-sm mt-2">
       100% obligation free
     </span>
