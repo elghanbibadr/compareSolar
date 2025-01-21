@@ -25,8 +25,9 @@ const questions = [
     option1: "Solar Power System",
     option2: "Solar and Battery Storage",
     icon: question1Icon,
-    clientName:"Pat",
-    review: "Quotes received, no hard sell, plenty of information provided, solar installed and operating with minimal fuss.",
+    clientName: "Pat",
+    review:
+      "Quotes received, no hard sell, plenty of information provided, solar installed and operating with minimal fuss.",
   },
   {
     id: 2,
@@ -34,9 +35,10 @@ const questions = [
     option1: "Own",
     option2: "Rent",
     icon: question2,
-    clientName:"Leigh",
+    clientName: "Leigh",
 
-    review: "I received three quotes, two were close and I settled on one. It all worked out fine.",
+    review:
+      "I received three quotes, two were close and I settled on one. It all worked out fine.",
   },
   {
     id: 3,
@@ -45,8 +47,9 @@ const questions = [
     option2: "Tile",
     option3: "Other",
     icon: question3,
-    clientName:"Emma",
-    review: "All help arrived quickly and am very satisfied with the overall service. Thank you!",
+    clientName: "Emma",
+    review:
+      "All help arrived quickly and am very satisfied with the overall service. Thank you!",
   },
   {
     id: 4,
@@ -54,8 +57,9 @@ const questions = [
     option1: "Single-storey",
     option2: "Multi-storey",
     icon: question4,
-    clientName:"Pat",
-    review: "Quotes received, no hard sell, plenty of information provided, solar installed and operating with minimal fuss.",
+    clientName: "Pat",
+    review:
+      "Quotes received, no hard sell, plenty of information provided, solar installed and operating with minimal fuss.",
   },
   {
     id: 5,
@@ -66,9 +70,10 @@ const questions = [
     option4: "$2000 or more",
     option5: "Not sure",
     icon: question5,
-    clientName:"Leigh",
+    clientName: "Leigh",
 
-    review: "I received three quotes, two were close and I settled on one. It all worked out fine.",
+    review:
+      "I received three quotes, two were close and I settled on one. It all worked out fine.",
   },
   {
     id: 6,
@@ -76,16 +81,18 @@ const questions = [
     option1: "Yes",
     option2: "No Thanks",
     icon: question6,
-    clientName:"Emma",
-    review: "All help arrived quickly and am very satisfied with the overall service. Thank you!",
+    clientName: "Emma",
+    review:
+      "All help arrived quickly and am very satisfied with the overall service. Thank you!",
   },
   {
     id: 7,
     text: "Where do you live?",
     isAddress: true,
     icon: question7,
-    clientName:"Pat",
-    review: "Quotes received, no hard sell, plenty of information provided, solar installed and operating with minimal fuss.",
+    clientName: "Pat",
+    review:
+      "Quotes received, no hard sell, plenty of information provided, solar installed and operating with minimal fuss.",
   },
 ];
 
@@ -94,11 +101,19 @@ export default function Quiz() {
   const [selectedAnswers, setSelectedAnswers] = useState<
     Record<number, string>
   >({});
+
   const [address, setAddress] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar state
   const router = useRouter();
+  const [isNotAvailable, setIsNotAvailable] = useState(false);
 
   const handleOptionSelect = (option: string) => {
+    // Check if the user selected "Rent" on the second question
+    if (currentQuestion === 1 && option === "Rent") {
+      setIsNotAvailable(true); // Show the "Sorry, not available" message
+      return;
+    }
+
     setSelectedAnswers((prev) => ({
       ...prev,
       [currentQuestion]: option,
@@ -126,6 +141,7 @@ export default function Quiz() {
   const handleBack = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
+      setIsNotAvailable(false)
     }
   };
 
@@ -173,7 +189,9 @@ export default function Quiz() {
       </div>
 
       {/* Question Text */}
-      <div className=" md:relative md:right-20 md:mt-20">
+      <div className={`md:relative md:right-20 md:mt-20 ${
+    isNotAvailable ? "hidden" : ""
+  }`}>
         <h2 className="text-lg md:text-2xl font-bold text-white text-center mt-8 mx-4 mb-6">
           {questions[currentQuestion].text}
         </h2>
@@ -296,6 +314,25 @@ export default function Quiz() {
           </div>
         )}
       </div>
+      {isNotAvailable && questions[currentQuestion].id ===2 && (
+        <div className="not-available md:relative md:right-20 mt-32">
+          {/* <h2 className="text-center text-red-600 mb-3 font-bold text-2xl md:text-3xl">
+            Sorry, not available
+          </h2> */}
+          <div className="mx-auto w-[70%] text-center">
+            <p className="  text-[#FCB852] font-bold text-xl  ">
+            We're sorry, but the government solar rebate is only available to homeowners and cannot be applied to rental properties.
+            </p>
+            <span
+                onClick={handleBack}
+                className="inline-flex cursor-pointer mt-3 w-fit justify-center mx-auto gap-x-2"
+              >
+                <Image height={6} width={6} src={arrow} alt="arrow" />
+                <span className="text-[13px] text-white">Go Back</span>
+              </span>
+          </div>
+        </div>
+      )}
 
       {/* Bottom Progress and Summary */}
       <div className="w-full absolute md:hidden bottom-0 flex items-center justify-between px-6 py-2 bg-white shadow-lg">
@@ -402,7 +439,9 @@ export default function Quiz() {
             <h2 className="font-bold text-base text-[#333333]">
               What our customers say
             </h2>
-            <h3 className="font-bold text-sm my-2 text-[#333333]">{questions[currentQuestion].clientName}</h3>
+            <h3 className="font-bold text-sm my-2 text-[#333333]">
+              {questions[currentQuestion].clientName}
+            </h3>
             <Image src={stars} alt="starts" />
             {questions[currentQuestion].review && (
               <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest mt-3">
