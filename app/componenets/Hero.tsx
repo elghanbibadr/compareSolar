@@ -33,7 +33,7 @@ export default function Hero() {
         </div>
         <div className="md:my-14 z-20 content md:p-4 max-w-[1200px] mx-auto text-white">
   <div className="p-3 z-20">
-    <h1 className="text-[1.38rem] tracking-[-0.04em] leading-[1.1] text-center md:text-left font-bold md:text-[2.6rem] md:leading-[1] md:tracking-[-0.02em]">
+    <h1 className="text-[1.38rem] tracking-[-0.04em] leading-[1.1] text-white text-center md:text-left font-bold md:text-[2.6rem] md:leading-[1] md:tracking-[-0.02em]">
       Find the Best Solar Energy <br className="hidden md:block" />
       Deals for Your Home
     </h1>
@@ -44,11 +44,11 @@ export default function Hero() {
     </h4>
   </div>
   {/* "Start Here" Button */}
-  <div className="gradientButton relative md:w-[400px] p-6  mt-16 md:p-8 md:rounded-md">
+  <div className="gradientButton3 relative md:w-[400px] p-6  mt-16 md:p-8 md:rounded-md">
     <div className="absolute -top-6 left-[100px] md:left-[134px] transform -translate-x-1/2 flex items-center justify-center animate-bounce-custom">
-      <div className="relative bg-[#4AA800] text-white text-sm md:text-lg font-bold px-6 py-3 rounded-md shadow-md">
+      <div className="relative gradientButton text-white text-sm md:text-lg font-bold px-6 py-3 rounded-md shadow-md">
         Start Here
-        <div className="absolute w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-green-500 -bottom-2 left-1/2 transform -translate-x-1/2"></div>
+        <div className="absolute w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-[#df5745] -bottom-2 left-1/2 transform -translate-x-1/2"></div>
       </div>
     </div>
 
