@@ -236,10 +236,10 @@ export default function Quiz() {
                   <button
                     key={optionKey}
                     onClick={() => handleOptionSelect(optionText)}
-                    className={`p-4 max-w-[200px] md:w-[200px] font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
+                    className={`p-4 max-w-[200px] mx-1 md:w-[200px] text-wrap font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
                       isSelected
-                        ? "bg-[#DBEACF] text-[14px] text-[#333333]"
-                        : "bg-white text-[#333333] text-[14px] text-nowrap border border-gray-300"
+                        ? "bg-[#DBEACF] text-[12px] md:text-[14px] text-[#333333]"
+                        : "bg-white text-[#333333] text-[12px] md:text-[14px] md:text-nowrap border border-gray-300"
                     }`}
                   >
                     {optionText.includes("Power System") && (

@@ -46,9 +46,9 @@ export default function Hero() {
   {/* "Start Here" Button */}
   <div className="gradientButton3 relative md:w-[400px] p-6  mt-16 md:p-8 md:rounded-md">
     <div className="absolute -top-6 left-[100px] md:left-[134px] transform -translate-x-1/2 flex items-center justify-center animate-bounce-custom">
-      <div className="relative gradientButton text-white text-sm md:text-lg font-bold px-6 py-3 rounded-md shadow-md">
+      <div className="relative bg-[#FFB848] text-white text-sm md:text-lg font-bold px-6 py-3 rounded-md shadow-md">
         Start Here
-        <div className="absolute w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-[#df5745] -bottom-2 left-1/2 transform -translate-x-1/2"></div>
+        <div className="absolute w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-[#FFB848]] -bottom-2 left-1/2 transform -translate-x-1/2"></div>
       </div>
     </div>
 
