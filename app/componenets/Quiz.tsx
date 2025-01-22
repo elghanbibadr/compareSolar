@@ -17,6 +17,7 @@ import question5 from "@/public/images/icons/question5.svg";
 import question6 from "@/public/images/icons/question6.svg";
 import question7 from "@/public/images/icons/question7.svg";
 import stars from "@/public/images/icons/stars.svg";
+import PlacesAutocomplete from "./PlacesAutoComplete";
 
 const questions = [
   {
@@ -169,7 +170,7 @@ export default function Quiz() {
   console.log(questions[currentQuestion].review);
 
   return (
-    <div className="relative overflow-y-hidden flex flex-col items-center min-h-screen gradient5 bg-gradient-to-b from-blue-600 to-blue-400">
+    <div className="relative overflow-y-hidden flex flex-col items-center h-[90vh] gradient5 bg-gradient-to-b from-blue-600 to-blue-400">
       {/* Header */}
       <div className="w-full flex items-center justify-between px-4 py-2">
         {currentQuestion > 0 && (
@@ -314,6 +315,7 @@ export default function Quiz() {
           </div>
         )}
       </div>
+      {/* <PlacesAutocomplete /> */}
       {isNotAvailable && questions[currentQuestion].id ===2 && (
         <div className="not-available md:relative md:right-20 mt-32">
           {/* <h2 className="text-center text-red-600 mb-3 font-bold text-2xl md:text-3xl">
