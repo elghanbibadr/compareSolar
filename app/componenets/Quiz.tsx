@@ -142,7 +142,7 @@ export default function Quiz() {
   const handleBack = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
-      setIsNotAvailable(false)
+      setIsNotAvailable(false);
     }
   };
 
@@ -190,9 +190,11 @@ export default function Quiz() {
       </div>
 
       {/* Question Text */}
-      <div className={`md:relative md:right-20 md:mt-20 ${
-    isNotAvailable ? "hidden" : ""
-  }`}>
+      <div
+        className={`md:relative md:right-20 md:mt-20 ${
+          isNotAvailable ? "hidden" : ""
+        }`}
+      >
         <h2 className="text-lg md:text-2xl font-bold text-white text-center mt-8 mx-4 mb-6">
           {questions[currentQuestion].text}
         </h2>
@@ -203,21 +205,12 @@ export default function Quiz() {
           </p>
         )}
         {questions[currentQuestion].isAddress ? (
-          <div className="flex flex-col items-center w-full">
-            <p className="text-white w-[80%] mx-auto mb-4 text-center">
-              We ask this so we can give you the most accurate quote possible,
-              we won’t share your address with anyone else.
-            </p> 
-            <input
-              type="text"
-              placeholder="Enter your full address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className="p-3 w-3/4 border border-gray-300 text-[#3333] rounded-lg shadow-sm focus:outline-none focus:border-blue-500 mb-4"
-            />
+          <div className="relative w-full max-w-md">
+            <PlacesAutocomplete address={address} setAddress={setAddress} />
+
             <button
               onClick={handleAddressSubmit}
-              className="p-3 w-3/4 bg-green-500 text-white rounded-lg shadow hover:bg-green-600"
+              className="p-3 w-3/4 mx-auto block bg-green-500 text-white rounded-lg shadow hover:bg-green-600"
             >
               Continue
             </button>
@@ -315,23 +308,23 @@ export default function Quiz() {
           </div>
         )}
       </div>
-      <PlacesAutocomplete />
-      {isNotAvailable && questions[currentQuestion].id ===2 && (
+      {isNotAvailable && questions[currentQuestion].id === 2 && (
         <div className="not-available md:relative md:right-20 mt-32">
           {/* <h2 className="text-center text-red-600 mb-3 font-bold text-2xl md:text-3xl">
             Sorry, not available
           </h2> */}
           <div className="mx-auto w-[70%] text-center">
             <p className="  text-[#FCB852] font-bold text-xl  ">
-            We are sorry, but the government solar rebate is only available to homeowners and cannot be applied to rental properties.
+              We are sorry, but the government solar rebate is only available to
+              homeowners and cannot be applied to rental properties.
             </p>
             <span
-                onClick={handleBack}
-                className="inline-flex cursor-pointer mt-3 w-fit justify-center mx-auto gap-x-2"
-              >
-                <Image height={6} width={6} src={arrow} alt="arrow" />
-                <span className="text-[13px] text-white">Go Back</span>
-              </span>
+              onClick={handleBack}
+              className="inline-flex cursor-pointer mt-3 w-fit justify-center mx-auto gap-x-2"
+            >
+              <Image height={6} width={6} src={arrow} alt="arrow" />
+              <span className="text-[13px] text-white">Go Back</span>
+            </span>
           </div>
         </div>
       )}

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@geoapify/geocoder-autocomplete": "^2.1.0",
     "@react-google-maps/api": "^2.20.5",
     "next": "15.1.4",
     "react": "^19.0.0",

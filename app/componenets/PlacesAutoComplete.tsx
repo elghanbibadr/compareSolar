@@ -1,104 +1,80 @@
-'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, ChangeEvent } from "react";
 
-import React, { useEffect, useState, useRef } from "react";
-import { useLoadScript } from "@react-google-maps/api";
+type PlacesAutocompleteProps = {
+  address: string;
+  setAddress: (address: string) => void;
+};
 
-const libraries = ["places"];
+const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({ address, setAddress}) => {
+  const [suggestions, setSuggestions] = useState<any[]>([]);
+console.log("suggestions",suggestions)
+console.log("adress",address)
 
-const PlacesAutocomplete = () => {
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyA-PSgmm37bBIYMPc2rbnY5odO8nqQqBmY",
-    libraries,
-  });
 
-  const [input, setInput] = useState({});
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    if (!isLoaded || loadError) return;
-
-    const options = {
-      componentRestrictions: { country: "au" }, // Restrict to Australia (country: "au")
-      fields: ["address_components", "geometry"],
-    };
-
-    const autocomplete = new google.maps.places.Autocomplete(inputRef.current, options);
-    autocomplete.addListener("place_changed", () => handlePlaceChanged(autocomplete));
-
-    // Clean up listener on component unmount
-    return () => google.maps.event.clearInstanceListeners(autocomplete);
-  }, [isLoaded, loadError]);
-
-  const handlePlaceChanged = async (autocomplete) => {
-    if (!isLoaded) return;
-    const place = autocomplete.getPlace();
-
-    if (!place || !place.geometry) {
-      setInput({});
+  const fetchSuggestions = async (text: string) => {
+    if (!text) {
+      setSuggestions([]);
       return;
     }
 
-    formData(place);
+    try {
+      const response = await fetch(
+        `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&filter=countrycode:au&apiKey=d7c07bb16ab349ea8189878eb03eeedb`
+      );
+
+      if (!response.ok) {
+        console.log("Failed to fetch suggestions");
+        
+      }
+
+      const data = await response.json();
+      setSuggestions(data.features || []);
+    } catch (error) {
+      console.error("Error fetching autocomplete suggestions:", error);
+      setSuggestions([]);
+    }
   };
 
-  const formData = (data) => {
-    const addressComponents = data?.address_components;
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const text = e.target.value;
+    setAddress(text);
+    fetchSuggestions(text);
+  };
 
-    const componentMap = {
-      subPremise: "",
-      premise: "",
-      street_number: "",
-      route: "",
-      country: "",
-      postal_code: "",
-      administrative_area_level_2: "",
-      administrative_area_level_1: "",
-    };
-
-    for (const component of addressComponents) {
-      const componentType = component.types[0];
-      if (componentMap.hasOwnProperty(componentType)) {
-        componentMap[componentType] = component.long_name;
-      }
-    }
-
-    const formattedAddress =
-      `${componentMap.subPremise} ${componentMap.premise} ${componentMap.street_number} ${componentMap.route}`.trim();
-    const latitude = data?.geometry?.location?.lat();
-    const longitude = data?.geometry?.location?.lng();
-
-    setInput({
-      streetAddress: formattedAddress,
-      country: componentMap.country,
-      zipCode: componentMap.postal_code,
-      city: componentMap.administrative_area_level_2,
-      state: componentMap.administrative_area_level_1,
-      latitude: latitude,
-      longitude: longitude,
-    });
+  const handleSuggestionClick = (suggestion: any) => {
+    setAddress(suggestion.properties.formatted);
+    setSuggestions([]); // Clear suggestions after selecting one
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <input
-        ref={inputRef}
-        type="text"
-        name="address"
-        placeholder="Enter an address"
-        className="w-full px-4 py-2 border rounded-md"
-      />
-      {input.streetAddress && (
-        <div className="mt-4 p-4 border rounded-md bg-gray-50">
-          <p><strong>Address:</strong> {input.streetAddress}</p>
-          <p><strong>City:</strong> {input.city}</p>
-          <p><strong>State:</strong> {input.state}</p>
-          <p><strong>Country:</strong> {input.country}</p>
-          <p><strong>Zip Code:</strong> {input.zipCode}</p>
-          <p><strong>Latitude:</strong> {input.latitude}</p>
-          <p><strong>Longitude:</strong> {input.longitude}</p>
-        </div>
-      )}
-    </div>
+      <div className="flex flex-col items-center w-full">
+        <p className="text-white w-[80%] mx-auto mb-4 text-center">
+          We ask this so we can give you the most accurate quote possible, we won’t share your address with anyone else.
+        </p>
+        <input
+          type="text"
+          placeholder="Enter your full address"
+          value={address}
+          onChange={handleInputChange}
+          className="p-3 w-3/4 border border-gray-300 text-[#3333] rounded-lg shadow-sm focus:outline-none focus:border-blue-500 mb-4"
+        />
+        {suggestions.length > 0 && (
+          <ul className="  bg-white z-20 border border-gray-300 rounded-md shadow-md max-h-60 overflow-auto">
+            {suggestions.map((suggestion) => (
+              <li
+                key={suggestion.properties.place_id}
+                className="px-4 py-2 cursor-pointer hover:bg-blue-100"
+                onClick={() => handleSuggestionClick(suggestion)}
+              >
+                {suggestion.properties.formatted}
+              </li>
+            ))}
+          </ul>
+        )}
+      {/* {suggestions.length === 0 && address && <p className="text-red-500 text-sm text-center">No results found...</p>} Only show "No results found..." if suggestions are empty and address is not empty */}
+      
+      </div>
   );
 };
 
