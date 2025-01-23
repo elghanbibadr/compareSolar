@@ -47,7 +47,7 @@ const SummaryForm = ({ selectedAnswers }: { selectedAnswers:any }) => {
         className="col-span-2 text-[#333333]"
       >
         <h2 className="text-base md:text-xl text-left  font-semibold text-[#333333] mb-6">
-          Get your recommendations and see how much you could save
+        Compare 3 free quotes and see how much you could save.
         </h2>
         <div className="grid grid-cols-2 gap-4">
           <div>

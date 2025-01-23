@@ -5,44 +5,33 @@ const articles = [
   {
     title: "How many solar panels do I need?",
     content:
-      "This depends on the type of panel and how much energy you use. Generally speaking, for every 10 panels, it delivers 3kW which can range from $3,500 - $5,000.",
+      "The number of panels depends on your energy consumption and panel efficiency. A 6.6 kW system, with around 16–20 panels, is ideal for an average family of 4–5 people in a typical home, covering most daytime electricity needs.",
   },
   {
     title: "What's the average cost of solar panels?",
     content:
-      "The cost of solar panels depends on your location and whether you choose a budget or top-end system (and installer). On average, the cost is around $5,000 for a 5kW system installed in NSW, VIC and QLD.",
+      "Prices vary by location and system quality. On average, a 5 kW system costs around $5,000 in most major Australian cities, including Sydney, Melbourne and Brisbane.",
+  },
+  {
+    title: "What Australian government rebates are there for solar?",
+    content: `Australian homeowners can claim up to $2,133 in rebates, reducing the upfront cost of solar systems. The exact amount depends on your location and system size.`,
   },
   {
     title: "Should I also install a battery system?",
     content:
-      "Most households will benefit a great deal from adding battery storage for the simple reason that appliances will still continue to run after the sun sets. The cost of adding a battery storage system averages between $1,000 - $2,000 per kWh of storage capacity meaning for an average family home that uses 30kWh, you need around 7kWh battery system.",
-  },
+      "Adding battery storage allows energy use after sunset. Costs range from $1,000 to $2,000 per kWh of storage capacity. For a household using 30 kWh daily, a 7 kWh battery system would be suitable.",
+  },  
   {
     title: "How quickly can I get solar panels installed?",
     content:
-      "Depending on your location, product and installer availability, it can be as little as a week after roof inspection. Most installs take only 1 full day to complete with a little longer if it's a larger capacity install or adding in a battery system.",
+      "Installation timelines depend on location and installer availability. After a roof inspection, installation can occur within a week and typically takes one day to complete.",
   },
   {
     title: "How long do solar panels last?",
     content:
-      "With regular expert maintenance, it should last on average 25-40 years depending on the type of panels you choose. Most panels will come with a 25 year warranty that promise its panels have at least 80% of their normal capacity, whereas the more top-end panels such as Sunpower will state at least 92% after 25 years.",
+      "With regular maintenance, solar panels last 25–40 years. Most come with a 25-year warranty, ensuring at least 80% capacity; premium panels may guarantee up to 92% after 25 years.",
   },
-  {
-    title: "What Australian government rebates are there for solar?",
-    content: `Each state or territory has its own incentives program for solar:
-    
-  1. **New South Wales (NSW)**: Up to $14,000, plus an additional $9,000 for battery systems for households with an income of up to $180,000 per year.
-  
-  2. **Victoria (VIC)**: Up to $1,888, plus an additional $4,838 for battery systems for households with an income below $180,000 per year and an assessed property value below $3 million.
-  
-  3. **Queensland (QLD)**: Interest-free loans for solar power and energy storage systems.
-  
-  4. **South Australia (SA)**: Up to $6,000 for energy storage, with low-interest loans available.
-  
-  5. **Australian Capital Territory (ACT)**: Up to $2,500 under the Solar for Low Income Program and a rebate of $825/kW for systems up to 30 kW.
-  
-  6. **Tasmania (TAS)**, **Western Australia (WA)**, and **Northern Territory (NT)**: No additional solar rebates or incentives.`,
-  },
+ 
 ];
 
 export default function Solar101() {

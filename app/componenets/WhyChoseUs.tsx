@@ -2,30 +2,30 @@ import React from "react";
 import step1 from "@/public/images/icons/Savings.svg";
 import step2 from "@/public/images/icons/Group.svg";
 import step3 from "@/public/images/icons/Group-19.svg";
-import step4 from "@/public/images/icons/Location.svg";
+import step4 from "@/public/images/icons/locationWhite.svg";
 import Image from "next/image";
 
 
 const steps = [
   {
     icon: step1,
-    title: "We calculate your savings",
-    description: "Find out how much you can save by going solar",
+    title: "Our trusted suppliers calculate your savings",
+    description: "See how much switching to solar could save you.",
   },
   {
     icon: step2,
-    title: "We estimate your new monthly bill",
-    description: "Based on your home and usage profile",
+    title: "Our trusted suppliers estimate your new energy bill",
+    description: "Tailored to your home and energy usage.",
   },
   {
     icon: step3,
-    title: "We tell you how long pay back should take",
-    description: "To show you the true value of solar",
+    title: "Our trusted suppliers calculate your payback period",
+    description: "Showing you the real value of going solar.",
   },
   {
     icon: step4,
-    title: "Find you the best local suppliers",
-    description: "Then you choose the one you like the most",
+    title: "Our trusted suppliers offer the best options",
+    description: "You pick the installer that suits you best.",
   },
 ];
 
@@ -44,14 +44,13 @@ const WhyChoseUs = () => {
           >
             {/* <div className="text-3xl mb-4">{step.icon}</div> */}
             <Image  className="mx-auto mb-6" src={step.icon} height={40} width={40} alt="step icon" />
-            <h3 className="font-bold text-base md:text-xl mb-2">{step.title}</h3>
+            <h3 className="font-bold text-base md:text-lg mb-2">{step.title}</h3>
             <p className="text-sm md:text-base">{step.description}</p>
           </div>
         ))}
       </div>
       <button className=" bg-[#FFBA4A] my-16 block text-white px-10 py-4 rounded-md font-bold ">
-        Find deals now
-      </button>
+      Compare Solar Now      </button>
     </div>
     </div>
 
