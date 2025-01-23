@@ -402,7 +402,7 @@ export default function Quiz() {
           } transition-transform duration-300 ease-in-out`}
         >
           <span className="inline-flex md:inline-block md:bg-white shadow-none justify-between items-center  w-full">
-            <h2 className="text-lg  font-bold ">Your Summary</h2>
+            <h2 className="text-lg text-[#333333]  font-bold ">Your Summary</h2>
             <Image
               className="cursor-pointer md:hidden"
               onClick={() => setIsSidebarOpen(false)}
