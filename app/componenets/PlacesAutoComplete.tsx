@@ -64,7 +64,7 @@ console.log("adress",address)
             {suggestions.map((suggestion) => (
               <li
                 key={suggestion.properties.place_id}
-                className="px-4 py-2 cursor-pointer hover:bg-blue-100"
+                className="px-4 py-2 text-[#333333] cursor-pointer hover:bg-blue-100"
                 onClick={() => handleSuggestionClick(suggestion)}
               >
                 {suggestion.properties.formatted}

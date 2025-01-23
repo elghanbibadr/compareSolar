@@ -9,8 +9,7 @@ const EnergySavingsBenefits = () => {
     <section className="py-10 bg-white pt-28 px-6 text-center">
       {/* Section Heading */}
       <h2 className="text-2xl text-[#333333] md:text-3xl font-bold mb-8">
-        We love showing people how to save money on their energy bills
-      </h2>
+      We’re passionate about helping you cut costs on your energy bills.      </h2>
 
       {/* Benefits Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -31,8 +30,7 @@ const EnergySavingsBenefits = () => {
             <Image src={icon2} alt="icon 2" />
           </div>
           <p className="text-base md:text-lg text-[#015EB3] font-semibold md:w-[80%] md:mx-auto">
-            COVID-19 has meant we’re all using more energy at home during the
-            day
+          With more people working from home, daytime energy usage at home has increased.
           </p>
         </div>
 
@@ -42,8 +40,7 @@ const EnergySavingsBenefits = () => {
             <Image src={icon3} alt="icon 3" />
           </div>
           <p className="text-base md:text-lg text-[#015EB3] font-semibold md:w-[80%] md:mx-auto">
-            So solar now offers greater savings and faster pay-back than ever
-            before
+          Solar now delivers bigger savings and quicker pay-back than ever.
           </p>
         </div>
       </div>

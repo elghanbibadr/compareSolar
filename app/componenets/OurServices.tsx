@@ -22,10 +22,13 @@ const OurServices = () => {
               width={80}
             />
             <h3 className="mt-3 text-[1.05rem] mb-6 leading-relaxed md:w-[80%] mx-auto tracking-tight font-medium md:text-xl md:leading-relaxed text-center md:tracking-tight text-[#015EB3]">
-              1. Tell Us What You’re Looking For
+              1. Tell Us What You Need
+
             </h3>
             <h6 className="leading-[160%] md:w-[80%] mx-auto text-sm  md:text-[1.08rem] text-center tracking-tight text-[#333333] mt-3">
-              We’ll ask you some questions to better understand your needs.
+            Answer a few quick questions so we can understand your requirements.
+
+
             </h6>
           </div>
           <div>
@@ -37,10 +40,12 @@ const OurServices = () => {
               width={80}
             />
             <h3 className="mt-3 text-[1.05rem] mb-6 leading-relaxed md:w-[80%] mx-auto tracking-tight font-medium md:text-xl md:leading-relaxed text-center md:tracking-tight text-[#015EB3]">
-              2. Get 3 Quotes From Local Installers
+              2. Receive 3 Local Quotes
+
             </h3>
             <h6 className="leading-[160%] md:w-[80%] mx-auto text-sm  md:text-[1.08rem] text-center tracking-tight text-[#333333] mt-3">
-            Our free service instantly alerts local suppliers for quotes to get your job done.          </h6>
+            Our free service connects you with local suppliers to provide competitive quotes.
+             </h6>
           </div>
           <div>
             <Image
@@ -51,10 +56,13 @@ const OurServices = () => {
               width={80}
             />
             <h3 className="mt-3 text-[1.05rem] mb-6 leading-relaxed md:w-[80%] mx-auto tracking-tight font-medium md:text-xl md:leading-relaxed text-center md:tracking-tight text-[#015EB3]">
-              3. You Choose The Best Deal{" "}
+              3. Pick Your Perfect Deal
+
             </h3>
             <h6 className="leading-[160%] md:w-[80%] mx-auto text-sm  md:text-[1.08rem] text-center tracking-tight text-[#333333] mt-3">
-            When you’ve found the policy that’s right for you, apply online or give us a call and we’ll set up everything for you.          </h6>
+            Once you find the best match, apply online or let us handle the setup for you.
+
+</h6>
           </div>
         </div>
       </div>

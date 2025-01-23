@@ -8,13 +8,13 @@ const Footer = () => {
       <div className="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row md:justify-around items-center text-center md:text-left">
         {/* Heading and Description */}
         <div className="mb-6">
-          <h2 className="text-xl md:text-3xl font-bold mb-2">Prefer to talk to someone?</h2>
+          <h2 className="text-xl md:text-3xl font-bold mb-2">        Your trusted solar experts.
+          </h2>
           <p className="text-[#fffc]">
-            Got a specific question about solar energy? 
-            Why not give us a call.
+          We make going solar easy with our 5-star service. See how much you can save!
+
           </p>
         </div>
-
         {/* Phone Section */}
         {/* <div className="flex flex-col items-center justify-center mb-6">
           <div className="bg-gray-700 p-4 rounded-lg flex flex-col items-center">
@@ -47,7 +47,7 @@ const Footer = () => {
         </span>
        
          
-          <p className="text-gray-400 text-sm mt-2">© 2020 Compare Ltd.</p>
+          <p className="text-gray-400 text-sm mt-2">© 2025 Compare Ltd.</p>
         </div>
       </div>
     </footer>

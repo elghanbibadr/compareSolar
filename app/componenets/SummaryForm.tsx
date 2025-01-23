@@ -44,7 +44,7 @@ const SummaryForm = ({ selectedAnswers }: { selectedAnswers:any }) => {
     <div className="grid md:grid-cols-3 mt-12 gap-x-3 bg-white p-6 rounded-lg shadow-md mx-2   max-w-xl items-center ">
       <form
         onSubmit={handleSubmit}
-        className="col-span-2"
+        className="col-span-2 text-[#333333]"
       >
         <h2 className="text-base md:text-xl text-left  font-semibold text-[#333333] mb-6">
           Get your recommendations and see how much you could save
@@ -120,7 +120,7 @@ const SummaryForm = ({ selectedAnswers }: { selectedAnswers:any }) => {
                     >
                       <Image src={answer.icon} alt="icon" height={16} width={16} />
                       <p
-                        className={`  text-xs text-[#33333]  `}
+                        className={`  text-xs text-[#333333]  `}
                       >
                         {answer.text}
                       </p>

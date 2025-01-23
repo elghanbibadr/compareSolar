@@ -20,10 +20,10 @@ import Image from 'next/image';
 const BrandsWeWorkWith = () => {
   return (
     <div className="text-center bg-white pt-16">
-      <h2 className="font-bold text-xl md:text-[32px] leading-[120%] text-center tracking-[-0.01em] text-[#333333]">
+      <h2 className="font-bold text-xl md:text-[32px] text-[#333333] leading-[120%] text-center tracking-[-0.01em] ">
         Brands we work with
       </h2>
-      <div className="grid grid-cols-2 md:w-[80%] mx-auto sm:grid-cols-3  md:grid-cols-4 xl:grid-cols-7 lg:grid-cols-6 gap-4 mt-6 justify-center items-center p-4">
+      <div className="grid grid-cols-2 md:w-[80%] mx-auto py-10 sm:grid-cols-3  md:grid-cols-4 xl:grid-cols-7 lg:grid-cols-6 gap-4 mt-6 justify-center items-center p-4">
         <Image className="mx-auto" height={90} width={90} src={brand2} alt="Brand logo 2" />
         <Image className="mx-auto" height={90} width={90} src={brand1} alt="Brand logo 1" />
         <Image className="mx-auto" height={90} width={90} src={brand3} alt="Brand logo 3" />

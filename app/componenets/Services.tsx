@@ -6,23 +6,25 @@ const Services = () => {
     <section className="gradient3 b pt-20 grid grid-cols-1 justify-center md:gap-x-6 items-center md:h-fit md:grid-cols-2  text-white py-10 md:py-2 px-6 md:px-16">
     <div className='md:order-2'>
         <div className="text-center md:text-left mb-8">
-          <h2 className="text-2xl md:text-4xl font-bold">A Service Like No Other</h2>
+          <h2 className="text-2xl md:text-4xl font-bold">A Service That Stands Out</h2>
           <p className="text-lg md:text-xl font-semibold mt-2 md:mt-6">
-            The way we do things around here:
-          </p>
+          Here’s how we make it easy for you:
+
+</p>
         </div>
         <ul className="list-disc p-0 m-0 space-y-2 text-center md:text-left text-sm md:text-base max-w-2xl mx-auto">
           <li>
-            We’ve got registered solar installers Australia-wide
+          Access registered solar installers across Australia
           </li>
           <li>
-            Our service is free-to-use and 100% obligation-free
+          Our service is completely free and obligation-free
           </li>
           <li>
-            Receive 3 free quotes from our trusted network of installers
-          </li>
+          Get 3 free quotes from our trusted installer network          </li>
           <li>
-            The people you speak to want to help you save on your energy bills.
+          Our team is dedicated to helping you save on energy costs.
+
+
           </li>
         </ul>
     </div>
