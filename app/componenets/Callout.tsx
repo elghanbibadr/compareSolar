@@ -11,7 +11,7 @@ const Callout = () => {
             <button className=" bg-[#FFBA4A] md:text-xl   text-white px-10 py-4 rounded-md font-bold ">
               Find deals now
             </button>
-        </div>
+      </div>
       </div>
     </div>
   );

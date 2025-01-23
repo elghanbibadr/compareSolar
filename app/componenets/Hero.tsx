@@ -1,5 +1,4 @@
 import Image from "next/image";
-import solarandbattery from "@/public/images/icons/solarandbattery.svg";
 import logo from "@/public/images/SolarLocal Icon+logo.png";
 import Link from "next/link";
 
