@@ -7,7 +7,7 @@ const libraries = ["places"];
 
 const PlacesAutocomplete = () => {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDq2eejXla8uPif5e-3TgSAMzJasbdKPA4",
+    googleMapsApiKey: "AIzaSyA-PSgmm37bBIYMPc2rbnY5odO8nqQqBmY",
     libraries,
   });
 

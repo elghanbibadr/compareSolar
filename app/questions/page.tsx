@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-import logo from "@/public/images/SolarLocal Logo Files/SolarLocal Logo_coloured.png";
-import Quide2 from "@/public/images/guide-2.png";
+import logo from "@/public/images/SolarLocal Icon+logo.png";
+import Quide2 from "@/public/images/Guide_03.png";
 
 import Quiz from '../componenets/Quiz';
 import Link from 'next/link';

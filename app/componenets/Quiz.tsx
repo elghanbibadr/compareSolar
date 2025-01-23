@@ -315,7 +315,7 @@ export default function Quiz() {
           </div>
         )}
       </div>
-      {/* <PlacesAutocomplete /> */}
+      <PlacesAutocomplete />
       {isNotAvailable && questions[currentQuestion].id ===2 && (
         <div className="not-available md:relative md:right-20 mt-32">
           {/* <h2 className="text-center text-red-600 mb-3 font-bold text-2xl md:text-3xl">

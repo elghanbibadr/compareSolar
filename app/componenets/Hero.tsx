@@ -1,7 +1,7 @@
 import Image from "next/image";
 import solarPowerSystemLogo from "@/public/images/icons/solarPowerSystem.svg";
 import solarandbattery from "@/public/images/icons/solarandbattery.svg";
-import logo from "@/public/images/SolarLocal Logo Files/SolarLocal Logo_coloured.svg";
+import logo from "@/public/images/SolarLocal Icon+logo.png";
 import Link from "next/link";
 
 export default function Hero() {
