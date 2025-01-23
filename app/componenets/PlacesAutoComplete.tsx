@@ -57,7 +57,7 @@ console.log("adress",address)
           placeholder="Enter your full address"
           value={address}
           onChange={handleInputChange}
-          className="p-3 w-3/4 border border-gray-300 text-[#3333] rounded-lg shadow-sm focus:outline-none focus:border-blue-500 mb-4"
+          className="p-3 w-3/4 border border-gray-300 text-[#333333] rounded-lg shadow-sm focus:outline-none focus:border-blue-500 mb-4"
         />
         {suggestions.length > 0 && (
           <ul className="  bg-white z-20 border border-gray-300 rounded-md shadow-md max-h-60 overflow-auto">

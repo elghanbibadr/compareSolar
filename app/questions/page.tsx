@@ -15,7 +15,7 @@ const QuestionsPage = () => {
           
             <Link href='/'>
               <Image
-                className=" ml-4 "
+                className=""
                 src={logo}
                 alt="solar logo"
                 width={200}
