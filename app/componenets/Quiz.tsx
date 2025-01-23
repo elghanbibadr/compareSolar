@@ -18,8 +18,9 @@ import question6 from "@/public/images/icons/question6.svg";
 import question7 from "@/public/images/icons/question7.svg";
 import stars from "@/public/images/icons/stars.svg";
 import PlacesAutocomplete from "./PlacesAutoComplete";
+import SummaryForm from "./SummaryForm";
 
-const questions = [
+export const questions = [
   {
     id: 1,
     text: "What are you interested in?",
@@ -99,9 +100,12 @@ const questions = [
 
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [displaySummary,setDisplaySummary]=useState(false)
   const [selectedAnswers, setSelectedAnswers] = useState<
     Record<number, string>
   >({});
+
+  console.log('answers',selectedAnswers)
 
   const [address, setAddress] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar state
@@ -109,23 +113,38 @@ export default function Quiz() {
   const [isNotAvailable, setIsNotAvailable] = useState(false);
 
   const handleOptionSelect = (option: string) => {
+    // Get the current question
+    const question = questions[currentQuestion];
+  
     // Check if the user selected "Rent" on the second question
     if (currentQuestion === 1 && option === "Rent") {
       setIsNotAvailable(true); // Show the "Sorry, not available" message
       return;
     }
-
+  
+    // Find the corresponding icon for the selected option
+    const optionKey = Object.keys(question).find(
+      (key) => question[key as keyof typeof question] === option
+    );
+    const icon = optionKey?.includes("option") ? question.icon : null;
+  
+    // Update the selected answers
     setSelectedAnswers((prev) => ({
       ...prev,
-      [currentQuestion]: option,
+      [currentQuestion]: {
+        text: option,
+        icon: icon,
+      },
     }));
-
+  
+    // Proceed to the next question or display the summary
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       router.push("/completed");
     }
   };
+  
 
   const handleAddressSubmit = () => {
     if (address.trim()) {
@@ -133,7 +152,7 @@ export default function Quiz() {
         ...prev,
         [currentQuestion]: address,
       }));
-      router.push("/completed");
+      setDisplaySummary(true)
     } else {
       alert("Please enter your address.");
     }
@@ -172,7 +191,7 @@ export default function Quiz() {
   return (
     <div className="relative overflow-y-hidden flex flex-col items-center h-[90vh] gradient5 bg-gradient-to-b from-blue-600 to-blue-400">
       {/* Header */}
-      <div className="w-full flex items-center justify-between px-4 py-2">
+     {!displaySummary &&  <div className="w-full flex items-center justify-between px-4 py-2">
         {currentQuestion > 0 && (
           <>
             <span
@@ -187,10 +206,10 @@ export default function Quiz() {
             </span>
           </>
         )}
-      </div>
+      </div>}
 
       {/* Question Text */}
-      <div
+    { !displaySummary &&  <div
         className={`md:relative md:right-20 md:mt-20 ${
           isNotAvailable ? "hidden" : ""
         }`}
@@ -198,6 +217,7 @@ export default function Quiz() {
         <h2 className="text-lg md:text-2xl font-bold text-white text-center mt-8 mx-4 mb-6">
           {questions[currentQuestion].text}
         </h2>
+     
         {/* Render Input for Address or Options */}
         {questions[currentQuestion].id === 6 && (
           <p className="text-white w-[80%] mx-auto mb-4 text-center">
@@ -210,7 +230,7 @@ export default function Quiz() {
 
             <button
               onClick={handleAddressSubmit}
-              className="p-3 w-3/4 mx-auto block bg-green-500 text-white rounded-lg shadow hover:bg-green-600"
+              className="p-3 w-3/4 mx-auto block bg-[#FFBA4A] text-white rounded-lg shadow "
             >
               Continue
             </button>
@@ -307,7 +327,7 @@ export default function Quiz() {
               })}
           </div>
         )}
-      </div>
+      </div>}
       {isNotAvailable && questions[currentQuestion].id === 2 && (
         <div className="not-available md:relative md:right-20 mt-32">
           {/* <h2 className="text-center text-red-600 mb-3 font-bold text-2xl md:text-3xl">
@@ -328,6 +348,7 @@ export default function Quiz() {
           </div>
         </div>
       )}
+{displaySummary && <SummaryForm selectedAnswers={selectedAnswers} />}
 
       {/* Bottom Progress and Summary */}
       <div className="w-full absolute md:hidden bottom-0 flex items-center justify-between px-6 py-2 bg-white shadow-lg">
@@ -421,7 +442,7 @@ export default function Quiz() {
             </h3>
             <div className="relative my-2 w-full h-2 rounded-full bg-gray-200">
               <div
-                className="absolute  h-2 rounded-full bg-green-600"
+                className="absolute  h-2 rounded-full bg-[#FFBA4A]"
                 style={{ width: `${progress}%` }}
               ></div>
             </div>

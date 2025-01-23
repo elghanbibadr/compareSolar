@@ -49,7 +49,7 @@ const WhyChoseUs = () => {
           </div>
         ))}
       </div>
-      <button className=" gradientButton mt-16 block text-white px-10 py-4 rounded-md font-bold ">
+      <button className=" bg-[#FFBA4A] mt-16 block text-white px-10 py-4 rounded-md font-bold ">
         Find deals now
       </button>
     </div>

@@ -69,7 +69,7 @@ export default function Solar101() {
       </div>
       <button
         onClick={() => setShowAll(!showAll)}
-        className="mt-6 text-white px-6 py-2 rounded-md font-bold mx-auto gradientButton w-fit block  "
+        className="mt-6 border-[#FFBA4A] border-2 px-6 py-2 rounded-md font-bold mx-auto bg-transparent text-[#333333] w-fit block  "
       >
         {showAll ? "Less" : "More"}
       </button>
