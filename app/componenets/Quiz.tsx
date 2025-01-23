@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -129,7 +130,7 @@ export default function Quiz() {
     const icon = optionKey?.includes("option") ? question.icon : null;
   
     // Update the selected answers
-    setSelectedAnswers((prev) => ({
+    setSelectedAnswers((prev:any) => ({
       ...prev,
       [currentQuestion]: {
         text: option,

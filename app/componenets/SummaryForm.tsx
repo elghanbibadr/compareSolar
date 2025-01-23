@@ -3,7 +3,7 @@ import { useState } from "react";
 import locationIcon from "@/public/images/icons/Location.svg"
 import Image from "next/image";
 
-const SummaryForm = ({ selectedAnswers }: { selectedAnswers: Record<number, { text: string; icon: string }> }) => {
+const SummaryForm = ({ selectedAnswers }: { selectedAnswers:any }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
