@@ -13,7 +13,7 @@ const articles = [
       "Prices vary by location and system quality. On average, a 5 kW system costs around $5,000 in most major Australian cities, including Sydney, Melbourne and Brisbane.",
   },
   {
-    title: "What Australian government rebates are there for solar?",
+    title: "What solar rebates are available in Australia? ",
     content: `Australian homeowners can claim up to $2,133 in rebates, reducing the upfront cost of solar systems. The exact amount depends on your location and system size.`,
   },
   {
@@ -40,17 +40,17 @@ export default function Solar101() {
   return (
     <div className="p-6  pt-20 bg-[#F0F0F0] py-12">
       <h2 className="text-xl md:text-3xl font-bold text-center text-[#333333] mb-10">
-        Solar 101
+      Solar Essentials
       </h2>
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8  ">
         {articles
           .slice(0, showAll ? articles.length : 3)
           .map((article, index) => (
             <div key={index} className="">
-              <h3 className="text-base md:text-xl text-[#015EB3] font-semibold mb-2">
+              <h3 className="text-base text-nowrap md:text-lg  text-[#FFB848] font-semibold mb-2">
                 {article.title}
               </h3>
-              <p className="text-[#484848cc] text-sm md:text-base">
+              <p className="text-[#333333] text-sm md:text-base">
                 {article.content}
               </p>
             </div>

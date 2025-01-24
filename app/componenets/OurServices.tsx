@@ -25,7 +25,7 @@ const OurServices = () => {
               1. Tell Us What You Need
 
             </h3>
-            <h6 className="leading-[160%] md:w-[80%] mx-auto text-sm  md:text-[1.08rem] text-center tracking-tight text-[#333333] mt-3">
+            <h6 className="leading-[160%]  md:w-[80%] mx-auto text-sm  md:text-[1.01rem] text-center tracking-tight text-[#333333] mt-3">
             Answer a few quick questions so we can understand your requirements.
 
 
@@ -43,7 +43,7 @@ const OurServices = () => {
               2. Receive 3 Local Quotes
 
             </h3>
-            <h6 className="leading-[160%] md:w-[80%] mx-auto text-sm  md:text-[1.08rem] text-center tracking-tight text-[#333333] mt-3">
+            <h6 className="leading-[160%]  md:w-[80%] mx-auto text-sm  md:text-[1.01rem] text-center tracking-tight text-[#333333] mt-3">
             Our free service connects you with local suppliers to provide competitive quotes.
              </h6>
           </div>
@@ -59,7 +59,7 @@ const OurServices = () => {
               3. Pick Your Perfect Deal
 
             </h3>
-            <h6 className="leading-[160%] md:w-[80%] mx-auto text-sm  md:text-[1.08rem] text-center tracking-tight text-[#333333] mt-3">
+            <h6 className="leading-[160%]  md:w-[80%] mx-auto text-sm  md:text-[1.01rem] text-center tracking-tight text-[#333333] mt-3">
             Once you find the best match, apply online or let us handle the setup for you.
 
 </h6>
