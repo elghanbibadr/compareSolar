@@ -38,8 +38,8 @@ export default function Solar101() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <div className="p-6  pt-20 bg-[#F0F0F0] py-12">
-      <h2 className="text-xl md:text-3xl font-bold text-center text-[#333333] mb-10">
+    <div className="p-6  pt-20 bg-white py-12">
+      <h2 className=" mt-2 text-3xl font-extrabold tracking-tight text-darkshadegray text-center mb-10 sm:text-4xl">
       Solar Essentials
       </h2>
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8  ">
@@ -47,10 +47,10 @@ export default function Solar101() {
           .slice(0, showAll ? articles.length : 3)
           .map((article, index) => (
             <div key={index} className="">
-              <h3 className="text-base text-nowrap md:text-lg  text-[#FFB848] font-semibold mb-2">
+              <h3 className="text-base text-nowrap text-center md:text-lg  text-backgroundPaleYellow font-bold mb-2">
                 {article.title}
               </h3>
-              <p className="text-[#333333] text-sm md:text-base">
+              <p className="text-textColor md:w-[80%] mx-auto text-center text-sm md:text-base">
                 {article.content}
               </p>
             </div>

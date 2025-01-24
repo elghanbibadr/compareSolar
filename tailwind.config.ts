@@ -9,8 +9,11 @@ export default {
   theme: {
     extend: {
       colors: {
+        textColor:'#545454',
         background: "var(--background)",
         foreground: "var(--foreground)",
+        backgroundPaleYellow:"#f5c441",
+        darkshadegray:"#121212",
         backgroundImage: {
           'hero-pattern': "url('/public/hero.jpg')",
         },

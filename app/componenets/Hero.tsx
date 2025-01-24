@@ -22,7 +22,7 @@ export default function Hero() {
           </span>
           <div>
             <Link href="/questions">
-              <button className="bg-[#FFBA4A]  p-2 px-3 text-xs font-medium tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:p-4 rounded-[4px]">
+              <button className="focus-visible:outline-2 focus-visible:outline-offset-1 text-white bg-backgroundPaleYellow md:text-[1.1rem] md:font-semibold md:p-4 rounded-[4px]">
                 Compare Solar Now
               </button>
             </Link>

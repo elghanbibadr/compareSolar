@@ -15,8 +15,9 @@ export default function Home() {
       <BrandsWeWorkWith />
       <OurServices />
       <WhyChoseUs />
-      <Services />
       <EnergySavingsBenefits />
+
+      <Services />
       <Solar101 />
       <Callout />
       <Footer />

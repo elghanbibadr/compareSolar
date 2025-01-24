@@ -9,47 +9,47 @@ import Image from "next/image";
 const steps = [
   {
     icon: step1,
-    title: "Our trusted suppliers calculate your savings",
+    title: "we calculate your savings",
     description: "See how much switching to solar could save you.",
   },
   {
     icon: step2,
-    title: "Our trusted suppliers estimate your new energy bill",
+    title: "we estimate your new energy bill",
     description: "Tailored to your home and energy usage.",
   },
   {
     icon: step3,
-    title: "Our trusted suppliers calculate your payback period",
+    title: "we calculate your payback period",
     description: "Showing you the real value of going solar.",
   },
   {
     icon: step4,
-    title: "Our trusted suppliers offer the best options",
+    title: "we offer the best options",
     description: "You pick the installer that suits you best.",
   },
 ];
 
 const WhyChoseUs = () => {
   return (
-    <div className="pt-24 bg-white p-4 max-w-[1300px] mx-auto">
-      <h2 className="font-bold mb-10 text-[1.3rem] md:text-[32px] leading-[120%] text-center tracking-[-0.01em] text-[#333333]">
+    <div className="pt-24 bg-white mb-10 p-4 max-w-[1300px] mx-auto">
+      <h2 className=" mt-2 text-3xl font-extrabold tracking-tight text-darkshadegray text-center mb-10 sm:text-4xl">
         Why people use our service
       </h2>
       <div className="flex flex-col items-center">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 my-10 gap-4">
         {steps.map((step, index) => (
           <div
             key={index}
-            className="bg-[#015EB3] text-white p-6 rounded-md text-center shadow-lg"
+            className="bg-darkshadegray text-white p-5 rounded-md text-center "
           >
             {/* <div className="text-3xl mb-4">{step.icon}</div> */}
-            <Image  className="mx-auto mb-6" src={step.icon} height={40} width={40} alt="step icon" />
-            <h3 className="font-bold text-base md:text-lg mb-2">{step.title}</h3>
+            <Image  className="mx-auto mb-6" src={step.icon} height={50} width={50} alt="step icon" />
+            <h3 className="font-semibold text-nowrap text-base md:text-lg mb-2">{step.title}</h3>
             <p className="text-sm md:text-base">{step.description}</p>
           </div>
         ))}
       </div>
-      <button className=" bg-[#FFBA4A] my-16 block text-white px-10 py-4 rounded-md font-bold ">
+      <button className=" bg-backgroundPaleYellow mt-8  block text-white px-10 py-4 rounded-md font-bold ">
       Compare Solar Now      </button>
     </div>
     </div>
