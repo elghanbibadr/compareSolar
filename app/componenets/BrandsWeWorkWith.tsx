@@ -1,19 +1,19 @@
 
 import React from 'react';
-import brand1 from "@/public/images/logo-lg.png";
-import brand2 from "@/public/images/logo-sunpower.png";
-import brand3 from "@/public/images/logo-qcelis.png";
-import brand4 from "@/public/images/logo-canadian.png";
-import brand5 from "@/public/images/logo-Jinko.png";
-import brand6 from "@/public/images/logo-trinasolar.png";
-import brand7 from "@/public/images/logo-rec.png";
-import brand8 from "@/public/images/logo-fronius.png";
-import brand9 from "@/public/images/logo-solaredge.png";
-import brand10 from "@/public/images/logo-sma.png";
-import brand11 from "@/public/images/logo-delta.png";
-import brand12 from "@/public/images/logo-abb.png";
-import brand13 from "@/public/images/logo-enphase.png";
-import brand14 from "@/public/images/logo-schneider.png";
+import brand1 from "@/public/images/logo-lg-modified.png";
+import brand2 from "@/public/images/logo-sunpower-modified.png";
+import brand3 from "@/public/images/logo-qcelis-modified.png";
+import brand4 from "@/public/images/logo-canadian-modified.png";
+import brand5 from "@/public/images/logo-Jinko-modified.png";
+import brand6 from "@/public/images/logo-trinasolar-modified.png";
+import brand7 from "@/public/images/logo-rec-modified.png";
+import brand8 from "@/public/images/logo-fronius-modified.png";
+import brand9 from "@/public/images/logo-solaredge-modified.png";
+import brand10 from "@/public/images/logo-sma-modified.png";
+import brand11 from "@/public/images/logo-delta-modified.png";
+import brand12 from "@/public/images/logo-abb-modified.png";
+import brand13 from "@/public/images/logo-enphase-modified.png";
+import brand14 from "@/public/images/logo-schneider-modified.png";
 
 import Image from 'next/image';
 
