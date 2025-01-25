@@ -10,6 +10,7 @@ export default {
     extend: {
       colors: {
         textColor:'#545454',
+        paleGray:"#EFEFEF",
         background: "var(--background)",
         foreground: "var(--foreground)",
         backgroundPaleYellow:"#f5c441",

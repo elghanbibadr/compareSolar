@@ -49,7 +49,7 @@ const WhyChoseUs = () => {
           </div>
         ))}
       </div>
-      <button className=" bg-backgroundPaleYellow mt-8  block text-white px-10 py-4 rounded-md font-bold ">
+      <button className=" bg-gradient-to-b from-yellow-400 to-orange-400 mt-8  block text-white px-10 py-4 rounded-md font-bold ">
       Compare Solar Now      </button>
     </div>
     </div>

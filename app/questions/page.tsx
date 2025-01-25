@@ -29,7 +29,7 @@ const QuestionsPage = () => {
               <h4 className='text-[#015EB3] self-center text-[14px] text-wrap font-bold'>You have qualified for our FREE
               10 Solar Tips to save money guide</h4>
             </span>
-            <button className=" bg-[#FFBA4A] md:hidden p-2 px-3 text-xs font-medium tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:p-4 rounded-[4px]">
+            <button className=" bg-gradient-to-b from-yellow-400 to-orange-400 md:hidden p-2 px-3 text-xs font-medium tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:p-4 rounded-[4px]">
               Compare Solar Now
             </button>
           </div>
