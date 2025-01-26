@@ -44,7 +44,7 @@ const WhyChoseUs = () => {
           >
             {/* <div className="text-3xl mb-4">{step.icon}</div> */}
             <Image  className="mx-auto mb-6" src={step.icon} height={50} width={50} alt="step icon" />
-            <h3 className="font-semibold text-nowrap text-base md:text-lg mb-2">{step.title}</h3>
+            <h3 className="font-semibold  text-base md:text-lg mb-2">{step.title}</h3>
             <p className="text-sm md:text-base">{step.description}</p>
           </div>
         ))}
