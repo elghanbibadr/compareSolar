@@ -16,10 +16,10 @@ const Navbar = () => {
       />
     </span>
     <ul className='text-darkshadegray hidden md:flex cursor-pointer  items-center gap-x-10 text-base font-medium'>
-        <li className="hover:text-[#FBB724]">Services</li>
-        <li className="hover:text-[#FBB724]">Why us</li>
-        <li className="hover:text-[#FBB724]">Energy Savings</li>
-        <li className="hover:text-[#FBB724]">Solar Essentials</li>
+        <li className="hover:text-[#FBB724]"><Link href="#services">Services</Link></li>
+        <li className="hover:text-[#FBB724]"><Link href="#whyUs">Why us</Link></li>
+        <li className="hover:text-[#FBB724]"><Link href="#energySavings">Energy Savings</Link></li>
+        <li className="hover:text-[#FBB724]"><Link href="#solarEssentials">Solar Essentials</Link></li>
 
     </ul>
     <div>

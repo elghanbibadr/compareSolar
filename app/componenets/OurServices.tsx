@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const OurServices = () => {
   return (
-    <div className="bg-gradient-to-b from-yellow-400 to-orange-400 p-4 text-white pt-16 py-12 rounded-2xl max-w-[1300px] my-8 mx-auto bg-backgroundPaleYellow px-6 py-10rounded-2xl max-w-[1300px] my-8 mx-auto bg-backgroundPaleYellow px-6 py-10 md:py-20">
+    <div id="services" className="bg-gradient-to-b from-yellow-400 to-orange-400 p-4 text-white pt-16 py-12 rounded-2xl max-w-[1300px] my-8 mx-auto bg-backgroundPaleYellow px-6 py-10rounded-2xl max-w-[1300px] my-8 mx-auto bg-backgroundPaleYellow px-6 py-10 md:py-20">
       <div className="max-w-[1300px] mx-auto">
         <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-darkshadegray text-center mb-10 sm:text-4xl">
           How our service works
