@@ -11,6 +11,10 @@ html {
   --foreground: #171717;
 }
 
+
+
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -53,6 +57,10 @@ body {
 .content {
   position: relative;
   z-index: 10; /* Ensures the content is above the overlay */
+}
+
+.gradient-yellow{
+  @apply bg-gradient-to-b from-yellow-400 to-orange-400;
 }
 
 @media screen and (max-width:780px) {

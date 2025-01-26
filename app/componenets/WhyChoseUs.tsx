@@ -9,22 +9,22 @@ import Image from "next/image";
 const steps = [
   {
     icon: step1,
-    title: "we calculate your savings",
+    title: "Our trusted suppliers calculate your savings",
     description: "See how much switching to solar could save you.",
   },
   {
     icon: step2,
-    title: "we estimate your new energy bill",
+    title: "Our trusted suppliers estimate your new energy bill",
     description: "Tailored to your home and energy usage.",
   },
   {
     icon: step3,
-    title: "we calculate your payback period",
+    title: "Our trusted suppliers calculate your payback period",
     description: "Showing you the real value of going solar.",
   },
   {
     icon: step4,
-    title: "we offer the best options",
+    title: "Our trusted suppliers offer the best options",
     description: "You pick the installer that suits you best.",
   },
 ];

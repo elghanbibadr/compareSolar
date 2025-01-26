@@ -21,7 +21,7 @@ export default function Hero() {
           {/* "Start Here" Button */}
           <div className="bg-darkshadegray  relative w-[90%] rounded-lg mx-auto md:mx-1 md:w-[400px] p-6  mt-16 md:p-8 md:rounded-md">
           <Link href="/questions">
-          <div className="absolute -top-6 left-[100px] md:left-[134px] transform -translate-x-1/2 flex items-center justify-center animate-bounce-custom">
+          <div className="absolute -top-6 left-0 right-0 mx-auto   flex items-center justify-center animate-bounce-custom">
               <div className="relative bg-gradient-to-b from-yellow-400 to-orange-400  text-white text-sm md:text-lg font-bold px-6 py-3 rounded-md shadow-md">
                 Start Here
                 <div className="absolute w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-[#FBB724] -bottom-2 left-1/2 transform -translate-x-1/2"></div>
@@ -34,7 +34,7 @@ export default function Hero() {
             <h5 className="text-[1.13rem] md:text-[1.5rem] font-bold mb-3 text-center">
               What are you interested in?
             </h5>
-            <div className="flex gap-2   mx-auto">
+            <div className="flex gap-2 justify-center   mx-auto">
               {/* Option 1 */}
               <Link href="/questions">
                 <div className="bg-paleGray text-darkshadegray p-2 rounded-md">

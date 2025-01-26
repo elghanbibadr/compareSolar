@@ -44,9 +44,9 @@ const SummaryForm = ({ selectedAnswers }: { selectedAnswers:any }) => {
     <div className="grid md:grid-cols-3 mt-12 gap-x-3 bg-white p-6 rounded-lg shadow-md mx-2   max-w-xl items-center ">
       <form
         onSubmit={handleSubmit}
-        className="col-span-2 text-[#333333]"
+        className="col-span-2 text-darkshadegray"
       >
-        <h2 className="text-base md:text-xl text-left  font-semibold text-[#333333] mb-6">
+        <h2 className="text-base md:text-xl text-left  font-semibold text-darkshadegray mb-6">
         Compare 3 free quotes and see how much you could save.
         </h2>
         <div className="grid grid-cols-2 gap-4">
@@ -120,7 +120,7 @@ const SummaryForm = ({ selectedAnswers }: { selectedAnswers:any }) => {
                     >
                       <Image src={answer.icon} alt="icon" height={16} width={16} />
                       <p
-                        className={`  text-xs text-[#333333]  `}
+                        className={`  text-xs text-darkshadegray  `}
                       >
                         {answer.text}
                       </p>

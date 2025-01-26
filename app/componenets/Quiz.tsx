@@ -10,7 +10,6 @@ import question2 from "@/public/images/icons/question2.svg";
 import question3 from "@/public/images/icons/question3.svg";
 import noIcon from "@/public/images/icons/no.svg";
 import yesIcon from "@/public/images/icons/yes.svg";
-
 import solarPowerSystemLogo from "@/public/images/icons/solarPowerSystem.svg";
 import solarandbattery from "@/public/images/icons/solarandbattery.svg";
 import question4 from "@/public/images/icons/question4.svg";
@@ -101,12 +100,12 @@ export const questions = [
 
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [displaySummary,setDisplaySummary]=useState(false)
+  const [displaySummary, setDisplaySummary] = useState(false);
   const [selectedAnswers, setSelectedAnswers] = useState<
     Record<number, string>
   >({});
 
-  console.log('answers',selectedAnswers)
+  console.log("answers", selectedAnswers);
 
   const [address, setAddress] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar state
@@ -116,28 +115,28 @@ export default function Quiz() {
   const handleOptionSelect = (option: string) => {
     // Get the current question
     const question = questions[currentQuestion];
-  
+
     // Check if the user selected "Rent" on the second question
     if (currentQuestion === 1 && option === "Rent") {
       setIsNotAvailable(true); // Show the "Sorry, not available" message
       return;
     }
-  
+
     // Find the corresponding icon for the selected option
     const optionKey = Object.keys(question).find(
       (key) => question[key as keyof typeof question] === option
     );
     const icon = optionKey?.includes("option") ? question.icon : null;
-  
+
     // Update the selected answers
-    setSelectedAnswers((prev:any) => ({
+    setSelectedAnswers((prev: any) => ({
       ...prev,
       [currentQuestion]: {
         text: option,
         icon: icon,
       },
     }));
-  
+
     // Proceed to the next question or display the summary
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -145,7 +144,6 @@ export default function Quiz() {
       router.push("/completed");
     }
   };
-  
 
   const handleAddressSubmit = () => {
     if (address.trim()) {
@@ -153,7 +151,7 @@ export default function Quiz() {
         ...prev,
         [currentQuestion]: address,
       }));
-      setDisplaySummary(true)
+      setDisplaySummary(true);
     } else {
       alert("Please enter your address.");
     }
@@ -190,145 +188,151 @@ export default function Quiz() {
   console.log(questions[currentQuestion].review);
 
   return (
-    <div className="relative overflow-y-hidden flex flex-col items-center h-[90vh] gradient5 bg-gradient-to-b from-blue-600 to-blue-400">
+    <div className="relative overflow-y-hidden flex flex-col items-center h-[90vh] gradient-yellow">
       {/* Header */}
-     {!displaySummary &&  <div className="w-full flex items-center justify-between px-4 py-2">
-        {currentQuestion > 0 && (
-          <>
-            <span
-              onClick={handleBack}
-              className="inline-flex cursor-pointer gap-x-2"
-            >
-              <Image height={10} width={10} src={arrow} alt="arrow" />
-              <span className="text-[13px] text-white">Previous question</span>
-            </span>
-            <span className="text-[13px] text-white">
-              {currentQuestion + 1} of {questions.length}
-            </span>
-          </>
-        )}
-      </div>}
+      {!displaySummary && (
+        <div className="w-full flex items-center justify-between px-4 py-2">
+          {currentQuestion > 0 && (
+            <>
+              <span
+                onClick={handleBack}
+                className="inline-flex cursor-pointer gap-x-2"
+              >
+                <Image height={10} width={10} src={arrow} alt="arrow" />
+                <span className="text-[13px] text-white">
+                  Previous question
+                </span>
+              </span>
+              <span className="text-[13px] text-white">
+                {currentQuestion + 1} of {questions.length}
+              </span>
+            </>
+          )}
+        </div>
+      )}
 
       {/* Question Text */}
-    { !displaySummary &&  <div
-        className={`md:relative md:right-20 md:mt-20 ${
-          isNotAvailable ? "hidden" : ""
-        }`}
-      >
-        <h2 className="text-lg md:text-2xl font-bold text-white text-center mt-8 mx-4 mb-6">
-          {questions[currentQuestion].text}
-        </h2>
-     
-        {/* Render Input for Address or Options */}
-        {questions[currentQuestion].id === 6 && (
-          <p className="text-white w-[80%] mx-auto mb-4 text-center">
-            Your could reduce your power bill by as much as 30%
-          </p>
-        )}
-        {questions[currentQuestion].isAddress ? (
-          <div className="relative w-full max-w-md">
-            <PlacesAutocomplete address={address} setAddress={setAddress} />
+      {!displaySummary && (
+        <div
+          className={`md:relative md:right-20 md:mt-20 ${
+            isNotAvailable ? "hidden" : ""
+          }`}
+        >
+          <h2 className="text-lg md:text-2xl font-bold text-white text-center mt-8 mx-4 mb-6">
+            {questions[currentQuestion].text}
+          </h2>
 
-            <button
-              onClick={handleAddressSubmit}
-              className="p-3 w-3/4 mx-auto block bg-[#FFBA4A] text-white rounded-lg shadow "
-            >
-              Continue
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 w-fit mx-auto gap-4 ">
-            {Object.keys(questions[currentQuestion])
-              .filter((key) => key.startsWith("option"))
-              .map((optionKey) => {
-                const optionText =
-                  questions[currentQuestion][
-                    optionKey as keyof (typeof questions)[number]
-                  ];
-                const isSelected =
-                  selectedAnswers[currentQuestion] === optionText;
-                return (
-                  <button
-                    key={optionKey}
-                    onClick={() => handleOptionSelect(optionText)}
-                    className={`p-4 max-w-[200px] mx-1 md:w-[200px] text-wrap font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
-                      isSelected
-                        ? "bg-[#DBEACF] text-[12px] md:text-[14px] text-[#333333]"
-                        : "bg-white text-[#333333] text-[12px] md:text-[14px] md:text-nowrap border border-gray-300"
-                    }`}
-                  >
-                    {optionText.includes("Power System") && (
-                      <Image
-                        className="mx-auto mb-3"
-                        src={solarPowerSystemLogo}
-                        height={40}
-                        width={40}
-                        alt="question icon"
-                      />
-                    )}
-                    {optionText.includes("Solar and Battery") && (
-                      <Image
-                        className="mx-auto mb-3"
-                        src={solarandbattery}
-                        height={40}
-                        width={40}
-                        alt="question icon"
-                      />
-                    )}
-                    {optionText.includes("Own") && (
-                      <Image
-                        className="mx-auto mb-3"
-                        src={question4}
-                        height={40}
-                        width={40}
-                        alt="question icon"
-                      />
-                    )}
-                    {optionText.includes("Rent") && (
-                      <Image
-                        className="mx-auto mb-3"
-                        src={question2}
-                        height={40}
-                        width={40}
-                        alt="question icon"
-                      />
-                    )}
-                    {optionText.includes("storey") && (
-                      <Image
-                        className="mx-auto mb-3"
-                        src={question4}
-                        height={40}
-                        width={40}
-                        alt="question icon"
-                      />
-                    )}
-                    {optionText.includes("Yes") && (
-                      <Image
-                        className="mx-auto mb-3"
-                        src={yesIcon}
-                        height={40}
-                        width={40}
-                        alt="question icon"
-                      />
-                    )}
+          {/* Render Input for Address or Options */}
+          {questions[currentQuestion].id === 6 && (
+            <p className="text-white w-[80%] mx-auto mb-4 text-center">
+              Your could reduce your power bill by as much as 30%
+            </p>
+          )}
+          {questions[currentQuestion].isAddress ? (
+            <div className="relative w-full max-w-md">
+              <PlacesAutocomplete address={address} setAddress={setAddress} />
 
-                    {optionText.includes("No Thanks") && (
-                      <Image
-                        className="mx-auto mb-3"
-                        src={noIcon}
-                        height={40}
-                        width={40}
-                        alt="question icon"
-                      />
-                    )}
+              <button
+                onClick={handleAddressSubmit}
+                className="p-3 w-3/4 mx-auto block bg-darkshadegray text-white rounded-lg shadow "
+              >
+                Continue
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 w-fit mx-auto gap-4 ">
+              {Object.keys(questions[currentQuestion])
+                .filter((key) => key.startsWith("option"))
+                .map((optionKey) => {
+                  const optionText =
+                    questions[currentQuestion][
+                      optionKey as keyof (typeof questions)[number]
+                    ];
+                  const isSelected =
+                    selectedAnswers[currentQuestion] === optionText;
+                  return (
+                    <button
+                      key={optionKey}
+                      onClick={() => handleOptionSelect(optionText)}
+                      className={`p-4 max-w-[200px] mx-1 md:w-[200px] text-wrap font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
+                        isSelected
+                          ? "bg-[#DBEACF] text-[12px] md:text-[14px] text-[#333333]"
+                          : "bg-white text-darkshadegray text-[12px] md:text-[14px] md:text-nowrap border border-gray-300"
+                      }`}
+                    >
+                      {optionText.includes("Power System") && (
+                        <Image
+                          className="mx-auto mb-3"
+                          src={solarPowerSystemLogo}
+                          height={40}
+                          width={40}
+                          alt="question icon"
+                        />
+                      )}
+                      {optionText.includes("Solar and Battery") && (
+                        <Image
+                          className="mx-auto mb-3"
+                          src={solarandbattery}
+                          height={40}
+                          width={40}
+                          alt="question icon"
+                        />
+                      )}
+                      {optionText.includes("Own") && (
+                        <Image
+                          className="mx-auto mb-3"
+                          src={question4}
+                          height={40}
+                          width={40}
+                          alt="question icon"
+                        />
+                      )}
+                      {optionText.includes("Rent") && (
+                        <Image
+                          className="mx-auto mb-3"
+                          src={question2}
+                          height={40}
+                          width={40}
+                          alt="question icon"
+                        />
+                      )}
+                      {optionText.includes("storey") && (
+                        <Image
+                          className="mx-auto mb-3"
+                          src={question4}
+                          height={40}
+                          width={40}
+                          alt="question icon"
+                        />
+                      )}
+                      {optionText.includes("Yes") && (
+                        <Image
+                          className="mx-auto mb-3"
+                          src={yesIcon}
+                          height={40}
+                          width={40}
+                          alt="question icon"
+                        />
+                      )}
 
-                    {optionText}
-                  </button>
-                );
-              })}
-          </div>
-        )}
-      </div>}
+                      {optionText.includes("No Thanks") && (
+                        <Image
+                          className="mx-auto mb-3"
+                          src={noIcon}
+                          height={40}
+                          width={40}
+                          alt="question icon"
+                        />
+                      )}
+
+                      {optionText}
+                    </button>
+                  );
+                })}
+            </div>
+          )}
+        </div>
+      )}
       {isNotAvailable && questions[currentQuestion].id === 2 && (
         <div className="not-available md:relative md:right-20 mt-32">
           {/* <h2 className="text-center text-red-600 mb-3 font-bold text-2xl md:text-3xl">
@@ -349,7 +353,7 @@ export default function Quiz() {
           </div>
         </div>
       )}
-{displaySummary && <SummaryForm selectedAnswers={selectedAnswers} />}
+      {displaySummary && <SummaryForm selectedAnswers={selectedAnswers} />}
 
       {/* Bottom Progress and Summary */}
       <div className="w-full absolute md:hidden bottom-0 flex items-center justify-between px-6 py-2 bg-white shadow-lg">
@@ -370,17 +374,17 @@ export default function Quiz() {
                 cy="32"
                 r="28"
                 strokeWidth="4"
-                stroke="#3b82f6"
+                stroke="#f5c441"
                 fill="none"
                 strokeDasharray="176"
                 strokeDashoffset={176 - (progress / 100) * 176}
               />
             </svg>
-            <span className="absolute inset-0 flex items-center justify-center text-sm text-blue-500 font-semibold">
+            <span className="absolute inset-0 flex items-center justify-center text-sm text-backgroundPaleYellow font-semibold">
               {Math.round(progress)}%
             </span>
           </div>
-          <span className="text-sm font-medium text-gray-600 ml-4">
+          <span className="text-sm font-medium text-darkshadegray ml-4">
             Complete
           </span>
         </div>
@@ -388,7 +392,7 @@ export default function Quiz() {
         {/* Summary Button */}
         <button
           onClick={toggleSidebar}
-          className="text-sm font-medium text-blue-600"
+          className="text-sm font-medium text-backgroundPaleYellow"
         >
           My Summary
         </button>
@@ -402,7 +406,7 @@ export default function Quiz() {
           } transition-transform duration-300 ease-in-out`}
         >
           <span className="inline-flex md:inline-block md:bg-white shadow-none justify-between items-center  w-full">
-            <h2 className="text-lg text-[#333333]  font-bold ">Your Summary</h2>
+            <h2 className="text-lg text-darkshadegray  font-bold ">Your Summary</h2>
             <Image
               className="cursor-pointer md:hidden"
               onClick={() => setIsSidebarOpen(false)}
@@ -420,16 +424,16 @@ export default function Quiz() {
             {questions.map((q, index) => (
               <li
                 key={q.id}
-                className={`mb-2 flex items-center gap-x-1 p-2  ${
+                className={`mb-2 flex items-center gap-x-2 p-2  ${
                   index === currentQuestion ? ": text-[#015eb3]" : ""
                 }`}
               >
                 <Image src={q.icon} alt="icon" height={16} width={16} />
                 <p
-                  className={`  text-xs  ${
+                  className={`  text-xs md:text-sm  ${
                     index === currentQuestion
-                      ? ": text-[#015eb3]"
-                      : "text-[#333333]"
+                      ? ": text-backgroundPaleYellow"
+                      : "text-darkshadegray"
                   }`}
                 >
                   {q.text}
