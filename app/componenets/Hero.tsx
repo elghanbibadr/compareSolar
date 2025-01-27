@@ -8,7 +8,7 @@ import solarandbattery from "@/public/images/icons/Solar and Battery Storage.svg
 export default function Hero() {
   return (
  
-      <div className="md:grid md:grid-cols-2 md:mt-10  max-w-[1200px] mx-auto justify-center justify-items-center place-items-center ">
+      <div className="md:grid md:grid-cols-2 mt-10  max-w-[1200px] mx-auto justify-center justify-items-center place-items-center ">
        
         <div className="md:my-12   max-w-[1200px] mx-auto ">
           <div className="  ">
