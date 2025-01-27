@@ -24,7 +24,7 @@ const Navbar = () => {
     </ul>
     <div>
       <Link href="/questions">
-        <button className="compareNowButtonGradient">
+        <button className="compareNowButtonGradient px-6 py-3 md:px-10 md:py-4">
           Compare Solar Now
         </button>
       </Link>

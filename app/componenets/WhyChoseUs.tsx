@@ -58,7 +58,7 @@ const WhyChoseUs = () => {
           ))}
         </div>
         <Link href='/questions'>
-          <button className="compareNowButtonGradient">
+          <button className="compareNowButtonGradient px-10 py-4">
             Compare Solar Now{" "}
           </button>
         </Link>
