@@ -39,7 +39,7 @@ const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,f
           postCode:postcode,
         },
         fullAddress: {
-          full: "full address",
+          full: address_line1 + address_line2,
           postCode:postcode,
           placeId:place_id,
           state: state,
