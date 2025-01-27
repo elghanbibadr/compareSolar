@@ -75,7 +75,7 @@ p{
 }
 
 h2{
-  @apply font-bold text-xl md:text-[34px] text-[#333333] leading-[120%]  tracking-[-0.01em] 
+  @apply font-bold text-xl md:text-[34px] text-darkshadegray leading-[120%]  tracking-[-0.01em] 
 }
 .compareNowButtonGradient {
   @apply bg-gradient-to-b from-yellow-400 to-orange-400 text-sm block text-white  rounded-md font-bold
