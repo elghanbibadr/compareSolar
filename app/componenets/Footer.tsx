@@ -31,7 +31,7 @@ const Footer = () => {
             />
           </span>
 
-          <p className="text-gray-400 text-sm mt-2">© 2025 Compare Ltd.</p>
+          <p className="text-gray-400 text-sm mt-2"> © 2025 SolarLocal</p>
         </div>
       </div>
     </footer>

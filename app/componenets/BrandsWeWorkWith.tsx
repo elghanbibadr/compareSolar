@@ -20,7 +20,7 @@ import Image from 'next/image';
 const BrandsWeWorkWith = () => {
   return (
     <div className="text-center bg-white pt-16">
-      <h2 className="font-bold text-xl md:text-[32px] text-[#333333] leading-[120%] text-center tracking-[-0.01em] ">
+      <h2 className="">
         Brands we work with
       </h2>
       <div className="grid grid-cols-2 md:w-[80%] mx-auto py-10 sm:grid-cols-3  md:grid-cols-4 xl:grid-cols-7 lg:grid-cols-6 gap-4 mt-6 justify-center items-center p-4">

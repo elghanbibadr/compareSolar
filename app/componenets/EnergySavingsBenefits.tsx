@@ -31,26 +31,33 @@ const EnergySavingsBenefits = () => {
       {/* Section Heading */}
       <div className="max-w-[1300px] mx-auto">
         <div className=" text-center mb-10">
-          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-darkshadegray text-center sm:text-4xl">
+          <h2 className="md:w-[70%] mx-auto">
             We’re passionate about helping you cut costs on your energy bills.
           </h2>
           <p className="my-6 md:w-[70%] md:mx-auto text-textColor">
-            By providing innovative solutions and expert guidance, we empower you
-            to save money, reduce energy waste, and take control of your energy
-            consumption—making sustainability simple and affordable.
+            By providing innovative solutions and expert guidance, we empower
+            you to save money, reduce energy waste, and take control of your
+            energy consumption—making sustainability simple and affordable.
           </p>
         </div>
         {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14">
           {benefits.map((benefit, index) => (
-            <div key={index} className="text-center border rounded-xl hover:bg-[#FEF7E4] duration-200 p-4 border-[#ececec] md:text-left">
+            <div
+              key={index}
+              className=" border rounded-xl hover:bg-[#FEF7E4] duration-200 p-4 border-[#ececec] md:text-left"
+            >
               <div className="text-green-500 mb-4">
-                <Image className="h-14 w-14" src={benefit.icon} alt={benefit.title} />
+                <Image
+                  className="h-14 w-14"
+                  src={benefit.icon}
+                  alt={benefit.title}
+                />
               </div>
               <h4 className="text-darkshadegray text-base md:text-xl font-medium">
                 {benefit.title}
               </h4>
-              <p className="text-textColor text-xs md:w-[90%] mt-3 md:text-base ">
+              <p className="text-sm md:text-base text-textColor">
                 {benefit.description}
               </p>
             </div>

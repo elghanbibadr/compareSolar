@@ -107,10 +107,11 @@ export default function Quiz() {
 
   console.log("answers", selectedAnswers);
 
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar state
   const router = useRouter();
   const [isNotAvailable, setIsNotAvailable] = useState(false);
+  const [fullAdressInfo,setFullAdressInfo]=useState({})
 
   const handleOptionSelect = (option: string) => {
     // Get the current question
@@ -146,7 +147,7 @@ export default function Quiz() {
   };
 
   const handleAddressSubmit = () => {
-    if (address.trim()) {
+    if (address?.trim()) {
       setSelectedAnswers((prev) => ({
         ...prev,
         [currentQuestion]: address,
@@ -186,6 +187,9 @@ export default function Quiz() {
   }, []);
   const progress = ((currentQuestion + 1) / questions.length) * 100;
   console.log(questions[currentQuestion].review);
+
+
+  console.log('full adress',fullAdressInfo)
 
   return (
     <div className="relative overflow-y-hidden flex flex-col items-center h-[90vh] gradient-yellow">
@@ -230,7 +234,7 @@ export default function Quiz() {
           )}
           {questions[currentQuestion].isAddress ? (
             <div className="relative w-full max-w-md">
-              <PlacesAutocomplete address={address} setAddress={setAddress} />
+              <PlacesAutocomplete address={address}  setAddress={setAddress} setFullAdressInfo={setFullAdressInfo} />
 
               <button
                 onClick={handleAddressSubmit}
@@ -254,10 +258,10 @@ export default function Quiz() {
                     <button
                       key={optionKey}
                       onClick={() => handleOptionSelect(optionText)}
-                      className={`p-4 max-w-[200px] mx-1 md:w-[200px] text-wrap font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
+                      className={`p-4 max-w-[230px] mx-1 md:w-[220px] md:text-nowrap font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
                         isSelected
                           ? "bg-[#DBEACF] text-[12px] md:text-[14px] text-[#333333]"
-                          : "bg-white text-darkshadegray text-[12px] md:text-[14px] md:text-nowrap border border-gray-300"
+                          : "bg-white text-darkshadegray text-[12px] md:text-[14px]  border border-gray-300"
                       }`}
                     >
                       {optionText.includes("Power System") && (
@@ -339,7 +343,7 @@ export default function Quiz() {
             Sorry, not available
           </h2> */}
           <div className="mx-auto w-[70%] text-center">
-            <p className="  text-[#FCB852] font-bold text-xl  ">
+            <p className="  text-darkshadegray font-bold text-xl  ">
               We are sorry, but the government solar rebate is only available to
               homeowners and cannot be applied to rental properties.
             </p>
@@ -353,7 +357,7 @@ export default function Quiz() {
           </div>
         </div>
       )}
-      {displaySummary && <SummaryForm selectedAnswers={selectedAnswers} />}
+      {displaySummary && <SummaryForm fullAdressInfo={fullAdressInfo} selectedAnswers={selectedAnswers} />}
 
       {/* Bottom Progress and Summary */}
       <div className="w-full absolute md:hidden bottom-0 flex items-center justify-between px-6 py-2 bg-white shadow-lg">

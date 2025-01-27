@@ -3,7 +3,7 @@ import { useState } from "react";
 import locationIcon from "@/public/images/icons/Location.svg"
 import Image from "next/image";
 
-const SummaryForm = ({ selectedAnswers }: { selectedAnswers:any }) => {
+const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,fullAdressInfo:any }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -11,6 +11,7 @@ const SummaryForm = ({ selectedAnswers }: { selectedAnswers:any }) => {
     phoneNumber: "",
   });
   const [isPhoneValid, setIsPhoneValid] = useState(true);
+  const {country, state,city,postcode,lat,lon,place_id,address_line1,address_line2  }=fullAdressInfo
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,8 +27,43 @@ const SummaryForm = ({ selectedAnswers }: { selectedAnswers:any }) => {
     e.preventDefault();
     if (isPhoneValid) {
       console.log("Form submitted", formData);
+      const details = {
+        contact: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          phone: formData.phoneNumber,
+          email: formData.email,
+        },
+        rawAddress: {
+          raw: "raw address",
+          postCode:postcode,
+        },
+        fullAddress: {
+          full: "full address",
+          postCode:postcode,
+          placeId:place_id,
+          state: state,
+          country: country,
+          city:city,
+          suburb:address_line1,
+          coordinates: { lat:lat, lng: lon },
+        },
+        leadTypes: ["RPV"], // ["RPV"] | ["RPV", "RSHW"] | ["RHYPV"] | ["RHYPV", "RSHW"] | ["RSHW"]
+        isOwner: false,
+        roofType: "tin|tile|other",
+        storeys: "single|multi",
+        tags: ["SL"],
+        energyProvider: "", // optional
+        energyBill: 0, // optional
+        comments: "", // optional
+      };
+
+      console.log('details',details)
+      
     }
   };
+
+  console.log('full adress from the form',fullAdressInfo)
 
   const transformedAnswers = Object.keys(selectedAnswers).map((key:any) => {
     if (key !== '6') {

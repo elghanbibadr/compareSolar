@@ -6,10 +6,10 @@ const Services = () => {
     <section className="bg-darkshadegray  my-20 pt-20 grid grid-cols-1 justify-center md:gap-x-6 items-center md:h-fit md:grid-cols-2  text-white py-10 md:py-2 px-6 md:px-16">
       <div className="md:order-2">
         <div className="text-center md:text-left mb-8">
-          <h2 className="text-2xl md:text-4xl font-bold">
+          <h2 className="text-white mb-6">
             A Service That Stands Out
           </h2>
-          <p className="text-lg md:text-xl font-semibold mt-2 md:mt-6">
+          <p className="text-white">
             Here’s how we make it easy for you:
           </p>
         </div>

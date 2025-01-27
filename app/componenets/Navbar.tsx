@@ -5,7 +5,7 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between p-3  items-center">
+    <div className="flex justify-between   items-center">
     <span className="inline-flex w-fit items-center">
       <Image
         className="w-auto h-[42px] md:h-[80px]"
@@ -15,7 +15,7 @@ const Navbar = () => {
         height={100}
       />
     </span>
-    <ul className='text-darkshadegray hidden md:flex cursor-pointer  items-center gap-x-10 text-base font-medium'>
+    <ul className='text-darkshadegray hidden md:flex cursor-pointer  items-center gap-x-10 text-base '>
         <li className="hover:text-[#FBB724]"><Link href="#services">Services</Link></li>
         <li className="hover:text-[#FBB724]"><Link href="#whyUs">Why us</Link></li>
         <li className="hover:text-[#FBB724]"><Link href="#energySavings">Energy Savings</Link></li>
@@ -24,7 +24,7 @@ const Navbar = () => {
     </ul>
     <div>
       <Link href="/questions">
-        <button className="focus-visible:outline-2 text-sm px-3  focus-visible:outline-offset-1 text-white bg-gradient-to-b from-yellow-400 to-orange-400 md:text-[1.1rem] md:font-semibold p-2 md:p-3 rounded-[4px]">
+        <button className="compareNowButtonGradient">
           Compare Solar Now
         </button>
       </Link>

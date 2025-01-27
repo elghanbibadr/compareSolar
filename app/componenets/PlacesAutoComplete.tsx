@@ -4,9 +4,10 @@ import { useState, ChangeEvent } from "react";
 type PlacesAutocompleteProps = {
   address: string;
   setAddress: (address: string) => void;
+  setFullAdressInfo: (fullAddress: Record<string, any>) => void;
 };
 
-const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({ address, setAddress}) => {
+const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({ address, setAddress,setFullAdressInfo}) => {
   const [suggestions, setSuggestions] = useState<any[]>([]);
 console.log("suggestions",suggestions)
 console.log("adress",address)
@@ -44,6 +45,7 @@ console.log("adress",address)
 
   const handleSuggestionClick = (suggestion: any) => {
     setAddress(suggestion.properties.formatted);
+    setFullAdressInfo(suggestion.properties)
     setSuggestions([]); // Clear suggestions after selecting one
   };
 

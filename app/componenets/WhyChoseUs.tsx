@@ -9,23 +9,23 @@ import Link from "next/link";
 const steps = [
   {
     icon: step1,
-    title: "Our trusted suppliers calculate your savings",
-    description: "See how much switching to solar could save you.",
+    title: "Our trusted experts calculate your savings.",
+    description: "Discover how much you could save by switching to solar.",
   },
   {
     icon: step2,
-    title: "Our trusted suppliers estimate your new energy bill",
-    description: "Tailored to your home and energy usage.",
+    title: "Personalised estimates for your energy bill.",
+    description: "Get a tailored projection based on your home and energy usage.",
   },
   {
     icon: step3,
-    title: "Our trusted suppliers calculate your payback period",
-    description: "Showing you the real value of going solar.",
+    title: " Clear insights into your payback period.",
+    description: "Understand the real value and long-term benefits of going solar.",
   },
   {
     icon: step4,
-    title: "Our trusted suppliers offer the best options",
-    description: "You pick the installer that suits you best.",
+    title: "Access the best installation options.",
+    description: "Choose the installer that fits your needs perfectly.",
   },
 ];
 
@@ -40,25 +40,25 @@ const WhyChoseUs = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-darkshadegray text-white p-5 rounded-md text-center "
+              className=" border rounded-xl hover:bg-[#FEF7E4] duration-200 p-4 border-[#ececec] md:text-left"
             >
               {/* <div className="text-3xl mb-4">{step.icon}</div> */}
               <Image
-                className="mx-auto mb-6"
+                className=" h-12 w-12 mb-4"
                 src={step.icon}
-                height={50}
-                width={50}
+                height={20}
+                width={20}
                 alt="step icon"
               />
-              <h3 className="font-semibold  text-base md:text-lg mb-2">
+              <h3 className="text-darkshadegray leading-tight  text-base md:text-[1.1rem] font-medium">
                 {step.title}
               </h3>
-              <p className="text-sm md:text-base">{step.description}</p>
+              <p className="text-sm md:text-base mt-3 text-textColor">{step.description}</p>
             </div>
           ))}
         </div>
         <Link href='/questions'>
-          <button className=" bg-gradient-to-b from-yellow-400 to-orange-400 mt-8  block text-white px-10 py-4 rounded-md font-bold ">
+          <button className="compareNowButtonGradient">
             Compare Solar Now{" "}
           </button>
         </Link>
