@@ -244,7 +244,7 @@ export default function Quiz() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 w-fit mx-auto gap-4 ">
+            <div className="grid sm:grid-cols-2 w-fit mx-auto gap-4 ">
               {Object.keys(questions[currentQuestion])
                 .filter((key) => key.startsWith("option"))
                 .map((optionKey) => {
@@ -258,7 +258,7 @@ export default function Quiz() {
                     <button
                       key={optionKey}
                       onClick={() => handleOptionSelect(optionText)}
-                      className={`p-4 max-w-[230px] mx-1 md:w-[220px] md:text-nowrap font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
+                      className={`p-2 py-4 max-w-[230px] w-[180px]  mx-1 md:w-[220px] md:text-nowrap font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
                         isSelected
                           ? "bg-[#DBEACF] text-[12px] md:text-[14px] text-[#333333]"
                           : "bg-white text-darkshadegray text-[12px] md:text-[14px]  border border-gray-300"

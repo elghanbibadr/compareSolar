@@ -10,7 +10,7 @@ import Link from 'next/link';
 const QuestionsPage = () => {
   return (
     <div >
-        <div className="flex justify-between bg-white p-3 md:p-1  items-center">
+        <div className="flex justify-between bg-white md:p-1  items-center">
           <span className="inline-flex w-fit items-center">         
             <Link href='/'>
               <Image

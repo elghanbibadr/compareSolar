@@ -5,10 +5,10 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between   items-center">
+    <div className="flex justify-between max-w-[1300px] mx-auto  items-center">
     <span className="inline-flex w-fit items-center">
       <Image
-        className="w-auto relative right-4 md:right-7 h-[42px] md:h-[80px]"
+        className="w-auto relative right-4 md:right-7 h-[46px] md:h-[80px]"
         src={logo}
         alt="solar logo"
         width={200}

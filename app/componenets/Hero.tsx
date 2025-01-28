@@ -10,7 +10,7 @@ export default function Hero() {
  
       <div className="md:grid md:grid-cols-2 mt-10  max-w-[1200px] mx-auto justify-center justify-items-center place-items-center ">
        
-        <div className="md:my-12   max-w-[1200px] mx-auto ">
+        <div  data-aos="fade-right" className="md:my-12   max-w-[1200px] mx-auto ">
           <div className="  ">
             <h1 className="text-[1.38rem]  leading-8 text-darkshadegray text-center md:text-left font-bold md:text-[2.6rem] md:leading-[1.3] md:tracking-[-0.02em]">
               Find the Best Solar Energy <br className="hidden md:block" />
@@ -71,7 +71,9 @@ export default function Hero() {
             </span>
           </div>
         </div>
-        <div>
+        <div data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500">
           <Image src={heroBg} alt='hero alt' width={400} height={400} />
         </div>
       </div>
