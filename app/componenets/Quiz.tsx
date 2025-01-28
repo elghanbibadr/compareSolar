@@ -222,7 +222,7 @@ export default function Quiz() {
             isNotAvailable ? "hidden" : ""
           }`}
         >
-          <h2 className="text-lg md:text-2xl font-bold text-white text-center mt-8 mx-4 mb-6">
+          <h2 className="text-lg md:text-2xl font-bold text-darkshadegray text-center mt-8 mx-4 mb-6">
             {questions[currentQuestion].text}
           </h2>
 

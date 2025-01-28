@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import locationIcon from "@/public/images/icons/Location.svg"
+import locationIcon from "@/public/images/icons/Location.svg";
 import Image from "next/image";
 
-const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,fullAdressInfo:any }) => {
+const SummaryForm = ({
+  selectedAnswers,
+  fullAdressInfo,
+}: {
+  selectedAnswers: any;
+  fullAdressInfo: any;
+}) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -11,7 +17,17 @@ const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,f
     phoneNumber: "",
   });
   const [isPhoneValid, setIsPhoneValid] = useState(true);
-  const {country, state,city,postcode,lat,lon,place_id,address_line1,address_line2  }=fullAdressInfo
+  const {
+    country,
+    state,
+    city,
+    postcode,
+    lat,
+    lon,
+    place_id,
+    address_line1,
+    address_line2,
+  } = fullAdressInfo;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,10 +39,13 @@ const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,f
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  console.log("selectec answers",selectedAnswers)
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isPhoneValid) {
       console.log("Form submitted", formData);
+  
       const details = {
         contact: {
           firstName: formData.firstName,
@@ -34,60 +53,77 @@ const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,f
           phone: formData.phoneNumber,
           email: formData.email,
         },
-        rawAddress: {
-          raw: "raw address",
-          postCode:postcode,
-        },
-        fullAddress: {
+        address: {
           full: address_line1 + address_line2,
-          postCode:postcode,
-          placeId:place_id,
+          postCode: postcode,
+          placeId: place_id,
           state: state,
           country: country,
-          city:city,
-          suburb:address_line1,
-          coordinates: { lat:lat, lng: lon },
+          city: city,
+          suburb: address_line1,
+          coordinates: { lat: lat, lng: lon },
         },
-        leadTypes: ["RPV"], // ["RPV"] | ["RPV", "RSHW"] | ["RHYPV"] | ["RHYPV", "RSHW"] | ["RSHW"]
+        leadTypes: ["RPV"], // Adjust as needed
         isOwner: false,
-        roofType: "tin|tile|other",
-        storeys: "single|multi",
+        roofType: selectedAnswers[2]?.text,
+        storeys: selectedAnswers[3]?.text,
         tags: ["SL"],
         energyProvider: "", // optional
         energyBill: 0, // optional
         comments: "", // optional
       };
-
-      console.log('details',details)
-      
+  
+      console.log("details", details);
+  
+      try {
+        const response = await fetch("https://lead-proxy-crve4r.deno.dev/data", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(details),
+        });
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        const responseData = await response.json();
+        console.log("Response from API:", responseData);
+        alert("Form submitted successfully!");
+      } catch (error) {
+        console.error("Error submitting the form:", error);
+        alert("Something went wrong while submitting the form.");
+      }
     }
   };
+  
 
-  console.log('full adress from the form',fullAdressInfo)
+  console.log("full adress from the form", fullAdressInfo);
 
-  const transformedAnswers = Object.keys(selectedAnswers).map((key:any) => {
-    if (key !== '6') {
-      return { text: selectedAnswers[key].text, icon: selectedAnswers[key].icon };
+  const transformedAnswers = Object.keys(selectedAnswers).map((key: any) => {
+    if (key !== "6") {
+      return {
+        text: selectedAnswers[key].text,
+        icon: selectedAnswers[key].icon,
+      };
     } else {
-      return { text: selectedAnswers[key],icon:locationIcon };
+      return { text: selectedAnswers[key], icon: locationIcon };
     }
   });
 
-  console.log('transofrmed answer',transformedAnswers)
-  
 
   return (
     <div className="grid md:grid-cols-3 mt-12 gap-x-3 bg-white p-6 rounded-lg shadow-md mx-2   max-w-xl items-center ">
-      <form
-        onSubmit={handleSubmit}
-        className="col-span-2 text-darkshadegray"
-      >
+      <form onSubmit={handleSubmit} className="col-span-2 text-darkshadegray">
         <h2 className="text-base md:text-xl text-left  font-semibold text-darkshadegray mb-6">
-        Compare 3 free quotes and see how much you could save.
+          Compare 3 free quotes and see how much you could save.
         </h2>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block mb-1 text-xs md:text-sm font-medium">First name</label>
+            <label className="block mb-1 text-xs md:text-sm font-medium">
+              First name
+            </label>
             <input
               type="text"
               name="firstName"
@@ -98,7 +134,9 @@ const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,f
             />
           </div>
           <div>
-            <label className="block mb-1 text-xs md:text-sm font-medium">Last name</label>
+            <label className="block mb-1 text-xs md:text-sm font-medium">
+              Last name
+            </label>
             <input
               type="text"
               name="lastName"
@@ -110,7 +148,9 @@ const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,f
           </div>
         </div>
         <div className="mt-4">
-          <label className="block mb-1 text-xs md:text-sm font-medium">Email</label>
+          <label className="block mb-1 text-xs md:text-sm font-medium">
+            Email
+          </label>
           <input
             type="email"
             name="email"
@@ -121,7 +161,9 @@ const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,f
           />
         </div>
         <div className="mt-4">
-          <label className="block mb-1 text-xs md:text-sm font-medium">Phone number</label>
+          <label className="block mb-1 text-xs md:text-sm font-medium">
+            Phone number
+          </label>
           <input
             type="text"
             name="phoneNumber"
@@ -148,21 +190,17 @@ const SummaryForm = ({ selectedAnswers,fullAdressInfo }: { selectedAnswers:any,f
           100% privacy guaranteed & no sponsored products
         </p>
       </form>
-         <ul className="mt-6 hidden md:block">
-                  {Object.entries(transformedAnswers).map(([questionId, answer]) => (
-                    <li
-                      key={questionId}
-                      className={`mb-2 flex items-center gap-x-1 p-2    `}
-                    >
-                      <Image src={answer.icon} alt="icon" height={16} width={16} />
-                      <p
-                        className={`  text-xs text-darkshadegray  `}
-                      >
-                        {answer.text}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
+      <ul className="mt-6 hidden md:block">
+        {Object.entries(transformedAnswers).map(([questionId, answer]) => (
+          <li
+            key={questionId}
+            className={`mb-2 flex items-center gap-x-1 p-2    `}
+          >
+            <Image src={answer.icon} alt="icon" height={16} width={16} />
+            <p className={`  text-xs text-darkshadegray  `}>{answer.text}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
