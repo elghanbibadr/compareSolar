@@ -79,7 +79,6 @@ const SummaryForm = ({
         comments: "", // optional
       };
 
-      console.log("details", details);
 
       try {
          await axios.post("/api/proxy", details);
@@ -106,7 +105,6 @@ const SummaryForm = ({
   });
 
 
-  console.log("error",error)
   return (
     <div>
       {!formSuccessfullySubmited && !error && (
@@ -130,6 +128,8 @@ const SummaryForm = ({
                   onChange={handleInputChange}
                   className="w-full text-xs md:text-sm p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="First name"
+                  required
+
                 />
               </div>
               <div>
@@ -143,6 +143,8 @@ const SummaryForm = ({
                   onChange={handleInputChange}
                   className="w-full p-2 border text-xs md:text-sm border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Last name"
+                  required
+
                 />
               </div>
             </div>
@@ -157,6 +159,7 @@ const SummaryForm = ({
                 onChange={handleInputChange}
                 className="w-full p-2 text-xs md:text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Email"
+                required
               />
             </div>
             <div className="mt-4">
@@ -174,6 +177,8 @@ const SummaryForm = ({
                   isPhoneValid ? "focus:ring-blue-500" : "focus:ring-red-500"
                 }`}
                 placeholder="Phone number"
+                required
+
               />
               {!isPhoneValid && (
                 <p className="text-red-500 text-sm mt-1">
