@@ -2,8 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import heroBg from "@/public/images/heroBg.svg"
-import solarPower from "@/public/images/icons/Solar Power System.svg"
-import solarandbattery from "@/public/images/icons/Solar and Battery Storage.svg"
+import solarPower from "@/public/images/icons/solarPowerSystem.svg"
+import solarandbattery from "@/public/images/icons/solarandBatteryColored.svg"
 
 export default function Hero() {
   return (
@@ -16,7 +16,7 @@ export default function Hero() {
               Find the Best Solar Energy <br className="hidden md:block" />
               Deals for Your Home
             </h1>
-            <p className="mt-3 md:w-[80%] my-4 text-center md:text-left  text-textColor ">
+            <p className="mt-3 md:w-[80%] p-3 md:p-3 my-4 text-center md:text-left  text-textColor ">
             We search far and wide to find you the best deals, leaving you free to choose the one that suits you perfectly             
               that’s right for you.
             </p>

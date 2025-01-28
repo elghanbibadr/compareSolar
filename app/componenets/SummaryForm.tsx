@@ -44,8 +44,6 @@ const SummaryForm = ({
     }
   };
 
-  console.log("selectec answers", selectedAnswers);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isPhoneValid) {
@@ -207,13 +205,17 @@ const SummaryForm = ({
         <div className="bg-white p-6   rounded-lg shadow-md text-center max-w-lg mt-12 w-fit mx-4 ">
           <CheckCircle className="w-10 h-10 text-darkshadegray mx-auto" />
           <h2 className="text-xl font-semibold text-backgroundPaleYellow mt-2">
-            Information Received! 
+            Information Received!
           </h2>
           <p className="mt-2 text-darkshadegray">
             Thank you for submitting your details. We have successfully received
             your information and will process it shortly.
           </p>
-          <Link href="/"><span className="text-backgroundPaleYellow cursor-pointer  text-sm block mt-4">Go Back</span></Link>
+          <Link href="/">
+            <span className="text-backgroundPaleYellow cursor-pointer  text-sm block mt-4">
+              Go Back
+            </span>
+          </Link>
         </div>
       )}
     </div>

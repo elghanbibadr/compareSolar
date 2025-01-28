@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="flex justify-between   items-center">
     <span className="inline-flex w-fit items-center">
       <Image
-        className="w-auto h-[42px] md:h-[80px]"
+        className="w-auto relative right-4 md:right-7 h-[42px] md:h-[80px]"
         src={logo}
         alt="solar logo"
         width={200}
