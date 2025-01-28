@@ -117,6 +117,8 @@ export default function Quiz() {
     // Get the current question
     const question = questions[currentQuestion];
 
+
+    console.log('selected',option)
     // Check if the user selected "Rent" on the second question
     if (currentQuestion === 1 && option === "Rent") {
       setIsNotAvailable(true); // Show the "Sorry, not available" message
@@ -252,15 +254,17 @@ export default function Quiz() {
                     questions[currentQuestion][
                       optionKey as keyof (typeof questions)[number]
                     ];
+                  
                   const isSelected =
-                    selectedAnswers[currentQuestion] === optionText;
+                    selectedAnswers[currentQuestion]?.text === optionText;
+
                   return (
                     <button
                       key={optionKey}
                       onClick={() => handleOptionSelect(optionText)}
-                      className={`p-2 py-4 max-w-[230px] w-[180px]  mx-1 md:w-[220px] md:text-nowrap font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
+                      className={`p-2 py-4 hover:bg-textColor hover:text-white duration-200 hover:border-none max-w-[230px] w-[180px]  mx-1 md:w-[220px] md:text-nowrap font-bold text-[#333333] md:py-7  min-h-[56px] rounded-lg shadow text-center ${
                         isSelected
-                          ? "bg-[#DBEACF] text-[12px] md:text-[14px] text-[#333333]"
+                          ? "bg-textColor text-[12px] md:text-[14px] text-white"
                           : "bg-white text-darkshadegray text-[12px] md:text-[14px]  border border-gray-300"
                       }`}
                     >
