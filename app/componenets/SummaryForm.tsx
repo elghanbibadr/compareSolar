@@ -21,6 +21,8 @@ const SummaryForm = ({
   });
   const [formSuccessfullySubmited, setFormSuccessfullySubmited] =
     useState(false);
+    const [isLoading,setIsLoading]=useState(false)
+    const [error,setError]=useState('')
   const [isPhoneValid, setIsPhoneValid] = useState(true);
   const {
     country,
@@ -46,6 +48,7 @@ const SummaryForm = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true)
     if (isPhoneValid) {
       console.log("Form submitted", formData);
 
@@ -79,13 +82,14 @@ const SummaryForm = ({
       console.log("details", details);
 
       try {
-        const response = await axios.post("/api/proxy", details);
+         await axios.post("/api/proxy", details);
 
-        console.log("Response from API:", response.data);
         setFormSuccessfullySubmited(true);
-        alert("Form submitted successfully!");
       } catch (error) {
-        console.error("Error submitting the form:", error);
+        setError('Something went wrong try again later !')
+        console.log("error",error)
+      }finally{
+        setIsLoading(false)
       }
     }
   };
@@ -101,9 +105,11 @@ const SummaryForm = ({
     }
   });
 
+
+  console.log("error",error)
   return (
     <div>
-      {!formSuccessfullySubmited && (
+      {!formSuccessfullySubmited && !error && (
         <div className="grid md:grid-cols-3 mt-12 gap-x-3 bg-white p-6 rounded-lg shadow-md mx-2   max-w-xl items-center ">
           <form
             onSubmit={handleSubmit}
@@ -179,7 +185,7 @@ const SummaryForm = ({
               type="submit"
               className="w-full mt-6 py-2 bg-[#FFBA4A] text-white font-semibold rounded-lg  transition"
             >
-              Calculate my savings
+              {!isLoading ? "Calculate my savings":"Calculating ...."}
             </button>
             <p className="text-gray-500 text-xs text-center mt-4">
               100% privacy guaranteed & no sponsored products
@@ -218,6 +224,9 @@ const SummaryForm = ({
           </Link>
         </div>
       )}
+      { error && !isLoading && <div className="bg-white p-6   rounded-lg shadow-md text-center max-w-lg mt-12 w-fit mx-4 ">
+        <h3 className="text-red-500">{error}</h3>
+      </div>}
     </div>
   );
 };
