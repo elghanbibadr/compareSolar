@@ -20,7 +20,7 @@ const SummaryForm = ({
     phoneNumber: "",
   });
   const [formSuccessfullySubmited, setFormSuccessfullySubmited] =
-    useState(true);
+    useState(false);
   const [isPhoneValid, setIsPhoneValid] = useState(true);
   const {
     country,

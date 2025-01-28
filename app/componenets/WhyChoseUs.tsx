@@ -15,12 +15,14 @@ const steps = [
   {
     icon: step2,
     title: "Personalised estimates for your energy bill.",
-    description: "Get a tailored projection based on your home and energy usage.",
+    description:
+      "Get a tailored projection based on your home and energy usage.",
   },
   {
     icon: step3,
     title: " Clear insights into your payback period.",
-    description: "Understand the real value and long-term benefits of going solar.",
+    description:
+      "Understand the real value and long-term benefits of going solar.",
   },
   {
     icon: step4,
@@ -53,11 +55,13 @@ const WhyChoseUs = () => {
               <h3 className="text-darkshadegray leading-tight  text-base md:text-[1.1rem] font-medium">
                 {step.title}
               </h3>
-              <p className="text-sm md:text-base mt-3 text-textColor">{step.description}</p>
+              <p className="text-sm md:text-base mt-3 text-textColor">
+                {step.description}
+              </p>
             </div>
           ))}
         </div>
-        <Link href='/questions'>
+        <Link href="/questions">
           <button className="compareNowButtonGradient px-10 py-4">
             Compare Solar Now{" "}
           </button>
