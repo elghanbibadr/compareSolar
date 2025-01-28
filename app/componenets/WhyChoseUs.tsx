@@ -33,7 +33,7 @@ const WhyChoseUs = () => {
   return (
     <div id="whyUs" className="pt-24 bg-white mb-10 p-4 max-w-[1300px] mx-auto">
       <h2 className=" text-darkshadegray text-center">
-        Why people use our service
+        Why people use SolarLocal
       </h2>
       <div className="flex flex-col items-center">
         <div className="grid grid-cols-1 md:grid-cols-4 my-10 gap-4">
