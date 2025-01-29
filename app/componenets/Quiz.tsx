@@ -101,9 +101,7 @@ export const questions = [
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [displaySummary, setDisplaySummary] = useState(false);
-  const [selectedAnswers, setSelectedAnswers] = useState<
-    Record<number, string>
-  >({});
+  const [selectedAnswers, setSelectedAnswers] = useState<any>({});
 
   console.log("answers", selectedAnswers);
 
@@ -150,7 +148,7 @@ export default function Quiz() {
 
   const handleAddressSubmit = () => {
     if (address?.trim()) {
-      setSelectedAnswers((prev) => ({
+      setSelectedAnswers((prev:any) => ({
         ...prev,
         [currentQuestion]: address,
       }));
