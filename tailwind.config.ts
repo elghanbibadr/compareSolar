@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        md: "850px", // Change 'md' breakpoint to 850px
+      },
       colors: {
         textColor:'#545454',
         paleGray:"#EFEFEF",

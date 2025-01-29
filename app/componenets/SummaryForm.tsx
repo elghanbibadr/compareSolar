@@ -21,8 +21,8 @@ const SummaryForm = ({
   });
   const [formSuccessfullySubmited, setFormSuccessfullySubmited] =
     useState(false);
-    const [isLoading,setIsLoading]=useState(false)
-    const [error,setError]=useState('')
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const [isPhoneValid, setIsPhoneValid] = useState(true);
   const {
     country,
@@ -39,18 +39,19 @@ const SummaryForm = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  
+
     if (name === "phoneNumber") {
       // Ensure the phone number starts with '04' and is exactly 10 digits long
       setIsPhoneValid(/^04\d{8}$/.test(value));
     }
   };
-  
-  const storeys = selectedAnswers[3]?.text === "Single-storey" ? "single" : "multi";
+
+  const storeys =
+    selectedAnswers[3]?.text === "Single-storey" ? "single" : "multi";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true)
+    setIsLoading(true);
     if (isPhoneValid) {
       console.log("Form submitted", formData);
 
@@ -76,21 +77,20 @@ const SummaryForm = ({
         roofType: selectedAnswers[2]?.text?.toLowerCase(),
         storeys: storeys,
         tags: ["SL"],
-        energyProvider: "", // optional
-        energyBill: 0, // optional
-        comments: "", // optional
+        comments: `energy bill : ${selectedAnswers[4]?.text?.toLowerCase()}`, // optional
       };
 
+      console.log("details", details);
 
       try {
-         await axios.post("/api/proxy", details);
+        await axios.post("/api/proxy", details);
 
         setFormSuccessfullySubmited(true);
       } catch (error) {
-        setError('Something went wrong try again later !')
-        console.log("error",error)
-      }finally{
-        setIsLoading(false)
+        setError("Something went wrong try again later !");
+        console.log("error", error);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -105,7 +105,6 @@ const SummaryForm = ({
       return { text: selectedAnswers[key], icon: locationIcon };
     }
   });
-
 
   return (
     <div data-aos="fade-up">
@@ -131,7 +130,6 @@ const SummaryForm = ({
                   className="w-full text-xs md:text-sm p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="First name"
                   required
-
                 />
               </div>
               <div>
@@ -146,7 +144,6 @@ const SummaryForm = ({
                   className="w-full p-2 border text-xs md:text-sm border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Last name"
                   required
-
                 />
               </div>
             </div>
@@ -180,7 +177,6 @@ const SummaryForm = ({
                 }`}
                 placeholder="Phone number"
                 required
-
               />
               {!isPhoneValid && (
                 <p className="text-red-500 text-sm mt-1">
@@ -192,7 +188,7 @@ const SummaryForm = ({
               type="submit"
               className="w-full mt-6 py-2 bg-[#FFBA4A] text-white font-semibold rounded-lg  transition"
             >
-              {!isLoading ? "Calculate my savings":"Calculating ...."}
+              {!isLoading ? "Calculate my savings" : "Calculating ...."}
             </button>
             <p className="text-gray-500 text-xs text-center mt-4">
               100% privacy guaranteed & no sponsored products
@@ -215,7 +211,10 @@ const SummaryForm = ({
       )}
 
       {formSuccessfullySubmited && (
-        <div data-aos="fade-up"  className="bg-white p-6   rounded-lg shadow-md text-center max-w-lg mt-12 w-fit mx-4 ">
+        <div
+          data-aos="fade-up"
+          className="bg-white p-6   rounded-lg shadow-md text-center max-w-lg mt-20 w-fit mx-4 "
+        >
           <CheckCircle className="w-10 h-10 text-darkshadegray mx-auto" />
           <h2 className="text-xl font-semibold text-backgroundPaleYellow mt-2">
             Information Received!
@@ -231,9 +230,11 @@ const SummaryForm = ({
           </Link>
         </div>
       )}
-      { error && !isLoading && <div className="bg-white p-6   rounded-lg shadow-md text-center max-w-lg mt-12 w-fit mx-4 ">
-        <h3 className="text-red-500">{error}</h3>
-      </div>}
+      {error && !isLoading && (
+        <div className="bg-white p-6   rounded-lg shadow-md text-center max-w-lg mt-12 w-fit mx-4 ">
+          <h3 className="text-red-500">{error}</h3>
+        </div>
+      )}
     </div>
   );
 };

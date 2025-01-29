@@ -1,14 +1,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import heroBg from "@/public/images/heroBg.svg"
+import heroBg from "@/public/images/Solar house.svg"
 import solarPower from "@/public/images/icons/solarPowerSystem.svg"
 import solarandbattery from "@/public/images/icons/solarandBatteryColored.svg"
 
 export default function Hero() {
   return (
  
-      <div className="md:grid md:grid-cols-2 mt-10  max-w-[1200px] mx-auto justify-center justify-items-center place-items-center ">
+      <div className="md:grid md:grid-cols-2 my-10 gap-10  max-w-[1300px] mx-auto justify-center justify-items-center place-items-center ">
        
         <div  data-aos="fade-right" className="md:my-12   max-w-[1200px] mx-auto ">
           <div className="  ">
@@ -37,10 +37,10 @@ export default function Hero() {
             <h5 className="text-[1.13rem] md:text-[1.5rem] font-bold mb-3 text-center">
               What are you interested in?
             </h5>
-            <div className="flex gap-2 justify-center   mx-auto">
+            <div className="flex flex-col sm:flex-row gap-2  justify-center   ">
               {/* Option 1 */}
               <Link href="/questions">
-                <div className="bg-paleGray  text-darkshadegray p-2 rounded-md">
+                <div className="bg-paleGray  w-[180px] mx-auto   max-w-[200px]  text-darkshadegray p-2 rounded-md">
                   {/* <Image
                     className="mx-auto"
                     src={solarPowerSystemLogo}
@@ -49,18 +49,18 @@ export default function Hero() {
                     height={40}
                   /> */}
               <Image className="mx-auto" src={solarPower} alt="solar power icon" />
-                  <h6 className="text-center text-xs md:text-sm   font-medium w-[120px] max-w-[150px] mt-2">
-                    Solar Power <br /> System
+                  <h6 className="text-center text-darkshadegray  text-xs md:text-sm   font-medium  mt-2">
+                    Solar Power <br className="hidden md:block"/>
+                    System
                   </h6>
                 </div>
               </Link>
               {/* Option 2 */}
               <Link href="/questions">
-                <div className="bg-paleGray text-darkshadegray p-2 rounded-md">
+                <div className="bg-paleGray w-[180px] mx-auto max-w-[200px] text-darkshadegray p-2 rounded-md">
                 <Image className="mx-auto" src={solarandbattery} alt="solar power icon" />
-                <h6 className="text-center text-xs md:text-sm   font-medium w-[120px] max-w-[150px] mt-2">
-                    Solar and <br />
-                    Battery Storage
+                <h6 className="text-center text-darkshadegray  font-medium  text-xs md:text-sm mt-2">
+                    Solar and  <br className="hidden md:block"/> Battery Storage
                   </h6>
                 </div>
               </Link>
@@ -71,10 +71,10 @@ export default function Hero() {
             </span>
           </div>
         </div>
-        <div data-aos="fade-down"
+        <div className="mt-10" data-aos="fade-down"
      data-aos-easing="linear"
      data-aos-duration="1500">
-          <Image src={heroBg} alt='hero alt' width={400} height={400} />
+          <Image src={heroBg} alt='hero alt' width={540} height={540} />
         </div>
       </div>
   );
