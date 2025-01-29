@@ -48,7 +48,6 @@ const SummaryForm = ({
   
   const storeys = selectedAnswers[3]?.text === "Single-storey" ? "single" : "multi";
 
-console.log("storey",storeys)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true)
@@ -109,9 +108,9 @@ console.log("storey",storeys)
 
 
   return (
-    <div>
+    <div data-aos="fade-up">
       {!formSuccessfullySubmited && !error && (
-        <div className="grid md:grid-cols-3 mt-12 gap-x-3 bg-white p-6 rounded-lg shadow-md mx-2   max-w-xl items-center ">
+        <div className="grid md:grid-cols-3 mt-4 gap-x-3 bg-white p-6 rounded-lg shadow-lg mx-2   max-w-xl items-center ">
           <form
             onSubmit={handleSubmit}
             className="col-span-2 text-darkshadegray"
@@ -216,7 +215,7 @@ console.log("storey",storeys)
       )}
 
       {formSuccessfullySubmited && (
-        <div className="bg-white p-6   rounded-lg shadow-md text-center max-w-lg mt-12 w-fit mx-4 ">
+        <div data-aos="fade-up"  className="bg-white p-6   rounded-lg shadow-md text-center max-w-lg mt-12 w-fit mx-4 ">
           <CheckCircle className="w-10 h-10 text-darkshadegray mx-auto" />
           <h2 className="text-xl font-semibold text-backgroundPaleYellow mt-2">
             Information Received!

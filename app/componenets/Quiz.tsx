@@ -102,9 +102,6 @@ export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [displaySummary, setDisplaySummary] = useState(false);
   const [selectedAnswers, setSelectedAnswers] = useState<any>({});
-
-  console.log("answers", selectedAnswers);
-
   const [address, setAddress] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar state
   const router = useRouter();
@@ -212,8 +209,8 @@ export default function Quiz() {
       {/* Question Text */}
       {!displaySummary && (
         <div
-        data-aos="fade-up"
-          className={`md:relative md:right-20 md:mt-20 ${
+          data-aos="fade-up"
+          className={`md:relative md:right-20 md:mt-10 ${
             isNotAvailable ? "hidden" : ""
           }`}
         >
@@ -411,7 +408,7 @@ export default function Quiz() {
       {/* Sidebar */}
       {isSidebarOpen && (
         <div
-        data-aos="fade-left"
+          data-aos="fade-left"
           className={`fixed md:absolute top-0  overflow-scroll right-0 p-3 h-full w-64 md:w-72 bg-white shadow-lg transform ${
             isSidebarOpen ? "translate-x-0" : "translate-x-full"
           } transition-transform duration-300 ease-in-out`}
