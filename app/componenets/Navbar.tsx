@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
@@ -16,6 +16,18 @@ const Navbar = () => {
     { href: "#energySavings", label: "Energy Savings" },
     { href: "#solarEssentials", label: "Solar Essentials" },
   ];
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
 
   return (
     <div className="flex justify-between max-w-[1300px] mx-auto items-center p-4">
