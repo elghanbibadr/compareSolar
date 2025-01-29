@@ -105,18 +105,16 @@ export default function Quiz() {
 
   console.log("answers", selectedAnswers);
 
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar state
   const router = useRouter();
   const [isNotAvailable, setIsNotAvailable] = useState(false);
-  const [fullAdressInfo,setFullAdressInfo]=useState({})
+  const [fullAdressInfo, setFullAdressInfo] = useState({});
 
   const handleOptionSelect = (option: string) => {
     // Get the current question
     const question = questions[currentQuestion];
 
-
-    console.log('selected',option)
     // Check if the user selected "Rent" on the second question
     if (currentQuestion === 1 && option === "Rent") {
       setIsNotAvailable(true); // Show the "Sorry, not available" message
@@ -148,7 +146,7 @@ export default function Quiz() {
 
   const handleAddressSubmit = () => {
     if (address?.trim()) {
-      setSelectedAnswers((prev:any) => ({
+      setSelectedAnswers((prev: any) => ({
         ...prev,
         [currentQuestion]: address,
       }));
@@ -186,13 +184,9 @@ export default function Quiz() {
     };
   }, []);
   const progress = ((currentQuestion + 1) / questions.length) * 100;
-  console.log(questions[currentQuestion].review);
-
-
-  console.log('full adress',fullAdressInfo)
 
   return (
-    <div className="relative overflow-y-hidden flex flex-col items-center h-[90vh] gradient-yellow">
+    <div className="relative overflow-y-hidden rounded-md flex flex-col items-center h-[90vh] gradient-yellow">
       {/* Header */}
       {!displaySummary && (
         <div className="w-full flex items-center justify-between px-4 py-2">
@@ -218,6 +212,7 @@ export default function Quiz() {
       {/* Question Text */}
       {!displaySummary && (
         <div
+        data-aos="fade-up"
           className={`md:relative md:right-20 md:mt-20 ${
             isNotAvailable ? "hidden" : ""
           }`}
@@ -234,7 +229,11 @@ export default function Quiz() {
           )}
           {questions[currentQuestion].isAddress ? (
             <div className="relative w-full max-w-md">
-              <PlacesAutocomplete address={address}  setAddress={setAddress} setFullAdressInfo={setFullAdressInfo} />
+              <PlacesAutocomplete
+                address={address}
+                setAddress={setAddress}
+                setFullAdressInfo={setFullAdressInfo}
+              />
 
               <button
                 onClick={handleAddressSubmit}
@@ -252,7 +251,7 @@ export default function Quiz() {
                     questions[currentQuestion][
                       optionKey as keyof (typeof questions)[number]
                     ];
-                  
+
                   const isSelected =
                     selectedAnswers[currentQuestion]?.text === optionText;
 
@@ -359,7 +358,12 @@ export default function Quiz() {
           </div>
         </div>
       )}
-      {displaySummary && <SummaryForm fullAdressInfo={fullAdressInfo} selectedAnswers={selectedAnswers} />}
+      {displaySummary && (
+        <SummaryForm
+          fullAdressInfo={fullAdressInfo}
+          selectedAnswers={selectedAnswers}
+        />
+      )}
 
       {/* Bottom Progress and Summary */}
       <div className="w-full absolute md:hidden bottom-0 flex items-center justify-between px-6 py-2 bg-white shadow-lg">
@@ -407,12 +411,15 @@ export default function Quiz() {
       {/* Sidebar */}
       {isSidebarOpen && (
         <div
+        data-aos="fade-left"
           className={`fixed md:absolute top-0  overflow-scroll right-0 p-3 h-full w-64 md:w-72 bg-white shadow-lg transform ${
             isSidebarOpen ? "translate-x-0" : "translate-x-full"
           } transition-transform duration-300 ease-in-out`}
         >
           <span className="inline-flex md:inline-block md:bg-white shadow-none justify-between items-center  w-full">
-            <h2 className="text-lg text-darkshadegray  font-bold ">Your Summary</h2>
+            <h2 className="text-lg text-darkshadegray  font-bold ">
+              Your Summary
+            </h2>
             <Image
               className="cursor-pointer md:hidden"
               onClick={() => setIsSidebarOpen(false)}
