@@ -13,7 +13,7 @@ const epilogue = Epilogue({
 export const metadata: Metadata = {
   title: "SolarLocal",
   description:
-    "Empowering communities with clean energy solutions, SolarLocal simplifies solar panel installation, monitoring, and optimization to help you harness the power of the sun.",
+    "Empowering Communities with Clean Energy Solutions | Optimize Solar Power for a Sustainable Future",
 };
 
 export default function RootLayout({
