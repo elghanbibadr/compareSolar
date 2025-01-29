@@ -46,6 +46,9 @@ const SummaryForm = ({
     }
   };
 
+  const storeys = selectedAnswers[3]?.text === "Single-storey" ? "single" : "multi";
+
+console.log("storey",storeys)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true)
@@ -71,8 +74,8 @@ const SummaryForm = ({
         },
         leadTypes: ["RPV"], // Adjust as needed
         isOwner: false,
-        roofType: selectedAnswers[2]?.text,
-        storeys: selectedAnswers[3]?.text,
+        roofType: selectedAnswers[2]?.text?.toLowerCase(),
+        storeys: storeys,
         tags: ["SL"],
         energyProvider: "", // optional
         energyBill: 0, // optional
