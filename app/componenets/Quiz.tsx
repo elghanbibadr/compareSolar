@@ -19,6 +19,7 @@ import question7 from "@/public/images/icons/question7.svg";
 import stars from "@/public/images/icons/stars.svg";
 import PlacesAutocomplete from "./PlacesAutoComplete";
 import SummaryForm from "./SummaryForm";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const questions = [
   {
@@ -406,82 +407,88 @@ export default function Quiz() {
       </div>
 
       {/* Sidebar */}
-      {isSidebarOpen && (
-        <div
-          data-aos="fade-left"
-          className={`fixed md:absolute top-0  overflow-scroll right-0 p-3 h-full w-64 md:w-72 bg-white shadow-lg transform ${
-            isSidebarOpen ? "translate-x-0" : "translate-x-full"
-          } transition-transform duration-300 ease-in-out`}
-        >
-          <span className="inline-flex md:inline-block md:bg-white shadow-none justify-between items-center  w-full">
-            <h2 className="text-lg text-darkshadegray  font-bold ">
-              Your Summary
-            </h2>
-            <Image
-              className="cursor-pointer md:hidden"
-              onClick={() => setIsSidebarOpen(false)}
-              src={close}
-              height={15}
-              width={15}
-              alt=""
-            />
-            <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest">
-              By answering a few questions we can recommend solar installers to
-              compare and start saving
-            </p>
-          </span>
-          <ul className="mt-6">
-            {questions.map((q, index) => (
-              <li
-                key={q.id}
-                className={`mb-2 flex items-center gap-x-2 p-2  ${
-                  index === currentQuestion ? ": text-[#015eb3]" : ""
-                }`}
-              >
-                <Image src={q.icon} alt="icon" height={16} width={16} />
-                <p
-                  className={`  text-xs md:text-sm  ${
-                    index === currentQuestion
-                      ? ": text-backgroundPaleYellow"
-                      : "text-darkshadegray"
+      <AnimatePresence>
+        {isSidebarOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }} // Closing animation
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            // data-aos="fade-left"
+            className={`fixed md:absolute top-0 pt-6  overflow-scroll right-0 p-3 h-full w-64 md:w-72 bg-white shadow-lg transform ${
+              isSidebarOpen ? "translate-x-0" : "translate-x-full"
+            } `}
+          >
+            <span className="inline-flex md:inline-block md:bg-white shadow-none justify-between items-center  w-full">
+              <h2 className="text-lg text-darkshadegray  font-bold ">
+                Your Summary
+              </h2>
+              <Image
+                className="cursor-pointer md:hidden"
+                onClick={() => setIsSidebarOpen(false)}
+                src={close}
+                height={15}
+                width={15}
+                alt=""
+              />
+              <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest">
+                By answering a few questions we can recommend solar installers
+                to compare and start saving
+              </p>
+            </span>
+            <ul className="mt-6">
+              {questions.map((q, index) => (
+                <li
+                  key={q.id}
+                  className={`mb-2 flex items-center gap-x-2 p-2  ${
+                    index === currentQuestion ? ": text-[#015eb3]" : ""
                   }`}
                 >
-                  {q.text}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <div className="w-[80%] hidden md:block mx-auto">
-            <h3 className="font-bold text-base text-[#333333]">
-              Savings Calculator
-            </h3>
-            <div className="relative my-2 w-full h-2 rounded-full bg-gray-200">
-              <div
-                className="absolute  h-2 rounded-full bg-[#FFBA4A]"
-                style={{ width: `${progress}%` }}
-              ></div>
+                  <Image src={q.icon} alt="icon" height={16} width={16} />
+                  <p
+                    className={`  text-xs md:text-sm  ${
+                      index === currentQuestion
+                        ? ": text-backgroundPaleYellow"
+                        : "text-darkshadegray"
+                    }`}
+                  >
+                    {q.text}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <div className="w-[80%] hidden md:block mx-auto">
+              <h3 className="font-bold text-base text-[#333333]">
+                Savings Calculator
+              </h3>
+              <div className="relative my-2 w-full h-2 rounded-full bg-gray-200">
+                <div
+                  className="absolute  h-2 rounded-full bg-[#FFBA4A]"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
+              <span className="text-sm font-medium text-gray-700 mt-1 block">
+                Calculation accuracy {Math.round(progress)}%
+              </span>
             </div>
-            <span className="text-sm font-medium text-gray-700 mt-1 block">
-              Calculation accuracy {Math.round(progress)}%
-            </span>
-          </div>
 
-          <div className="hidden mt-8 md:block md:gradient7">
-            <h2 className="font-bold text-base text-[#333333]">
-              What our customers say
-            </h2>
-            <h3 className="font-bold text-sm my-2 text-[#333333]">
-              {questions[currentQuestion].clientName}
-            </h3>
-            <Image src={stars} alt="starts" />
-            {questions[currentQuestion].review && (
-              <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest mt-3">
-                {questions[currentQuestion].review}
-              </p>
-            )}
-          </div>
-        </div>
-      )}
+            <div className="hidden mt-8 md:block md:gradient7">
+              <h2 className="font-bold text-base text-[#333333]">
+                What our customers say
+              </h2>
+              <h3 className="font-bold text-sm my-2 text-[#333333]">
+                {questions[currentQuestion].clientName}
+              </h3>
+              <Image src={stars} alt="starts" />
+              {questions[currentQuestion].review && (
+                <p className="text-[#484848cc] text-[13px] hidden md:block tracking-tightest mt-3">
+                  {questions[currentQuestion].review}
+                </p>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
