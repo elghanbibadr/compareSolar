@@ -23,7 +23,7 @@ const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({
 
     try {
       const response = await fetch(
-        `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&filter=countrycode:au&apiKey=d7c07bb16ab349ea8189878eb03eeedb`
+        `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&filter=countrycode:au&apiKey=${process.env.NEXT_PUBLIC_PLACES_AUTOCOMPLETE_API_KEY}`
       );
 
       if (!response.ok) {
@@ -64,11 +64,11 @@ const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({
         className="p-3 w-3/4 border border-gray-300 text-[#333333] rounded-lg text-xs md:text-sm shadow-sm focus:outline-none focus:border-blue-500 mb-4"
       />
       {suggestions.length > 0 && (
-        <ul className="  bg-white z-20 border border-gray-300 rounded-md shadow-md max-h-60 overflow-auto">
+        <ul className="  bg-white z-20 py-2  border border-gray-300 rounded-md shadow-md max-h-60 overflow-auto">
           {suggestions.map((suggestion) => (
             <li
               key={suggestion.properties.place_id}
-              className="px-4 py-2 text-[#333333] cursor-pointer hover:bg-blue-100"
+              className="px-4 text-xs md:text-sm py-2 text-[#333333] cursor-pointer hover:bg-blue-100"
               onClick={() => handleSuggestionClick(suggestion)}
             >
               {suggestion.properties.formatted}
