@@ -25,7 +25,7 @@ const OurServices = () => {
               1. Tell Us What You Need
 
             </h3>
-            <p className=" text-darkshadegray f mt-3">
+            <p className=" text-darkshadegray  mt-3">
             Answer a few quick questions so we can understand your requirements.
 
 

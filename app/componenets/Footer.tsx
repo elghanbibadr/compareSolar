@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import logo from "@/public/images/SolarLocal Icon+logo.png";
+import logo from "@/public/images/SolarLocal Iconlogo.webp";
 
 const Footer = () => {
   return (

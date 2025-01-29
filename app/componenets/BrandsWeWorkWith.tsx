@@ -1,20 +1,20 @@
 import React from "react";
 import Image from "next/image";
 
-import brand1 from "@/public/images/logo-lg-modified.png";
-import brand2 from "@/public/images/logo-sunpower-modified.png";
-import brand3 from "@/public/images/logo-qcelis-modified.png";
-import brand4 from "@/public/images/logo-canadian-modified.png";
-import brand5 from "@/public/images/logo-Jinko-modified.png";
-import brand6 from "@/public/images/logo-trinasolar-modified.png";
-import brand7 from "@/public/images/logo-rec-modified.png";
-import brand8 from "@/public/images/logo-fronius-modified.png";
-import brand9 from "@/public/images/logo-solaredge-modified.png";
-import brand10 from "@/public/images/logo-sma-modified.png";
-import brand11 from "@/public/images/logo-delta-modified.png";
-import brand12 from "@/public/images/logo-abb-modified.png";
-import brand13 from "@/public/images/logo-enphase-modified.png";
-import brand14 from "@/public/images/logo-schneider-modified.png";
+import brand1 from "@/public/images/logo-lg-modified.webp";
+import brand2 from "@/public/images/logo-sunpower-modified.webp";
+import brand3 from "@/public/images/logo-qcelis-modified.webp";
+import brand4 from "@/public/images/logo-canadian-modified.webp";
+import brand5 from "@/public/images/logo-Jinko-modified.webp";
+import brand6 from "@/public/images/logo-trinasolar-modified.webp";
+import brand7 from "@/public/images/logo-rec-modified.webp";
+import brand8 from "@/public/images/logo-fronius-modified.webp";
+import brand9 from "@/public/images/logo-solaredge-modified.webp";
+import brand10 from "@/public/images/logo-sma-modified.webp";
+import brand11 from "@/public/images/logo-delta-modified.webp";
+import brand12 from "@/public/images/logo-abb-modified.webp";
+import brand13 from "@/public/images/logo-enphase-modified.webp";
+import brand14 from "@/public/images/logo-schneider-modified.webp";
 
 const brandLogos = [
   { src: brand1, alt: "Brand logo 1" },

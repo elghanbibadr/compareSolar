@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import logo from "@/public/images/SolarLocal Icon+logo.png";
+import logo from "@/public/images/SolarLocal Iconlogo.webp";
 import Quide2 from "@/public/images/Guide_03.png";
 
 import Quiz from '../componenets/Quiz';

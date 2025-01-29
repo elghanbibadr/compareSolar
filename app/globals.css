@@ -62,13 +62,6 @@ body {
   @apply bg-gradient-to-b from-yellow-400 to-orange-400;
 }
 
-@media screen and (max-width:780px) {
-  .hero-wrapper {
-    background-image:url("/images/hero-mobile.png");
-  background-position: top;
-
-  }
-}
 
 p{
   @apply text-textColor leading-5  md:leading-6 text-sm md:text-base

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/images/SolarLocal Icon+logo.png";
+import logo from "@/public/images/SolarLocal Iconlogo.webp";
 import React from "react";
 
 const Navbar = () => {
