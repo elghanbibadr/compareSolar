@@ -23,7 +23,7 @@ const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({
 
     try {
       const response = await fetch(
-        `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&filter=countrycode:au&apiKey=${process.env.NEXT_PUBLIC_PLACES_AUTOCOMPLETE_API_KEY}`
+        `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&filter=countrycode:au&apiKey=d7c07bb16ab349ea8189878eb03eeedb`
       );
 
       if (!response.ok) {
