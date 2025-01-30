@@ -34,7 +34,7 @@ const Navbar = () => {
       {/* Logo */}
       <span className="inline-flex w-fit items-center">
         <Image
-          className="w-auto relative right-4 md:right-7 h-[46px] md:h-[90px]"
+          className="w-auto relative right-4 md:right-7 h-[50px] md:h-auto"
           src={logo}
           alt="solar logo"
           width={200}

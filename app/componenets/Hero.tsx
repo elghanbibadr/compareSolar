@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import heroBg from "@/public/images/Solar house.svg"
+import heroBg from "@/public/images/solar.svg"
 import solarPower from "@/public/images/icons/solarPowerSystem.svg"
 import solarandbattery from "@/public/images/icons/solarandBatteryColored.svg"
 

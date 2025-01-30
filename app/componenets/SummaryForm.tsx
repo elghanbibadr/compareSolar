@@ -73,7 +73,7 @@ const SummaryForm = ({
           coordinates: { lat: lat, lng: lon },
         },
         leadTypes: ["RPV"], // Adjust as needed
-        isOwner: false,
+        isOwner: true,
         roofType: selectedAnswers[2]?.text?.toLowerCase(),
         storeys: storeys,
         tags: ["SL"],
