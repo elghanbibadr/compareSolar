@@ -13,13 +13,13 @@ export default function Hero() {
             Find the Best Solar Energy <br className="hidden md:block" />
             Deals for Your Home
           </h1>
-          <p className="mt-3 md:w-[80%] p-3 md:p-3 my-4 text-center md:text-left  text-textColor ">
+          <p className="mt-3 md:w-[80%] p-3 md:p-0 my-4 text-center md:text-left  text-textColor ">
             We search far and wide to find you the best deals, leaving you free
             to choose the one that suits you perfectly that’s right for you.
           </p>
         </div>
         {/* "Start Here" Button */}
-        <div className="bg-darkshadegray  relative  rounded-lg mx-auto md:mx-1 sm:w-[450px] max-w-[450px]  p-6  mt-10 mb-6 md:p-8 md:rounded-md">
+        <div className="bg-darkshadegray  relative  rounded-lg mx-auto md:mx-0 sm:w-[450px] max-w-[450px]  p-6  mt-10 mb-6 md:p-8 md:rounded-md">
           <Link href="/questions">
             <div className="absolute -top-6 left-0 right-0 mx-auto   flex items-center justify-center animate-bounce-custom">
               <div className="relative bg-gradient-to-b from-yellow-400 to-orange-400  text-white text-sm md:text-lg font-bold px-6 py-3 rounded-md shadow-md">

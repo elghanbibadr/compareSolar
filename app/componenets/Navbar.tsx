@@ -28,20 +28,16 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
   return (
     <div className="flex justify-between max-w-[1300px] mx-auto items-center p-4">
       {/* Logo */}
-      <span className="inline-flex w-fit items-center">
-        <Image
-          className="w-auto relative right-4 md:right-7 h-[50px] md:h-auto"
-          src={logo}
-          alt="solar logo"
-          width={200}
-          height={100}
-        />
-      </span>
-
+      <Image
+        className=" relative right-8  "
+        src={logo}
+        alt="solar logo"
+        width={200}
+        height={100}
+      />
       {/* Desktop Navigation */}
       <ul className="hidden md:flex cursor-pointer text-darkshadegray w-full text-nowrap items-center justify-center gap-x-6 lg:gap-x-10 text-sm lg:text-base">
         {navLinks.map((link) => (
