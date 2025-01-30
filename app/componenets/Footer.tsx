@@ -21,7 +21,6 @@ const Footer = () => {
         {/* Logo Section */}
         <div className="flex flex-col items-center">
           <span className="inline-flex w-fit items-center ">
-            {/* <Image className="h-8 w-8 md:h-auto md:w-auto" src={sun} alt="solar logo" width={45} height={45} /> */}
             <Image
               className=""
               src={logo}

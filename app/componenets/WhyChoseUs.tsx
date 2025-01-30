@@ -42,11 +42,11 @@ const WhyChoseUs = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className=" border rounded-xl hover:bg-[#FEF7E4] duration-200 p-4 border-[#ececec] md:text-left"
+              className=" border rounded-xl hover:bg-[#FEF7E4] duration-200 p-4 py-5 cursor-pointer border-[#ececec] md:text-left"
             >
               {/* <div className="text-3xl mb-4">{step.icon}</div> */}
               <Image
-                className=" h-12 w-12 mb-4"
+                className=" h-11 w-11 mb-6"
                 src={step.icon}
                 height={20}
                 width={20}

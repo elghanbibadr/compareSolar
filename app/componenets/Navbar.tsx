@@ -65,8 +65,8 @@ const Navbar = () => {
         <Image
           src={hamburgerMenu}
           className="cursor-pointer"
-          height={22}
-          width={22}
+          height={20}
+          width={20}
           alt="hamburger menu"
           onClick={() => setIsOpen(true)}
         />
