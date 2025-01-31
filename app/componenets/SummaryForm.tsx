@@ -13,6 +13,10 @@ const SummaryForm = ({
   selectedAnswers: any;
   fullAdressInfo: any;
 }) => {
+
+
+  console.log("slected answers",selectedAnswers)
+  console.log("selected adress info",fullAdressInfo)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -49,52 +53,54 @@ const SummaryForm = ({
   const storeys =
     selectedAnswers[3]?.text === "Single-storey" ? "single" : "multi";
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    if (isPhoneValid) {
-      console.log("Form submitted", formData);
-
-      const details = {
-        contact: {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          phone: formData.phoneNumber,
-          email: formData.email,
-        },
-        address: {
-          full: address_line1 + address_line2,
-          postCode: postcode,
-          placeId: place_id,
-          state: state,
-          country: country,
-          city: city,
-          suburb: address_line1,
-          coordinates: { lat: lat, lng: lon },
-        },
-        leadTypes: ["RPV"], // Adjust as needed
-        isOwner: true,
-        roofType: selectedAnswers[2]?.text?.toLowerCase(),
-        storeys: storeys,
-        tags: ["SL"],
-        comments: `energy bill : ${selectedAnswers[4]?.text?.toLowerCase()}`, // optional
-      };
-
-      console.log("details", details);
-
-      try {
-        await axios.post("/api/proxy", details);
-
-        setFormSuccessfullySubmited(true);
-      } catch (error) {
-        setError("Something went wrong try again later !");
-        console.log("error", error);
-      } finally {
-        setIsLoading(false);
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      setIsLoading(true);
+    
+      if (isPhoneValid) {
+        console.log("Form submitted", formData);
+    
+        const details = {
+          contact: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            phone: formData.phoneNumber,
+            email: formData.email,
+          },
+          address: fullAdressInfo && Object.keys(fullAdressInfo).length > 0
+            ? {
+                full: address_line1 + " " + address_line2,
+                postCode: postcode,
+                placeId: place_id,
+                state: state,
+                country: country,
+                city: city,
+                suburb: address_line1,
+                coordinates: { lat: lat, lng: lon },
+              }
+            : { raw: selectedAnswers[6] }, // When fullAdressInfo is empty
+          leadTypes: ["RPV"], // Adjust as needed
+          isOwner: true,
+          roofType: selectedAnswers[2]?.text?.toLowerCase(),
+          storeys: storeys,
+          tags: ["SL"],
+          comments: `energy bill : ${selectedAnswers[4]?.text?.toLowerCase()}`, // optional
+        };
+    
+        console.log("details", details);
+    
+        try {
+          await axios.post("/api/proxy", details);
+          setFormSuccessfullySubmited(true);
+        } catch (error) {
+          setError("Something went wrong, try again later!");
+          console.log("error", error);
+        } finally {
+          setIsLoading(false);
+        }
       }
-    }
-  };
-
+    };
+    
   const transformedAnswers = Object.keys(selectedAnswers).map((key: any) => {
     if (key !== "6") {
       return {

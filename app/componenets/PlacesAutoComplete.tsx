@@ -14,7 +14,6 @@ const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({
 }) => {
   const [suggestions, setSuggestions] = useState<any[]>([]);
 
-
   const fetchSuggestions = async (text: string) => {
     if (!text) {
       setSuggestions([]);
@@ -51,7 +50,7 @@ const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({
   };
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col max-w-xl items-center w-full">
       <p className="text-white w-[80%] mx-auto mb-4 text-center">
         We ask this so we can give you the most accurate quote possible, we
         won’t share your address with anyone else.
@@ -64,7 +63,7 @@ const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({
         className="p-3 w-3/4 border border-gray-300 text-[#333333] rounded-lg text-xs md:text-sm shadow-sm focus:outline-none focus:border-blue-500 mb-4"
       />
       {suggestions.length > 0 && (
-        <ul className="  bg-white z-20 py-2  border border-gray-300 rounded-md shadow-md max-h-60 overflow-auto">
+        <ul className="  bg-white h-[140px]  mb-2 py-2  border border-gray-300 rounded-md shadow-md  overflow-y-scroll">
           {suggestions.map((suggestion) => (
             <li
               key={suggestion.properties.place_id}
@@ -76,7 +75,6 @@ const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({
           ))}
         </ul>
       )}
-      {/* {suggestions.length === 0 && address && <p className="text-red-500 text-sm text-center">No results found...</p>} Only show "No results found..." if suggestions are empty and address is not empty */}
     </div>
   );
 };

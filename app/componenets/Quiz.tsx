@@ -142,7 +142,12 @@ export default function Quiz() {
     }
   };
 
-  const handleAddressSubmit = () => {
+  const handleAddressSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("submited");
+    console.log("adress",address)
+
+    // return;
     if (address?.trim()) {
       setSelectedAnswers((prev: any) => ({
         ...prev,
@@ -211,7 +216,7 @@ export default function Quiz() {
       {!displaySummary && (
         <div
           data-aos="fade-up"
-          className={`md:relative md:right-20 md:mt-10 ${
+          className={`md:relative md:right-20 md:mt-4 ${
             isNotAvailable ? "hidden" : ""
           }`}
         >
@@ -226,7 +231,10 @@ export default function Quiz() {
             </p>
           )}
           {questions[currentQuestion].isAddress ? (
-            <div className="relative w-full max-w-md">
+            <form
+              onSubmit={handleAddressSubmit}
+              className="relative my-2 w-full max-w-xl"
+            >
               <PlacesAutocomplete
                 address={address}
                 setAddress={setAddress}
@@ -234,12 +242,12 @@ export default function Quiz() {
               />
 
               <button
-                onClick={handleAddressSubmit}
+                type="submit"
                 className="p-3 w-3/4 mx-auto block bg-darkshadegray text-white rounded-lg shadow "
               >
                 Continue
               </button>
-            </div>
+            </form>
           ) : (
             <div className="grid sm:grid-cols-2 w-fit mx-auto gap-4 ">
               {Object.keys(questions[currentQuestion])
