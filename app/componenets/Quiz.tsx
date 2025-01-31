@@ -147,6 +147,7 @@ export default function Quiz() {
     console.log("submited");
     console.log("adress",address)
 
+
     // return;
     if (address?.trim()) {
       setSelectedAnswers((prev: any) => ({
@@ -154,9 +155,7 @@ export default function Quiz() {
         [currentQuestion]: address,
       }));
       setDisplaySummary(true);
-    } else {
-      alert("Please enter your address.");
-    }
+    } 
   };
 
   const handleBack = () => {

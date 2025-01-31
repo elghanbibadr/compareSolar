@@ -9,6 +9,8 @@ export async function POST(req: NextRequest) {
     const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_ENDPOINT_API_KEY}`, body, {
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `${process.env.NEXT_PUBLIC_BACKEND_ENDPOINT_AUTHORIZATION_KEY}`,
+ 
       },
     });
 
