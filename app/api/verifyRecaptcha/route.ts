@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   const body = await request.json();
   const { token } = body;
 
-  console.log("token",token)
+  console.log("tokensss",token)
 
   const secretKey = process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SECRET_KEY ?? "";
   console.log("secret",secretKey)
