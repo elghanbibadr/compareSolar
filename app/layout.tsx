@@ -4,6 +4,7 @@ import "./globals.css";
 import "aos/dist/aos.css";
 import "./globals.css"; // Your own global styles (if any)
 import AosInit from "./componenets/Aos";
+import RecaptchaProvider from "./componenets/RecaptchaProvider";
 
 const epilogue = Epilogue({
   variable: "--font-epilogue",
@@ -27,7 +28,10 @@ export default function RootLayout({
         className={` ${epilogue.className} ${epilogue.variable} antialiased`}
       >
         <AosInit />
+        <RecaptchaProvider>
+
         {children}
+        </RecaptchaProvider>
       </body>
     </html>
   );

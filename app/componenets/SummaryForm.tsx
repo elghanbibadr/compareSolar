@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+"use client"
 import { CheckCircle } from "lucide-react";
 import { useState } from "react";
 import locationIcon from "@/public/images/icons/Location.svg";
 import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const SummaryForm = ({
   selectedAnswers,
@@ -13,16 +16,16 @@ const SummaryForm = ({
   selectedAnswers: any;
   fullAdressInfo: any;
 }) => {
-
-
-  console.log("slected answers",selectedAnswers)
-  console.log("selected adress info",fullAdressInfo)
+  console.log("slected answers", selectedAnswers);
+  console.log("selected adress info", fullAdressInfo);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
   });
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formSuccessfullySubmited, setFormSuccessfullySubmited] =
     useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -53,21 +56,45 @@ const SummaryForm = ({
   const storeys =
     selectedAnswers[3]?.text === "Single-storey" ? "single" : "multi";
 
-    const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-      setIsLoading(true);
-    
-      if (isPhoneValid) {
-        console.log("Form submitted", formData);
-    
-        const details = {
-          contact: {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            phone: formData.phoneNumber,
-            email: formData.email,
-          },
-          address: fullAdressInfo && Object.keys(fullAdressInfo).length > 0
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!executeRecaptcha) return;
+    try {
+      const token = await executeRecaptcha("form_submit");
+
+      console.log("token",token)
+      const recaptchaResponse = await fetch("/api/verifyRecaptcha", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }, // ✅ Required header
+        body: JSON.stringify({ token }), // ✅ Send token as an object
+      });
+      
+ console.log("recaptcha res",recaptchaResponse)
+      if (!recaptchaResponse.ok) {
+        alert("error validation");
+      }
+      const data = await recaptchaResponse.json();
+
+      if(!data?.success)return
+
+      console.log("data", data);
+    } catch (e) {
+      console.log("error", e);
+      return;
+    }
+    setIsLoading(true);
+
+    if (isPhoneValid) {
+
+      const details = {
+        contact: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          phone: formData.phoneNumber,
+          email: formData.email,
+        },
+        address:
+          fullAdressInfo && Object.keys(fullAdressInfo).length > 0
             ? {
                 full: address_line1 + " " + address_line2,
                 postCode: postcode,
@@ -79,28 +106,27 @@ const SummaryForm = ({
                 coordinates: { lat: lat, lng: lon },
               }
             : { raw: selectedAnswers[6] }, // When fullAdressInfo is empty
-          leadTypes: ["RPV"], // Adjust as needed
-          isOwner: true,
-          roofType: selectedAnswers[2]?.text?.toLowerCase(),
-          storeys: storeys,
-          tags: ["SL"],
-          comments: `energy bill : ${selectedAnswers[4]?.text?.toLowerCase()}`, // optional
-        };
-    
-        console.log("details", details);
-    
-        try {
-          await axios.post("/api/proxy", details);
-          setFormSuccessfullySubmited(true);
-        } catch (error) {
-          setError("Something went wrong, try again later!");
-          console.log("error", error);
-        } finally {
-          setIsLoading(false);
-        }
+        leadTypes: ["RPV"], // Adjust as needed
+        isOwner: true,
+        roofType: selectedAnswers[2]?.text?.toLowerCase(),
+        storeys: storeys,
+        tags: ["SL"],
+        comments: `energy bill : ${selectedAnswers[4]?.text?.toLowerCase()}`, // optional
+      };
+
+
+      try {
+        await axios.post("/api/proxy", details);
+        setFormSuccessfullySubmited(true);
+      } catch (error) {
+        setError("Something went wrong, try again later!");
+        console.log("error", error);
+      } finally {
+        setIsLoading(false);
       }
-    };
-    
+    }
+  };
+
   const transformedAnswers = Object.keys(selectedAnswers).map((key: any) => {
     if (key !== "6") {
       return {
