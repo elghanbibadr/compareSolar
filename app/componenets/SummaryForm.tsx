@@ -16,8 +16,7 @@ const SummaryForm = ({
   selectedAnswers: any;
   fullAdressInfo: any;
 }) => {
-  console.log("slected answers", selectedAnswers);
-  console.log("selected adress info", fullAdressInfo);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -62,22 +61,20 @@ const SummaryForm = ({
     try {
       const token = await executeRecaptcha("form_submit");
 
-      console.log("token",token)
       const recaptchaResponse = await fetch("/api/verifyRecaptcha", {
         method: "POST",
-        headers: { "Content-Type": "application/json" }, // ✅ Required header
-        body: JSON.stringify({ token }), // ✅ Send token as an object
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token }), 
       });
       
- console.log("recaptcha res",recaptchaResponse)
       if (!recaptchaResponse.ok) {
         alert("error validation");
       }
       const data = await recaptchaResponse.json();
 
+      console.log("data", data);
       if(!data?.success)return
 
-      console.log("data", data);
     } catch (e) {
       console.log("error", e);
       return;
