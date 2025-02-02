@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-"use client"
+"use client";
 import { CheckCircle } from "lucide-react";
 import { useState } from "react";
 import locationIcon from "@/public/images/icons/Location.svg";
@@ -8,6 +8,7 @@ import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { ArrowLeft} from "lucide-react";
 
 const SummaryForm = ({
   selectedAnswers,
@@ -16,7 +17,6 @@ const SummaryForm = ({
   selectedAnswers: any;
   fullAdressInfo: any;
 }) => {
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -58,69 +58,77 @@ const SummaryForm = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!executeRecaptcha) return;
+
     try {
       const token = await executeRecaptcha("form_submit");
 
       const recaptchaResponse = await fetch("/api/verifyRecaptcha", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token }), 
+        body: JSON.stringify({ token }),
       });
-      
+
       if (!recaptchaResponse.ok) {
-        alert("error validation");
+        alert("Error in validation");
+        return;
       }
+
       const data = await recaptchaResponse.json();
-
-      console.log("data", data);
-      if(!data?.success)return
-
-    } catch (e) {
-      console.log("error", e);
+      if (!data?.success) {
+        setError(
+          "there was an error processing your request try again later !"
+        );
+        return;
+      }
+    } catch (error) {
+      console.error("Recaptcha Error:", error);
       return;
     }
+
     setIsLoading(true);
 
-    if (isPhoneValid) {
+    if (!isPhoneValid) return;
 
-      const details = {
-        contact: {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          phone: formData.phoneNumber,
-          email: formData.email,
-        },
-        address:
-          fullAdressInfo && Object.keys(fullAdressInfo).length > 0
-            ? {
-                full: address_line1 + " " + address_line2,
-                postCode: postcode,
-                placeId: place_id,
-                state: state,
-                country: country,
-                city: city,
-                suburb: address_line1,
-                coordinates: { lat: lat, lng: lon },
-              }
-            : { raw: selectedAnswers[6] }, // When fullAdressInfo is empty
-        leadTypes: ["RPV"], // Adjust as needed
-        isOwner: true,
-        roofType: selectedAnswers[2]?.text?.toLowerCase(),
-        storeys: storeys,
-        tags: ["SL"],
-        comments: `energy bill : ${selectedAnswers[4]?.text?.toLowerCase()}`, // optional
-      };
+    const contact = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      phone: formData.phoneNumber,
+      email: formData.email,
+    };
 
+    const address =
+      fullAdressInfo && Object.keys(fullAdressInfo).length > 0
+        ? {
+            full: `${address_line1} ${address_line2}`,
+            postCode: postcode,
+            placeId: place_id,
+            state,
+            country,
+            city,
+            suburb: address_line1,
+            coordinates: { lat, lng: lon },
+          }
+        : { raw: selectedAnswers[6] };
 
-      try {
-        await axios.post("/api/proxy", details);
-        setFormSuccessfullySubmited(true);
-      } catch (error) {
-        setError("Something went wrong, try again later!");
-        console.log("error", error);
-      } finally {
-        setIsLoading(false);
-      }
+    const details = {
+      contact,
+      address,
+      leadTypes: ["RPV"],
+      isOwner: true,
+      roofType: selectedAnswers[2]?.text?.toLowerCase(),
+      storeys,
+      tags: ["SL"],
+      comments: `energy bill: ${selectedAnswers[4]?.text?.toLowerCase()}`,
+    };
+
+    try {
+      await axios.post("/api/proxy", details);
+      setFormSuccessfullySubmited(true);
+    } catch (error) {
+      setError("Something went wrong, try again later!");
+      console.error("Submission Error:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -260,8 +268,14 @@ const SummaryForm = ({
         </div>
       )}
       {error && !isLoading && (
-        <div className="bg-white p-6   rounded-lg shadow-md text-center max-w-lg mt-12 w-fit mx-4 ">
-          <h3 className="text-red-500">{error}</h3>
+        <div className="bg-white p-6 text-red-500  rounded-lg shadow-md text-center max-w-lg mt-14 w-fit mx-4 ">
+          <h3>{error}</h3>
+          <Link href="/" className="flex items-center mt-10 gap-2 justify-center">
+          <ArrowLeft className="block" height={16} width={16} />
+            <span className="text cursor-pointer  text-sm block ">
+              Go Back
+            </span>
+          </Link>
         </div>
       )}
     </div>
