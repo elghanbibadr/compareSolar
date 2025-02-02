@@ -68,12 +68,16 @@ const SummaryForm = ({
         body: JSON.stringify({ token }),
       });
 
+      console.log('recaptcha res',recaptchaResponse)
+
       if (!recaptchaResponse.ok) {
         alert("Error in validation");
         return;
       }
 
       const data = await recaptchaResponse.json();
+
+      console.log('recaptcha data',data)
       if (!data?.success) {
         setError(
           "there was an error processing your request try again later !"
