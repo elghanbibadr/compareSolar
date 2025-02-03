@@ -8,7 +8,7 @@ import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { ArrowLeft} from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 const SummaryForm = ({
   selectedAnswers,
@@ -68,7 +68,7 @@ const SummaryForm = ({
         body: JSON.stringify({ token }),
       });
 
-      console.log('recaptcha res',recaptchaResponse)
+      console.log("recaptcha res", recaptchaResponse);
 
       if (!recaptchaResponse.ok) {
         alert("Error in validation");
@@ -77,7 +77,7 @@ const SummaryForm = ({
 
       const data = await recaptchaResponse.json();
 
-      console.log('recaptcha data',data)
+      console.log("recaptcha data", data);
       if (!data?.success) {
         setError(
           "there was an error processing your request try again later !"
@@ -100,8 +100,6 @@ const SummaryForm = ({
       email: formData.email,
     };
 
-
-    console.log("post code",postcode)
     const address =
       fullAdressInfo && Object.keys(fullAdressInfo).length > 0
         ? {
@@ -114,7 +112,7 @@ const SummaryForm = ({
             suburb: address_line1,
             coordinates: { lat, lng: lon },
           }
-        : { raw: selectedAnswers[6],postCode: "0000", };
+        : { raw: selectedAnswers[6], postCode: "0000" };
 
     const details = {
       contact,
@@ -276,11 +274,12 @@ const SummaryForm = ({
       {error && !isLoading && (
         <div className="bg-white p-6 text-red-500  rounded-lg shadow-md text-center max-w-lg mt-14 w-fit mx-4 ">
           <h3>{error}</h3>
-          <Link href="/" className="flex items-center mt-10 gap-2 justify-center">
-          <ArrowLeft className="block" height={16} width={16} />
-            <span className="text cursor-pointer  text-sm block ">
-              Go Back
-            </span>
+          <Link
+            href="/"
+            className="flex items-center mt-10 gap-2 justify-center"
+          >
+            <ArrowLeft className="block" height={16} width={16} />
+            <span className="text cursor-pointer  text-sm block ">Go Back</span>
           </Link>
         </div>
       )}

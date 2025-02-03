@@ -9,7 +9,7 @@ interface RecaptchaProviderProps {
 
 const RecaptchaProvider: React.FC<RecaptchaProviderProps> = ({ children }) => {
   return (
-    <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITE_KEY ?? ""}>
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.GOOGLE_RECAPTCHA_SITE_KEY ?? ""}>
       {children}
     </GoogleReCaptchaProvider>
   );

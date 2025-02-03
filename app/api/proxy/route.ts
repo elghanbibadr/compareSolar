@@ -6,10 +6,10 @@ import axios from "axios";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json(); // Parse request body
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_ENDPOINT_API_KEY}`, body, {
+    const response = await axios.post(`${process.env.BACKEND_ENDPOINT_API_KEY}`, body, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `${process.env.NEXT_PUBLIC_BACKEND_ENDPOINT_AUTHORIZATION_KEY}`,
+        "Authorization": `${process.env.BACKEND_ENDPOINT_AUTHORIZATION_KEY}`,
  
       },
     });
