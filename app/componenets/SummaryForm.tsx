@@ -100,11 +100,13 @@ const SummaryForm = ({
       email: formData.email,
     };
 
+
+    console.log("post code",postcode)
     const address =
       fullAdressInfo && Object.keys(fullAdressInfo).length > 0
         ? {
             full: `${address_line1} ${address_line2}`,
-            postCode: postcode,
+            postCode: postcode || "0000",
             placeId: place_id,
             state,
             country,
@@ -112,7 +114,7 @@ const SummaryForm = ({
             suburb: address_line1,
             coordinates: { lat, lng: lon },
           }
-        : { raw: selectedAnswers[6] };
+        : { raw: selectedAnswers[6],postCode: "0000", };
 
     const details = {
       contact,
