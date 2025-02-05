@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import logo from "@/public/images/SolarLocal Iconlogo.webp";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -9,28 +10,33 @@ const Footer = () => {
         {/* Heading and Description */}
         <div className="mb-6">
           <h2 className="text-xl md:text-3xl font-bold mb-2">
-            {" "}
             Your trusted solar experts.
           </h2>
-          <p className="">
+          <p>
             We make going solar easy with our 5-star service. See how much you
             can save!
           </p>
+          <ul className="flex text-sm justify-center md:justify-start items-center mt-10 gap-x-3">
+              <li className="hover:text-[#FBB724] text-textColor">
+                <Link href={""}>Privacy Policy</Link>
+              </li>
+              <span>|</span>
+              <li className="hover:text-[#FBB724] text-textColor">
+                <Link href={""}>Terms & Conditions</Link>
+              </li>
+            </ul>
+        
         </div>
 
         {/* Logo Section */}
         <div className="flex flex-col items-center">
-          <span className="inline-flex w-fit items-center ">
-            <Image
-              className=""
-              src={logo}
-              alt="solar logo"
-              width={200}
-              height={100}
-            />
+          <span className="inline-flex w-fit items-center">
+            <Image src={logo} alt="solar logo" width={200} height={100} />
           </span>
 
-          <p className="text-gray-400 text-sm mt-2"> © 2025 SolarLocal</p>
+          {/* Links Section */}
+          
+          <p className="text-gray-400 text-sm mt-2">© 2025 SolarLocal</p>
         </div>
       </div>
     </footer>
