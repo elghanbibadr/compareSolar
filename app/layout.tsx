@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Epilogue } from "next/font/google";
 import "./globals.css";
 import "aos/dist/aos.css";
@@ -13,9 +13,15 @@ const epilogue = Epilogue({
 
 export const metadata: Metadata = {
   title: "SolarLocal",
+ 
   description:
     "Empowering Communities with Clean Energy Solutions | Optimize Solar Power for a Sustainable Future",
 };
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: 'device-width',
+  maximumScale:1
+}
 
 export default function RootLayout({
   children,
@@ -23,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" >
       <body
         className={` ${epilogue.className} ${epilogue.variable} antialiased`}
       >

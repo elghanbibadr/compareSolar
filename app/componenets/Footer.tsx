@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import logo from "@/public/images/SolarLocal Iconlogo.webp";
@@ -35,15 +35,14 @@ const Footer = () => {
             can save!
           </p>
           <ul className="flex text-sm justify-center md:justify-start items-center mt-10 gap-x-3">
-              <li className="hover:text-[#FBB724] text-textColor">
-                <Link href={""}>Privacy Policy</Link>
-              </li>
-              <span>|</span>
-              <li className="hover:text-[#FBB724] text-textColor">
-                <Link href={""}>Terms & Conditions</Link>
-              </li>
-            </ul>
-        
+            <li className="hover:text-[#FBB724] text-textColor">
+              <Link href={""}>Privacy Policy</Link>
+            </li>
+            <span>|</span>
+            <li className="hover:text-[#FBB724] text-textColor">
+              <Link href={""}>Terms & Conditions</Link>
+            </li>
+          </ul>
         </div>
 
         {/* Logo Section */}
@@ -53,7 +52,7 @@ const Footer = () => {
           </span>
 
           {/* Links Section */}
-          
+
           <p className="text-gray-400 text-sm mt-2">© 2025 SolarLocal</p>
         </div>
       </div>
@@ -62,14 +61,14 @@ const Footer = () => {
           isHeroVisible ? "static" : "fixed bottom-0"
         }`}
       >
-        <div className=" max-w-[1300px] mx-auto p-6 text-center gap-3 grid grid-cols-1 justify-center items-center  md:grid-cols-2">
+        <div className=" p-6 text-center gap-3 grid grid-cols-1 justify-center items-center md:grid-cols-2">
           <h2 className="text-darkshadegray text-center  justify-end justify-self-end md:text-nowrap md:text-2xl font-semibold">
-            Compare the Best Solar Deals for Your Home
+            Get 3 Free Solar Quotes from Local Installers{" "}
           </h2>
           <div className=" ">
             <Link href="/questions">
               <button className="inline-flex text-darkshadegray items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-1  bg-white    text-base  gap-x-2 shrink-0    px-10 py-4 rounded-md font-medium">
-                Find deals now
+                Claim Now{" "}
               </button>
             </Link>
           </div>
