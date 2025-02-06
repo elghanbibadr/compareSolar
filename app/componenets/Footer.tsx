@@ -68,7 +68,7 @@ const Footer = () => {
           <div className=" ">
             <Link href="/questions">
               <button className="inline-flex text-darkshadegray items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-1  bg-white    text-base  gap-x-2 shrink-0    px-10 py-4 rounded-md font-medium">
-                Claim Now{" "}
+              Compare Now
               </button>
             </Link>
           </div>
