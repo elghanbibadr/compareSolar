@@ -6,7 +6,7 @@ import solarandbattery from "@/public/images/icons/solarandBatteryColored.svg";
 
 export default function Hero() {
   return (
-    <div className="md:grid md:grid-cols-2 my-10 gap-10  max-w-[1300px] mx-auto justify-center justify-items-center place-items-center ">
+    <div id="hero" className="md:grid md:grid-cols-2 my-10 gap-10 px-4 md:px-6 max-w-[1300px] mx-auto justify-center justify-items-center place-items-center ">
       <div data-aos="fade-right" className="md:my-12   max-w-[1200px] mx-auto ">
         <div className="  ">
           <h1 className="text-[1.38rem]  leading-8 text-darkshadegray text-center md:text-left font-bold md:text-[2.6rem] md:leading-[1.3] md:tracking-[-0.02em]">

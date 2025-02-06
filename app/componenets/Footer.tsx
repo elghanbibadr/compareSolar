@@ -1,9 +1,27 @@
+"use client"
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "@/public/images/SolarLocal Iconlogo.webp";
 import Link from "next/link";
 
 const Footer = () => {
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
+
+  useEffect(() => {
+    const heroSection = document.getElementById("hero");
+    if (!heroSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroVisible(entry.isIntersecting);
+      },
+      { threshold: 0.2 } // Adjust this threshold as needed
+    );
+
+    observer.observe(heroSection);
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <footer className="bg-gray-100 text-textColor py-14">
       <div className="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row md:justify-around items-center text-center md:text-left">
@@ -37,6 +55,24 @@ const Footer = () => {
           {/* Links Section */}
           
           <p className="text-gray-400 text-sm mt-2">© 2025 SolarLocal</p>
+        </div>
+      </div>
+      <div
+        className={`w-full bg-gradient-to-b from-yellow-400 to-orange-400  text-white transition-all duration-300 ${
+          isHeroVisible ? "static" : "fixed bottom-0"
+        }`}
+      >
+        <div className=" max-w-[1300px] mx-auto p-6 text-center gap-3 grid grid-cols-1 justify-center items-center  md:grid-cols-2">
+          <h2 className="text-darkshadegray text-center  justify-end justify-self-end md:text-nowrap md:text-2xl font-semibold">
+            Compare the Best Solar Deals for Your Home
+          </h2>
+          <div className=" ">
+            <Link href="/questions">
+              <button className="inline-flex text-darkshadegray items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-1  bg-white    text-base  gap-x-2 shrink-0    px-10 py-4 rounded-md font-medium">
+                Find deals now
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

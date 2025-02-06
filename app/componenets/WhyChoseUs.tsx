@@ -33,7 +33,7 @@ const steps = [
 
 const WhyChoseUs = () => {
   return (
-    <div id="whyUs" className="pt-24 bg-white mb-10 p-4 max-w-[1300px] mx-auto">
+    <div id="whyUs" className="pt-24 px-4 md:px-6 bg-white mb-10 p-4 max-w-[1300px] mx-auto">
       <h2 className=" text-darkshadegray text-center">
         Why people use SolarLocal
       </h2>

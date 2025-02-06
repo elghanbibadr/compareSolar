@@ -76,7 +76,8 @@ h2{
 
 body{
   background-color: white;
-  padding: 8px;
+  /* padding: 8px; */
+  position: relative;
 }
 .gradientButton{
  background:  #df5745;

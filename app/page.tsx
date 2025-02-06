@@ -10,9 +10,11 @@ import Solar101 from "./componenets/Solar101";
 import WhyChoseUs from "./componenets/WhyChoseUs";
 
 export default function Home() {
+  
+
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Hero />
       <BrandsWeWorkWith />
       <OurServices />
@@ -22,6 +24,8 @@ export default function Home() {
       <Solar101 />
       <Callout />
       <Footer />
+
+      
     </>
   );
 }

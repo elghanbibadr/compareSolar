@@ -2,7 +2,7 @@ import billDrop from "@/public/images/Bill-Drop2.webp";
 import Image from "next/image";
 const Services = () => {
   return (
-    <section className="bg-darkshadegray  my-20 pt-20 grid grid-cols-1 justify-center md:gap-x-6 items-center md:h-fit md:grid-cols-2  text-white py-10 md:py-2 px-6 md:px-16">
+    <section className="bg-darkshadegray px-4 md:px-6  my-20 pt-20 grid grid-cols-1 justify-center md:gap-x-6 items-center md:h-fit md:grid-cols-2  text-white py-10 md:py-2 px-6 md:px-16">
       <div className="md:order-2">
         <div className="text-center md:text-left mb-8">
           <h2 className="text-white mb-6">A Service That Stands Out</h2>

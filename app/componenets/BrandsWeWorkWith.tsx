@@ -37,7 +37,7 @@ const BrandsWeWorkWith = () => {
   return (
     <div
       data-aos="fade-up"
-      className="text-center bg-white pt-16"
+      className="text-center bg-white pt-16 px-4 md:px-6"
     >
       <h2 >Brands we work with</h2>
       <div className="grid grid-cols-2 md:w-[80%] mx-auto py-10 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-7 lg:grid-cols-6 gap-4 mt-6 justify-center items-center p-4">

@@ -27,7 +27,7 @@ const EnergySavingsBenefits = () => {
   ];
 
   return (
-    <section id="energySavings" className="py-6 bg-white pt-10 px-6">
+    <section id="energySavings" className="py-6 px-4 md:px-6 bg-white pt-10 px-6">
       {/* Section Heading */}
       <div className="max-w-[1300px] mx-auto">
         <div className=" text-center mb-10">

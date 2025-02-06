@@ -29,7 +29,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex justify-between max-w-[1300px] mx-auto items-center p-4">
+    <div className="flex justify-between max-w-[1300px] px-4 md:px-6 mx-auto items-center p-4">
       {/* Logo */}
       <Image
         className=" relative right-8  "
