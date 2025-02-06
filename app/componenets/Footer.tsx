@@ -23,7 +23,7 @@ const Footer = () => {
     return () => observer.disconnect();
   }, []);
   return (
-    <footer className="bg-gray-100 text-textColor py-14">
+    <footer className="bg-gray-100 text-textColor py-20">
       <div className="max-w-[1300px] mx-auto px-4 flex flex-col md:flex-row md:justify-around items-center text-center md:text-left">
         {/* Heading and Description */}
         <div className="mb-6">
@@ -34,13 +34,13 @@ const Footer = () => {
             We make going solar easy with our 5-star service. See how much you
             can save!
           </p>
-          <ul className="flex text-sm justify-center md:justify-start items-center mt-10 gap-x-3">
+          <ul className="flex relative bottom-4 text-sm justify-center md:justify-start items-center mt-10 gap-x-3">
             <li className="hover:text-[#FBB724] text-textColor">
-              <Link href={""}>Privacy Policy</Link>
+              <Link target="_blank" href={"/privacy"}>Privacy Policy</Link>
             </li>
             <span>|</span>
             <li className="hover:text-[#FBB724] text-textColor">
-              <Link href={""}>Terms & Conditions</Link>
+              <Link target="_blank" href={"/terms"}>Terms & Conditions</Link>
             </li>
           </ul>
         </div>
@@ -57,8 +57,8 @@ const Footer = () => {
         </div>
       </div>
       <div
-        className={`w-full bg-gradient-to-b from-yellow-400 to-orange-400  text-white transition-all duration-300 ${
-          isHeroVisible ? "static" : "fixed bottom-0"
+        className={`w-full mt-10 bg-gradient-to-b from-yellow-400 to-orange-400  text-white transition-all duration-300 ${
+          isHeroVisible ? "static " : "fixed bottom-0"
         }`}
       >
         <div className=" p-6 text-center gap-3 grid grid-cols-1 justify-center items-center md:grid-cols-2">
