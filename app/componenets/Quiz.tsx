@@ -144,8 +144,7 @@ export default function Quiz() {
 
   const handleAddressSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("submited");
-    console.log("adress",address)
+
 
 
     // return;

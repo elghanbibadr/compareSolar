@@ -74,7 +74,6 @@ const SummaryForm = ({
         body: JSON.stringify({ token }),
       });
 
-      console.log("recaptcha res", recaptchaResponse);
 
       if (!recaptchaResponse.ok) {
         alert("Error in validation");
@@ -83,7 +82,6 @@ const SummaryForm = ({
 
       const data = await recaptchaResponse.json();
 
-      console.log("recaptcha data", data);
       if (!data?.success) {
         setError(
           "there was an error processing your request try again later !"
@@ -131,7 +129,6 @@ const SummaryForm = ({
       comments: `energy bill: ${selectedAnswers[4]?.text?.toLowerCase()}`,
     };
 
-    console.log("my details", details);
     try {
       await axios.post("/api/proxy", details);
       setFormSuccessfullySubmited(true);
@@ -153,7 +150,6 @@ const SummaryForm = ({
       return { text: selectedAnswers[key], icon: locationIcon };
     }
   });
-  console.log("leads", leads);
   return (
     <div data-aos="fade-up">
       {!formSuccessfullySubmited && !error && (
