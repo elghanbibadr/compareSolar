@@ -54,7 +54,13 @@ const SummaryForm = ({
 
   const storeys =
     selectedAnswers[3]?.text === "Single-storey" ? "single" : "multi";
-
+  const leads =
+    selectedAnswers[0]?.text.trim() === "Solar Power System"
+      ? ["RPV"]
+      : ["RHYPV"];
+  if (selectedAnswers[5].text === "Yes") {
+    leads.push("RSHW");
+  }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!executeRecaptcha) return;
@@ -117,7 +123,7 @@ const SummaryForm = ({
     const details = {
       contact,
       address,
-      leadTypes: ["RPV"],
+      leadTypes: leads,
       isOwner: true,
       roofType: selectedAnswers[2]?.text?.toLowerCase(),
       storeys,
@@ -125,6 +131,7 @@ const SummaryForm = ({
       comments: `energy bill: ${selectedAnswers[4]?.text?.toLowerCase()}`,
     };
 
+    console.log("my details", details);
     try {
       await axios.post("/api/proxy", details);
       setFormSuccessfullySubmited(true);
@@ -146,7 +153,7 @@ const SummaryForm = ({
       return { text: selectedAnswers[key], icon: locationIcon };
     }
   });
-
+  console.log("leads", leads);
   return (
     <div data-aos="fade-up">
       {!formSuccessfullySubmited && !error && (
