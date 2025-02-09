@@ -45,12 +45,13 @@ const SummaryForm = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
+  
     if (name === "phoneNumber") {
-      // Ensure the phone number starts with '04' and is exactly 10 digits long
-      setIsPhoneValid(/^04\d{8}$/.test(value));
+      // Allow exactly 8 or 10 digits
+      setIsPhoneValid(/^\d{8}$|^\d{10}$/.test(value));
     }
   };
+  
 
   const storeys =
     selectedAnswers[3]?.text === "Single-storey" ? "single" : "multi";
