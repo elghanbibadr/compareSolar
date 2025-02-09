@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
         Privacy Policy
       </h1>
       <p className="mb-4">
-        SolarLocal Pty Ltd (&quot;SolarLocal,&quot; &quot;we,&quot;
+        SolarLocal  (&quot;SolarLocal,&quot; &quot;we,&quot;
         &quot;us,&quot; or &quot;our&quot;) is committed to respecting and
         protecting your privacy. This policy outlines how we collect, use, and
         safeguard your personal information in compliance with the Australian

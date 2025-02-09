@@ -236,8 +236,7 @@ const SummaryForm = ({
               {!isLoading ? "Calculate my savings" : "Calculating ...."}
             </button>
             <p className="text-gray-500 text-xs text-center mt-4">
-              100% privacy guaranteed & no sponsored products
-            </p>
+            Unbiased, independent solar quotes. 100% obligation free.            </p>
           </form>
           <ul className="mt-6 hidden md:block">
             {Object.entries(transformedAnswers).map(([questionId, answer]) => (

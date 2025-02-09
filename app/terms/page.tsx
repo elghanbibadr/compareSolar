@@ -21,7 +21,7 @@ const TermsOfUse = () => {
         Terms of Use
       </h1>
       <p className="mb-4">
-        SolarLocal Pty Ltd (&quot;SolarLocal,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) owns and operates this website (&quot;Website&quot;). By accessing or using the Website, you agree to abide by these Terms of Use, our Privacy Policy, and any other relevant notices or disclaimers (collectively referred to as &quot;Terms of Use&quot;). If you do not agree with any part of these Terms of Use, you must discontinue use of the Website.
+        SolarLocal (&quot;SolarLocal,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) owns and operates this website (&quot;Website&quot;). By accessing or using the Website, you agree to abide by these Terms of Use, our Privacy Policy, and any other relevant notices or disclaimers (collectively referred to as &quot;Terms of Use&quot;). If you do not agree with any part of these Terms of Use, you must discontinue use of the Website.
       </p>
 
       <h3 className="mb-4 text-darkshadegray font-semibold text-xl md:text-2xl">
