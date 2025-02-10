@@ -36,7 +36,7 @@ const Navbar = () => {
       {/* Desktop Button */}
       <div className="">
         <Link href="/questions">
-        <button className=" bg-gradient-to-b from-yellow-400 to-orange-400 md:px-6 rounded-lg p-2 px-3 text-xs md:text-sm tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold  font-medium">
+        <button className=" bg-gradient-to-b from-yellow-400 to-orange-400 md:px-6 rounded-lg p-2 px-3 text-xs md:text-sm tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:py-3  font-medium">
               Compare Solar Now
             </button>
         </Link>
