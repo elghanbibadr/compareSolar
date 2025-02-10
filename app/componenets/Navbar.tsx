@@ -29,10 +29,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex justify-between max-w-[1300px] px-4 md:px-6 mx-auto items-center p-4">
+    <div className="flex justify-between max-w-[1300px]  md:px-6 mx-auto items-center p-2 md:p-4">
       {/* Logo */}
       <Image
-        className=" relative right-8  "
+        className=" relative right-6 h-10 sm:h-auto  "
         src={logo}
         alt="solar logo"
         width={200}
@@ -48,76 +48,14 @@ const Navbar = () => {
       </ul>
 
       {/* Desktop Button */}
-      <div className="hidden md:block">
+      <div className="">
         <Link href="/questions">
-          <button className="compareNowButtonGradient text-nowrap px-6 py-3 lg:px-10 lg:py-4">
+          <button className="compareNowButtonGradient font-normal md:text-nowrap text-xs px-4 py-2 md:px-6 md:py-3 lg:px-10 lg:py-4">
             Compare Solar Now
           </button>
         </Link>
       </div>
 
-      {/* Hamburger Menu for Mobile */}
-      <div className="md:hidden">
-        <Image
-          src={hamburgerMenu}
-          className="cursor-pointer"
-          height={20}
-          width={20}
-          alt="hamburger menu"
-          onClick={() => setIsOpen(true)}
-        />
-      </div>
-
-      {/* Mobile Sidebar with AnimatePresence */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }} // Closing animation
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 h-full w-[75%] max-w-[300px] bg-white  shadow-lg z-50 flex flex-col p-5"
-          >
-            {/* Close Button */}
-            <div className="flex mt-4 justify-end">
-              <Image
-                src={closeIcon}
-                className="cursor-pointer"
-                height={20}
-                width={20}
-                alt="close menu"
-                onClick={() => setIsOpen(false)}
-              />
-            </div>
-
-            {/* Mobile Navigation */}
-            <ul className="mt-10 flex flex-col space-y-7 text-base">
-              {navLinks.map((link) => (
-                <li
-                  key={link.href}
-                  className="hover:text-[#FBB724] text-darkshadegray"
-                >
-                  <Link href={link.href} onClick={() => setIsOpen(false)}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* Mobile Button */}
-            <div className="mt-10">
-              <Link href="/questions">
-                <button
-                  className="compareNowButtonGradient text-nowrap px-6 py-3 w-full"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Compare Solar Now
-                </button>
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

@@ -45,13 +45,12 @@ const SummaryForm = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  
+
     if (name === "phoneNumber") {
       // Allow exactly 8 or 10 digits
       setIsPhoneValid(/^\d{8}$|^\d{10}$/.test(value));
     }
   };
-  
 
   const storeys =
     selectedAnswers[3]?.text === "Single-storey" ? "single" : "multi";
@@ -74,7 +73,6 @@ const SummaryForm = ({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token }),
       });
-
 
       if (!recaptchaResponse.ok) {
         alert("Error in validation");
@@ -236,7 +234,8 @@ const SummaryForm = ({
               {!isLoading ? "Calculate my savings" : "Calculating ...."}
             </button>
             <p className="text-gray-500 text-xs text-center mt-4">
-            Unbiased, independent solar quotes. 100% obligation free.            </p>
+              Unbiased, independent solar quotes. 100% obligation free.{" "}
+            </p>
           </form>
           <ul className="mt-6 hidden md:block">
             {Object.entries(transformedAnswers).map(([questionId, answer]) => (
@@ -261,11 +260,12 @@ const SummaryForm = ({
         >
           <CheckCircle className="w-10 h-10 text-darkshadegray mx-auto" />
           <h2 className="text-xl font-semibold text-backgroundPaleYellow mt-2">
-            Information Received!
+            Thank you for submitting your details!
           </h2>
           <p className="mt-2 text-darkshadegray">
-            Thank you for submitting your details. We have successfully received
-            your information and will process it shortly.
+            We have successfully received your information and will connect you
+            with the highest-rated local solar companies. They will be in touch
+            with you soon to provide your free quotes.
           </p>
           <Link href="/">
             <span className="text-backgroundPaleYellow cursor-pointer  text-sm block mt-4">
