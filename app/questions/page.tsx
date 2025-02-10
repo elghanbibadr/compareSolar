@@ -10,16 +10,16 @@ import Link from 'next/link';
 const QuestionsPage = () => {
   return (
     <div >
-        <div className="flex justify-between bg-white md:p-1  items-center">
+        <div className="flex justify-between p-1 bg-white md:p-1  items-center">
           <span className="inline-flex w-fit items-center">         
             <Link href='/'>
-              <Image
-                className=""
-                src={logo}
-                alt="solar logo"
-                width={200}
-                height={100}
-              />
+            <Image
+        className=" relative right-6 md:right-4 h-12 sm:h-auto  "
+        src={logo}
+        alt="solar logo"
+        width={200}
+        height={100}
+      />
             </Link>
           </span>
           <div className='flex  items-center '>

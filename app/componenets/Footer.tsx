@@ -56,7 +56,7 @@ const Footer = () => {
           <p className="text-gray-400 text-sm mt-2">© 2025 SolarLocal</p>
         </div>
       </div>
-      <div
+      {/* <div
         className={`w-full mt-10 bg-gradient-to-b from-yellow-400 to-orange-400  text-white transition-all duration-300 ${
           isHeroVisible ? "static " : "fixed bottom-0"
         }`}
@@ -73,7 +73,7 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 };

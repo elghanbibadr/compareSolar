@@ -14,8 +14,7 @@ export default function Hero() {
             Deals for Your Home
           </h1>
           <p className="mt-3 md:w-[80%] p-3 md:p-0 my-4 text-center md:text-left  text-textColor ">
-            We search far and wide to find you the best deals, leaving you free
-            to choose the one that suits you perfectly that’s right for you.
+          We search far and wide across Australia to find you the best deals, leaving you free to choose the one that suits you perfectly that’s right for you
           </p>
         </div>
         {/* "Start Here" Button */}

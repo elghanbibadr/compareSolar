@@ -18,7 +18,7 @@ const Navbar = () => {
     <div className="flex justify-between max-w-[1300px]  md:px-6 mx-auto items-center p-2 md:p-4">
       {/* Logo */}
       <Image
-        className=" relative right-6 h-12 sm:h-auto  "
+        className=" relative right-6   "
         src={logo}
         alt="solar logo"
         width={200}
@@ -36,7 +36,7 @@ const Navbar = () => {
       {/* Desktop Button */}
       <div className="">
         <Link href="/questions">
-        <button className=" bg-gradient-to-b from-yellow-400 font-medium to-orange-400 md:px-6 rounded-lg py-3 px-4 sm:px-6 text-xs md:text-sm tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:py-3  ">
+        <button className=" bg-gradient-to-b from-yellow-400 font-medium to-orange-400  rounded-lg px-2 py-2 sm:px-6 text-xs md:text-sm tracking--tight text-nowrap capitalize text-white md:text-[1.1rem] md:font-semibold md:py-3  ">
               Compare Solar Now
             </button>
         </Link>
