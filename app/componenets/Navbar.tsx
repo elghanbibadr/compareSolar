@@ -1,14 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
 import logo from "@/public/images/SolarLocal Iconlogo.webp";
-import hamburgerMenu from "@/public/images/icons8-hamburger-menu.svg";
-import closeIcon from "@/public/images/icon-close.svg"; // Add a close icon image
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { href: "#services", label: "Services" },
@@ -17,16 +12,7 @@ const Navbar = () => {
     { href: "#solarEssentials", label: "Solar Essentials" },
   ];
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsOpen(false);
-      }
-    };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <div className="flex justify-between max-w-[1300px]  md:px-6 mx-auto items-center p-2 md:p-4">
