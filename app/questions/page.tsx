@@ -14,7 +14,7 @@ const QuestionsPage = () => {
           <span className="inline-flex w-fit items-center">         
             <Link href='/'>
             <Image
-        className=" relative right-6 md:right-4 h-12 sm:h-auto  "
+        className=" relative right-6  "
         src={logo}
         alt="solar logo"
         width={200}
