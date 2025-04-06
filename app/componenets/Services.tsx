@@ -1,4 +1,4 @@
-import billDrop from "@/public/images/Bill-Drop2.webp";
+import billDrop from "@/public/images/Adobe Express - file.png";
 import Image from "next/image";
 const Services = () => {
   return (
@@ -16,7 +16,7 @@ const Services = () => {
         </ul>
       </div>
       <div className="flex md:order-1  top-16 justify-center relative ">
-        <Image
+      <Image
           src={billDrop} // Replace with your image path
           alt="Energy Bill Example"
           className="max-w-full md:h-full md:w-full h-auto "
